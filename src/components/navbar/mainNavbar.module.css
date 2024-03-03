@@ -1,0 +1,5 @@
+@media only screen and (max-width:1250px) {
+    .res_nav_options {
+        margin-left: -20px !important;
+    }
+}

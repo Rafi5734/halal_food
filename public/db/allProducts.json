@@ -1,0 +1,280 @@
+{
+  "foodItems": [
+    {
+      "category": "Popular",
+      "name": "Item 1",
+      "imageLink": "https://example.com/item1.jpg",
+      "price": 10.99,
+      "description": "This is a popular food item.",
+      "weight": "200g",
+      "quantity": 1,
+      "SKUId": "SKU123",
+      "UUID": "abc123",
+      "reviews": [
+        {
+          "userId": "user1",
+          "rating": 4.5,
+          "comment": "Great taste! Highly recommended."
+        },
+        {
+          "userId": "user2",
+          "rating": 5,
+          "comment": "Delicious and affordable."
+        }
+      ]
+    },
+    {
+      "category": "good product",
+      "name": "Item 3",
+      "imageLink": "https://example.com/item2.jpg",
+      "price": 15.99,
+      "description": "Best-selling food item.",
+      "weight": "350g",
+      "quantity": 1,
+      "SKUId": "SKU456",
+      "UUID": "def456",
+      "reviews": [
+        {
+          "userId": "user98",
+          "rating": 4,
+          "comment": "Good value for money."
+        },
+        {
+          "userId": "user43",
+          "rating": 4.5,
+          "comment": "Love the taste!"
+        }
+      ]
+    },
+    {
+      "category": "good product",
+      "name": "Item 34",
+      "imageLink": "https://example.com/item2.jpg",
+      "price": 50.99,
+      "description": "Best-selling food item.",
+      "weight": "650g",
+      "quantity": 1,
+      "SKUId": "SKU4656",
+      "UUID": "def45426",
+      "reviews": [
+        {
+          "userId": "user865",
+          "rating": 4,
+          "comment": "Good value for money."
+        },
+        {
+          "userId": "user43867",
+          "rating": 4.5,
+          "comment": "Love the taste!"
+        }
+      ]
+    },
+    {
+      "category": "good product",
+      "name": "Item 314",
+      "imageLink": "https://example.com/item2.jpg",
+      "price": 503.99,
+      "description": "Best-selling food item.",
+      "weight": "750g",
+      "quantity": 1,
+      "SKUId": "SKU45436",
+      "UUID": "def45456",
+      "reviews": [
+        {
+          "userId": "user7665",
+          "rating": 4,
+          "comment": "Good value for money."
+        },
+        {
+          "userId": "user44367",
+          "rating": 4.5,
+          "comment": "Love the taste!"
+        }
+      ]
+    },
+    {
+      "category": "good product",
+      "name": "Item 124",
+      "imageLink": "https://example.com/item2.jpg",
+      "price": 583.99,
+      "description": "Best-selling food item.",
+      "weight": "7430g",
+      "quantity": 1,
+      "SKUId": "SKU42336",
+      "UUID": "def45676",
+      "reviews": [
+        {
+          "userId": "user7435",
+          "rating": 4,
+          "comment": "Good value for money."
+        },
+        {
+          "userId": "user44087",
+          "rating": 4.5,
+          "comment": "Love the taste!"
+        }
+      ]
+    },
+    {
+      "category": "good product",
+      "name": "Item 1124",
+      "imageLink": "https://example.com/item2.jpg",
+      "price": 584.99,
+      "description": "Best-selling food item.",
+      "weight": "739g",
+      "quantity": 1,
+      "SKUId": "SKU4226",
+      "UUID": "def45336",
+      "reviews": [
+        {
+          "userId": "user7409",
+          "rating": 4,
+          "comment": "Good value for money."
+        },
+        {
+          "userId": "user44076",
+          "rating": 4.5,
+          "comment": "Love the taste!"
+        }
+      ]
+    },
+    {
+      "category": "Best-Seller",
+      "name": "Item 2",
+      "imageLink": "https://example.com/item2.jpg",
+      "price": 12.99,
+      "description": "Best-selling food item.",
+      "weight": "250g",
+      "quantity": 1,
+      "SKUId": "SKU456",
+      "UUID": "def456",
+      "reviews": [
+        {
+          "userId": "user3",
+          "rating": 4,
+          "comment": "Good value for money."
+        },
+        {
+          "userId": "user4",
+          "rating": 4.5,
+          "comment": "Love the taste!"
+        }
+      ]
+    },
+    {
+      "category": "Best-Seller",
+      "name": "Item 243",
+      "imageLink": "https://example.com/item2.jpg",
+      "price": 128.99,
+      "description": "Best-selling food item.",
+      "weight": "950g",
+      "quantity": 1,
+      "SKUId": "SKU4526",
+      "UUID": "def4546",
+      "reviews": [
+        {
+          "userId": "user34590",
+          "rating": 4,
+          "comment": "Good value for money."
+        },
+        {
+          "userId": "user4354",
+          "rating": 4.5,
+          "comment": "Love the taste!"
+        }
+      ]
+    },
+    {
+      "category": "Best-Seller",
+      "name": "Item 2213",
+      "imageLink": "https://example.com/item2.jpg",
+      "price": 1878.99,
+      "description": "Best-selling food item.",
+      "weight": "850g",
+      "quantity": 1,
+      "SKUId": "SKU4436",
+      "UUID": "def4766",
+      "reviews": [
+        {
+          "userId": "user34110",
+          "rating": 4,
+          "comment": "Good value for money."
+        },
+        {
+          "userId": "user4904",
+          "rating": 4.5,
+          "comment": "Love the taste!"
+        }
+      ]
+    },
+    {
+      "category": "Best-Seller",
+      "name": "Item 2313",
+      "imageLink": "https://example.com/item2.jpg",
+      "price": 178.99,
+      "description": "Best-selling food item.",
+      "weight": "880g",
+      "quantity": 1,
+      "SKUId": "SKU43216",
+      "UUID": "def5866",
+      "reviews": [
+        {
+          "userId": "user3910",
+          "rating": 4,
+          "comment": "Good value for money."
+        },
+        {
+          "userId": "user4534",
+          "rating": 4.5,
+          "comment": "Love the taste!"
+        }
+      ]
+    },
+    {
+      "category": "Best-Seller",
+      "name": "Item 203",
+      "imageLink": "https://example.com/item2.jpg",
+      "price": 528.99,
+      "description": "Best-selling food item.",
+      "weight": "870g",
+      "quantity": 1,
+      "SKUId": "SKU43546",
+      "UUID": "def5865",
+      "reviews": [
+        {
+          "userId": "user3910",
+          "rating": 4,
+          "comment": "Good value for money."
+        },
+        {
+          "userId": "user4754",
+          "rating": 4.5,
+          "comment": "Love the taste!"
+        }
+      ]
+    },
+    {
+      "category": "Best-Seller",
+      "name": "Item 293",
+      "imageLink": "https://example.com/item2.jpg",
+      "price": 52.99,
+      "description": "Best-selling food item.",
+      "weight": "870g",
+      "quantity": 1,
+      "SKUId": "SKU48746",
+      "UUID": "def5535",
+      "reviews": [
+        {
+          "userId": "user10",
+          "rating": 4,
+          "comment": "Good value for money."
+        },
+        {
+          "userId": "user47",
+          "rating": 4.5,
+          "comment": "Love the taste!"
+        }
+      ]
+    }
+  ]
+}
