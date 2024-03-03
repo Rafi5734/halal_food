@@ -1,14 +1,12 @@
 import AboutAllSections from "@/components/aboutAllSections/AboutAllSections";
+import Image from "next/image";
 import React from "react";
+import AboutBannerImg from "../../../public/images/about_bannar_img.jpg";
 
 const page = () => {
   return (
     <div>
-      <img
-        src="https://media.licdn.com/dms/image/D5616AQHJruujkr1LIg/profile-displaybackgroundimage-shrink_350_1400/0/1692289656680?e=1710374400&v=beta&t=bI8y92zB8bX9lMulF2YvY2PtknTm6u2TQi-iEZPC4u4"
-        alt="about"
-        width="100%"
-      />
+      <Image src={AboutBannerImg} alt="about" sizes="(max-width: 100%)" />
       <AboutAllSections />
     </div>
   );

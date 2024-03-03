@@ -2,21 +2,18 @@ import Image from "next/image";
 import React from "react";
 import contactBanner from "../../../public/images/firmbee-com-SpVHcbuKi6E-unsplash.webp";
 import styles from "./contact.module.css";
+import ContactBannarImg from "../../../public/images/contact_bannar_img.jpg";
 const page = () => {
   return (
     <div className={styles.main_contact_container}>
       {/* <Image
-        src={contactBanner}
-        alt="Picture of the contact page banner"
-        sizes="50vh"
-        placeholder="blur"
-        style={{
-          width: "100%",
-          height: "90%",
-        }}
+        className="w-24 h-24 mb-3 rounded-full shadow-lg"
+        src={ContactBannarImg}
+        sizes="(max-width: 100%)"
+        alt="Bonnie image"
       /> */}
 
-      <div className="w-full bg-cover bg-center bg-no-repeat p-20 bg-[url('https://halalfoodservicebd.com/wp-content/uploads/2021/12/maranda-vandergriff-7aakZdIl4vg-unsplash-1.jpg')] h-screen text-2xl font-semibold">
+      <div className="w-full bg-cover bg-center bg-no-repeat p-20 bg-[url('https://images.unsplash.com/photo-1577563908411-5077b6dc7624?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] h-screen text-2xl font-semibold">
         <div className="flex flex-col justify-center items-center h-full">
           <p className="text-[64px] text-white font-bold mb-8">Contact</p>
           <p className="text-[24px] text-white font-bold">Send us a message</p>
@@ -32,9 +29,10 @@ const page = () => {
             <div>
               <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div className="mt-5 flex flex-col items-center pb-10">
-                  <img
+                  <Image
                     className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                    src="https://i0.wp.com/halalfoodservicebd.com/wp-content/uploads/2021/12/map-pin-2-fill-2.png?w=240&ssl=1"
+                    src={ContactBannarImg}
+                    sizes="(max-width: 100%)"
                     alt="Bonnie image"
                   />
                   <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
@@ -49,9 +47,10 @@ const page = () => {
             <div>
               <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div className="mt-5 flex flex-col items-center pb-10">
-                  <img
+                  <Image
                     className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                    src="https://i0.wp.com/halalfoodservicebd.com/wp-content/uploads/2021/12/map-pin-2-fill-2.png?w=240&ssl=1"
+                    src={ContactBannarImg}
+                    sizes="(max-width: 100%)"
                     alt="Bonnie image"
                   />
                   <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
@@ -66,9 +65,10 @@ const page = () => {
             <div>
               <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div className="mt-5 flex flex-col items-center pb-10">
-                  <img
+                  <Image
                     className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                    src="https://i0.wp.com/halalfoodservicebd.com/wp-content/uploads/2021/12/map-pin-2-fill-2.png?w=240&ssl=1"
+                    src={ContactBannarImg}
+                    sizes="(max-width: 100%)"
                     alt="Bonnie image"
                   />
                   <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
@@ -83,9 +83,10 @@ const page = () => {
             <div>
               <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <div className="mt-5 flex flex-col items-center pb-10">
-                  <img
+                  <Image
                     className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                    src="https://i0.wp.com/halalfoodservicebd.com/wp-content/uploads/2021/12/map-pin-2-fill-2.png?w=240&ssl=1"
+                    src={ContactBannarImg}
+                    sizes="(max-width: 100%)"
                     alt="Bonnie image"
                   />
                   <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
