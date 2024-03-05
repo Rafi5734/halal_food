@@ -15,17 +15,19 @@ const Checkout = () => {
   // console.log("singleProduct", JSON.parse(myCookieValue));
   const [checkoutPost] = useCheckoutPostMutation();
   const [deliveryCharge, setDeliveryCharge] = useState();
-  const [dhakaOutside, setDhakaOutside] = useState("");
-  if (myCookieValue) {
-    var totalPrice =
-      JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-      Number(deliveryCharge);
-  }
-  if (myCookieValue && dhakaOutside) {
-    var totalPrice =
-      JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-      Number(deliveryCharge);
-  }
+  useEffect(() => {
+    if (myCookieValue) {
+      var totalPrice =
+        JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+        Number(deliveryCharge);
+    }
+    if (myCookieValue && dhakaOutside) {
+      var totalPrice =
+        JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+        Number(deliveryCharge);
+    }
+  }, [deliveryCharge, myCookieValue, productQuantity]);
+
   // console.log("i am from form submit button", deliveryCharge);
   const [checkoutFormData, setCheckoutFormData] = useState({
     fullName: "",
@@ -53,12 +55,7 @@ const Checkout = () => {
       }));
     }
     setProductQuantity(checkoutFormData?.product_quantity);
-  }, [
-    checkoutFormData?.product_quantity,
-    deliveryCharge,
-    totalPrice,
-    productQuantity,
-  ]);
+  }, [checkoutFormData?.product_quantity, deliveryCharge, productQuantity]);
   const handleCheckoutInputChange = (event) => {
     const { name, value } = event.target;
     setCheckoutFormData((prevData) => ({ ...prevData, [name]: value }));
