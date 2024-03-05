@@ -250,7 +250,7 @@ const Checkout = () => {
                 className="bg-[#d19c22]"
                 onClick={() => handleOrderCompleted()}
               >
-                অর্ডারটি সম্পন্ন হয়েছে |
+                অর্ডারটি সম্পন্ন হয়েছে
               </Button>
             </Modal.Footer>
           </Modal>
