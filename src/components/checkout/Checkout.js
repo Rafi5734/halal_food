@@ -15,18 +15,16 @@ const Checkout = () => {
   // console.log("singleProduct", JSON.parse(myCookieValue));
   const [checkoutPost] = useCheckoutPostMutation();
   const [deliveryCharge, setDeliveryCharge] = useState();
-  useEffect(() => {
-    if (myCookieValue) {
-      var totalPrice =
-        JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-        Number(deliveryCharge);
-    }
-    if (myCookieValue && dhakaOutside) {
-      var totalPrice =
-        JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-        Number(deliveryCharge);
-    }
-  }, [deliveryCharge, myCookieValue, productQuantity]);
+  if (myCookieValue) {
+    var totalPrice =
+      JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+      Number(deliveryCharge);
+  }
+  if (myCookieValue && dhakaOutside) {
+    var totalPrice =
+      JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+      Number(deliveryCharge);
+  }
 
   // console.log("i am from form submit button", deliveryCharge);
   const [checkoutFormData, setCheckoutFormData] = useState({
