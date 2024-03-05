@@ -3,6 +3,7 @@ import { useGetAllProductsQuery } from "@/api/productSlice/productSlice";
 import React from "react";
 import Link from "next/link";
 import Loader from "@/styles/Loader/Loader";
+import Image from "next/image";
 
 const PremiumHoneList = () => {
   const { data: productList, isLoading } = useGetAllProductsQuery();
@@ -34,18 +35,16 @@ const PremiumHoneList = () => {
                       }}
                       className="relative mx-3 mt-3 flex h-70 rounded-xl"
                     >
-                      <img
+                      <Image
                         className="rounded object-cover"
                         src={product?.imageLink}
-                        width="100%"
-                        // height={500}
+                        width={100}
+                        // width="100%"
+                        height={100}
                         // sizes="100vw"
                         quality={75}
                         // placeholder="blur"
-                        style={{
-                          width: "100%",
-                          height: "auto",
-                        }}
+                        sizes="(max-width: 100%)"
                         alt="product image"
                       />
                       {/* <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">

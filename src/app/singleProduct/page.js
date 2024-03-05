@@ -2,6 +2,7 @@
 import { useGetSingleProductsQuery } from "@/api/productSlice/productSlice";
 import CommentSection from "@/components/dynamicProducts/commentSection/CommentSection";
 import { setCookie } from "@/components/helper/cookies";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
@@ -62,15 +63,14 @@ const SingleProduct = ({ searchParams }) => {
           <div className="ps-3 pe-3 pt-3">
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-5">
               <div>
-                <img
+                <Image
                   className="rounded"
                   alt="product_image"
                   src={singleProduct?.imageLink}
-                  sizes="100vw"
-                  style={{
-                    width: "100%",
-                    height: "700px",
-                  }}
+                  width={100}
+                  height={100}
+                  // sizes="100vw"
+                  sizes="(max-width: 100%)"
                 />
               </div>
               <div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const ServiceMessage = () => {
@@ -14,7 +15,7 @@ const ServiceMessage = () => {
         <div className="flex justify-center items-center">
           <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="flex flex-col items-center pb-10 pt-5">
-              <img
+              <Image
                 className="w-24 h-24 mb-3 rounded-full shadow-lg"
                 src="https://i0.wp.com/halalfoodservicebd.com/wp-content/uploads/2022/01/quality.png?resize=400%2C400&ssl=1"
                 alt="Bonnie image"
@@ -31,7 +32,7 @@ const ServiceMessage = () => {
         <div className="flex justify-center items-center">
           <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="flex flex-col items-center pb-10 pt-5">
-              <img
+              <Image
                 className="w-24 h-24 mb-3 rounded-full shadow-lg"
                 src="https://i0.wp.com/halalfoodservicebd.com/wp-content/uploads/2022/01/customer-service-agent.png?w=256&ssl=1"
                 alt="Bonnie image"
@@ -48,7 +49,7 @@ const ServiceMessage = () => {
         <div className="flex justify-center items-center">
           <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="flex flex-col items-center pb-10 pt-5">
-              <img
+              <Image
                 className="w-24 h-24 mb-3 rounded-full shadow-lg"
                 src="https://i0.wp.com/halalfoodservicebd.com/wp-content/uploads/2022/01/delivery.png?w=256&ssl=1"
                 alt="Bonnie image"
@@ -65,7 +66,7 @@ const ServiceMessage = () => {
         <div className="flex justify-center items-center">
           <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <div className="flex flex-col items-center pb-10 pt-5">
-              <img
+              <Image
                 className="w-24 h-24 mb-3 rounded-full shadow-lg"
                 src="https://i0.wp.com/halalfoodservicebd.com/wp-content/uploads/2022/01/trust.png?w=256&ssl=1"
                 alt="Bonnie image"

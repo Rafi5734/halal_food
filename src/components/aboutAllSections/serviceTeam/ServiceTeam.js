@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const ServiceTeam = () => {
@@ -11,7 +12,7 @@ const ServiceTeam = () => {
           <div>
             <div className="bg-white border border-gray-200 rounded-lg">
               <a href="#">
-                <img
+                <Image
                   className="rounded-t-lg"
                   src="https://cdn.pixabay.com/photo/2014/03/25/16/24/female-296990_640.png"
                   alt=""
@@ -33,7 +34,7 @@ const ServiceTeam = () => {
           <div>
             <div className="bg-white border border-gray-200 rounded-lg">
               <a href="#">
-                <img
+                <Image
                   className="rounded-t-lg"
                   src="https://cdn.pixabay.com/photo/2014/03/25/16/24/female-296990_640.png"
                   alt=""
@@ -55,7 +56,7 @@ const ServiceTeam = () => {
           <div>
             <div className="bg-white border border-gray-200 rounded-lg">
               <a href="#">
-                <img
+                <Image
                   className="rounded-t-lg"
                   src="https://cdn.pixabay.com/photo/2014/03/25/16/24/female-296990_640.png"
                   alt=""

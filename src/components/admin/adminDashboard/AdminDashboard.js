@@ -21,10 +21,12 @@ const AdminDashboard = () => {
           className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
            border-2 rounded-full  ${!open && "rotate-180"}`}
           onClick={() => setOpen(!open)}
+          alt="control_img"
         />
         <div className="flex items-center">
           <Image
             src={logo_main}
+            alt="logo_main"
             className={`cursor-pointer duration-500 w-40 ${
               open && "rotate-[360deg]"
             }`}
@@ -64,7 +66,7 @@ const AdminDashboard = () => {
             <li
               className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-5`}
             >
-              <Image src={users_img} width={20} height={20} />
+              <Image src={users_img} width={20} height={20} alt="user_img" />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 Users
               </span>

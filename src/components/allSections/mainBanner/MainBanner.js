@@ -8,12 +8,11 @@ const MainBanner = () => {
       <Image
         src={banner}
         alt="Picture of the banner"
-        sizes="100vw"
+        width={100}
+        height={100}
+        // sizes="100vw"
         placeholder="blur"
-        style={{
-          width: "100%",
-          height: "auto",
-        }}
+        sizes="(max-width: 100%)"
       />
     </div>
   );

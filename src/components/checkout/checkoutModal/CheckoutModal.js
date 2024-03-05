@@ -7,6 +7,7 @@ import {
   TableHeadCell,
   TableRow,
 } from "flowbite-react";
+import Image from "next/image";
 
 const CheckoutModal = ({ checkoutFormData, productQuantity }) => {
   console.log(checkoutFormData);
@@ -28,11 +29,12 @@ const CheckoutModal = ({ checkoutFormData, productQuantity }) => {
           <TableBody className="divide-y">
             <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
               <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                <img
+                <Image
                   src={checkoutFormData?.order?.imageLink}
                   width={150}
                   className="rounded-md"
                   height={150}
+                  sizes="(max-width: 100%)"
                   alt="checkout_product_img"
                 />
                 <p className="mt-2 text-[#d19c22]">

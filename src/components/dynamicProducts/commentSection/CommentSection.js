@@ -5,6 +5,7 @@ import userImage from "../../../../public/images/user_image.png";
 import { getCookie } from "@/components/helper/cookies";
 import { usePostCommentMutation } from "@/api/productSlice/productSlice";
 import Swal from "sweetalert2";
+import Image from "next/image";
 const CommentSection = ({ singleProduct }) => {
   const myCookieValue = getCookie("bisuddho_cookies");
   const [postComment] = usePostCommentMutation();
@@ -18,8 +19,6 @@ const CommentSection = ({ singleProduct }) => {
       text: formData.text,
     };
   }
-
-  
 
   // console.log("name", myCookieValue);
   const id = singleProduct?._id;
@@ -106,7 +105,7 @@ const CommentSection = ({ singleProduct }) => {
               <footer className="flex justify-between items-center mb-2">
                 <div className="flex items-center">
                   <p className="inline-flex items-center mr-3 text-sm text-gray-900 font-semibold">
-                    <img
+                    <Image
                       className="mr-2 w-6 h-6 rounded-full"
                       src="../../../../public/images/user_image.png"
                       alt="Michael Gough"

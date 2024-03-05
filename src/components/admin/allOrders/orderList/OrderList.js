@@ -4,6 +4,7 @@ import {
   useDeleteCheckoutMutation,
   useGetAllCheckoutQuery,
 } from "@/api/checkoutSlice/checkoutSlice";
+import Image from "next/image";
 import Swal from "sweetalert2";
 
 const OrderList = () => {
@@ -63,10 +64,12 @@ const OrderList = () => {
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
                 <td className="p-4">
-                  <img
+                  <Image
                     src={product?.order?.imageLink}
                     className="w-16 md:w-32 max-w-full max-h-full rounded"
                     alt="Apple Watch"
+                    width={100}
+                    height={100}
                   />
                   <p className="mt-3 font-bold">{product?.order?.name}</p>
                 </td>

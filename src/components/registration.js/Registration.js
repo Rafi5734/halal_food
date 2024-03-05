@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useUserRegistrationMutation } from "@/api/auth/authSlice";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 const Registration = () => {
   const router = useRouter();
   const [userRegistration, { isLoading }] = useUserRegistrationMutation();
@@ -57,7 +58,7 @@ const Registration = () => {
     <div className="">
       <div className="pt-10 pb-10 bg-gray-50 flex flex-col justify-center">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <img
+          <Image
             className="mx-auto h-10 w-auto"
             src="https://www.svgrepo.com/show/301692/login.svg"
             alt="Workflow"
