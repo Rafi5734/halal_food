@@ -15,16 +15,6 @@ const Checkout = () => {
   // console.log("singleProduct", JSON.parse(myCookieValue));
   const [checkoutPost] = useCheckoutPostMutation();
   const [deliveryCharge, setDeliveryCharge] = useState();
-  if (myCookieValue) {
-    var totalPrice =
-      JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-      Number(deliveryCharge);
-  }
-  if (myCookieValue && dhakaOutside) {
-    var totalPrice =
-      JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-      Number(deliveryCharge);
-  }
 
   // console.log("i am from form submit button", deliveryCharge);
   const [checkoutFormData, setCheckoutFormData] = useState({
@@ -40,7 +30,17 @@ const Checkout = () => {
   });
 
   useEffect(() => {
-    // const myCookieValue = getCookie("bisuddho_cookies");
+    const myCookieValue = getCookie("bisuddho_cookies");
+    if (myCookieValue) {
+      var totalPrice =
+        JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+        Number(deliveryCharge);
+    }
+    if (myCookieValue && dhakaOutside) {
+      var totalPrice =
+        JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+        Number(deliveryCharge);
+    }
     if (myCookieValue) {
       // Parse the cookie value and update the order array in the state
       const parsedCookieValue = JSON.parse(myCookieValue);
@@ -242,10 +242,10 @@ const Checkout = () => {
                 </Modal.Header>
                 <Modal.Body>
                   <div className="space-y-6">
-                    {/* <CheckoutModal
+                    <CheckoutModal
                       checkoutFormData={checkoutFormData}
                       productQuantity={productQuantity}
-                    /> */}
+                    />
                   </div>
                 </Modal.Body>
                 <Modal.Footer>
