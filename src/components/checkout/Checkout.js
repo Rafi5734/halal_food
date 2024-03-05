@@ -242,10 +242,10 @@ const Checkout = () => {
                 </Modal.Header>
                 <Modal.Body>
                   <div className="space-y-6">
-                    <CheckoutModal
+                    {/* <CheckoutModal
                       checkoutFormData={checkoutFormData}
                       productQuantity={productQuantity}
-                    />
+                    /> */}
                   </div>
                 </Modal.Body>
                 <Modal.Footer>
