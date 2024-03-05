@@ -16,6 +16,16 @@ const Checkout = () => {
   const [checkoutPost] = useCheckoutPostMutation();
   const [deliveryCharge, setDeliveryCharge] = useState();
 
+  if (myCookieValue) {
+    var totalPrice =
+      JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+      Number(deliveryCharge);
+  }
+  if (myCookieValue && dhakaOutside) {
+    var totalPrice =
+      JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+      Number(deliveryCharge);
+  }
   // console.log("i am from form submit button", deliveryCharge);
   const [checkoutFormData, setCheckoutFormData] = useState({
     fullName: "",
@@ -31,16 +41,7 @@ const Checkout = () => {
 
   useEffect(() => {
     const myCookieValue = getCookie("bisuddho_cookies");
-    if (myCookieValue) {
-      var totalPrice =
-        JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-        Number(deliveryCharge);
-    }
-    if (myCookieValue && dhakaOutside) {
-      var totalPrice =
-        JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-        Number(deliveryCharge);
-    }
+
     if (myCookieValue) {
       // Parse the cookie value and update the order array in the state
       const parsedCookieValue = JSON.parse(myCookieValue);
@@ -57,6 +58,7 @@ const Checkout = () => {
     checkoutFormData?.product_quantity,
     deliveryCharge,
     productQuantity,
+    totalPrice,
     myCookieValue,
   ]);
   const handleCheckoutInputChange = (event) => {
@@ -107,160 +109,152 @@ const Checkout = () => {
       </div>
 
       <div className="mt-14 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-5">
-        {myCookieValue ? (
-          <>
-            <form onSubmit={handleFormSubmit}>
-              <div className="space-y-12">
-                <div className="border-b border-gray-900/10 pb-12">
-                  <h2 className="text-base font-semibold leading-7 text-gray-900">
-                    Billing and Shipping
-                  </h2>
-                  <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-                    <div className="col-span-full">
-                      <label
-                        htmlFor="full_name"
-                        className="block text-sm font-bold leading-6 text-gray-900"
-                      >
-                        পুরো নাম
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          type="text"
-                          name="fullName"
-                          value={checkoutFormData.fullName}
-                          onChange={handleCheckoutInputChange}
-                          id="full_name"
-                          placeholder="আপনার পুরো নাম লিখুন"
-                          autoComplete="full_name"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="col-span-full">
-                      <label
-                        htmlFor="full_name"
-                        className="block text-sm font-bold leading-6 text-gray-900"
-                      >
-                        পণ্যটির পরিমান
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          type="text"
-                          name="product_quantity"
-                          value={checkoutFormData.product_quantity}
-                          onChange={handleCheckoutInputChange}
-                          onBlur={(e) => {
-                            setProductQuantity(e.target.value);
-                          }}
-                          id="product_quantity"
-                          placeholder="কতটি পণ্য লাগবে"
-                          autoComplete="product_quantity"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          required
-                        />
-                      </div>
-                    </div>
+        <form onSubmit={handleFormSubmit}>
+          <div className="space-y-12">
+            <div className="border-b border-gray-900/10 pb-12">
+              <h2 className="text-base font-semibold leading-7 text-gray-900">
+                Billing and Shipping
+              </h2>
+              <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div className="col-span-full">
+                  <label
+                    htmlFor="full_name"
+                    className="block text-sm font-bold leading-6 text-gray-900"
+                  >
+                    পুরো নাম
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      name="fullName"
+                      value={checkoutFormData.fullName}
+                      onChange={handleCheckoutInputChange}
+                      id="full_name"
+                      placeholder="আপনার পুরো নাম লিখুন"
+                      autoComplete="full_name"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="col-span-full">
+                  <label
+                    htmlFor="full_name"
+                    className="block text-sm font-bold leading-6 text-gray-900"
+                  >
+                    পণ্যটির পরিমান
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      name="product_quantity"
+                      value={checkoutFormData.product_quantity}
+                      onChange={handleCheckoutInputChange}
+                      onBlur={(e) => {
+                        setProductQuantity(e.target.value);
+                      }}
+                      id="product_quantity"
+                      placeholder="কতটি পণ্য লাগবে"
+                      autoComplete="product_quantity"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      required
+                    />
+                  </div>
+                </div>
 
-                    <div className="col-span-full">
-                      <label
-                        htmlFor="phone_number"
-                        className="block text-sm font-bold leading-6 text-gray-900"
-                      >
-                        ফোন নাম্বার
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          type="text"
-                          name="phoneNumber"
-                          value={checkoutFormData.phoneNumber}
-                          onChange={handleCheckoutInputChange}
-                          id="phone_number"
-                          autoComplete="phone_number"
-                          placeholder="ফোন নাম্বার লিখুন"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          required
-                        />
-                      </div>
-                    </div>
+                <div className="col-span-full">
+                  <label
+                    htmlFor="phone_number"
+                    className="block text-sm font-bold leading-6 text-gray-900"
+                  >
+                    ফোন নাম্বার
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      name="phoneNumber"
+                      value={checkoutFormData.phoneNumber}
+                      onChange={handleCheckoutInputChange}
+                      id="phone_number"
+                      autoComplete="phone_number"
+                      placeholder="ফোন নাম্বার লিখুন"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      required
+                    />
+                  </div>
+                </div>
 
-                    <div className="col-span-full">
-                      <label
-                        htmlFor="address"
-                        className="block text-sm font-bold leading-6 text-gray-900"
-                      >
-                        ঠিকানা
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          type="text"
-                          name="address"
-                          value={checkoutFormData.address}
-                          onChange={handleCheckoutInputChange}
-                          id="address"
-                          autoComplete="address"
-                          placeholder="আপনার ঠিকানা লিখুন"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          required
-                        />
-                      </div>
-                    </div>
+                <div className="col-span-full">
+                  <label
+                    htmlFor="address"
+                    className="block text-sm font-bold leading-6 text-gray-900"
+                  >
+                    ঠিকানা
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      name="address"
+                      value={checkoutFormData.address}
+                      onChange={handleCheckoutInputChange}
+                      id="address"
+                      autoComplete="address"
+                      placeholder="আপনার ঠিকানা লিখুন"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      required
+                    />
+                  </div>
+                </div>
 
-                    <div className="col-span-full">
-                      <label
-                        htmlFor="thana_district"
-                        className="block text-sm font-bold leading-6 text-gray-900"
-                      >
-                        থানা এবং জেলা
-                      </label>
-                      <div className="mt-2">
-                        <input
-                          type="text"
-                          name="thanaDistrict"
-                          value={checkoutFormData.thanaDistrict}
-                          onChange={handleCheckoutInputChange}
-                          id="thana_district"
-                          placeholder="আপনার থানা এবং জেলা নাম লিখুন"
-                          autoComplete="thana_district"
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          required
-                        />
-                      </div>
-                    </div>
+                <div className="col-span-full">
+                  <label
+                    htmlFor="thana_district"
+                    className="block text-sm font-bold leading-6 text-gray-900"
+                  >
+                    থানা এবং জেলা
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      name="thanaDistrict"
+                      value={checkoutFormData.thanaDistrict}
+                      onChange={handleCheckoutInputChange}
+                      id="thana_district"
+                      placeholder="আপনার থানা এবং জেলা নাম লিখুন"
+                      autoComplete="thana_district"
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      required
+                    />
                   </div>
                 </div>
               </div>
-              <Button type="submit" color="warning" className="w-full mt-8">
-                <span className="text-black font-bold">
-                  অর্ডারটি সম্পূর্ণ করুন
-                </span>
+            </div>
+          </div>
+          <Button type="submit" color="warning" className="w-full mt-8">
+            <span className="text-black font-bold">অর্ডারটি সম্পূর্ণ করুন</span>
+          </Button>
+          <Modal show={openModal} onClose={() => handleOrderCompleted()}>
+            <Modal.Header>
+              Invoice #{JSON.parse(myCookieValue)?.SKUId}
+            </Modal.Header>
+            <Modal.Body>
+              <div className="space-y-6">
+                <CheckoutModal
+                  checkoutFormData={checkoutFormData}
+                  productQuantity={productQuantity}
+                />
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                className="bg-[#d19c22]"
+                onClick={() => handleOrderCompleted()}
+              >
+                অর্ডারটি সম্পন্ন হয়েছে
               </Button>
-              <Modal show={openModal} onClose={() => handleOrderCompleted()}>
-                <Modal.Header>
-                  Invoice #{JSON.parse(myCookieValue)?.SKUId}
-                </Modal.Header>
-                <Modal.Body>
-                  <div className="space-y-6">
-                    <CheckoutModal
-                      checkoutFormData={checkoutFormData}
-                      productQuantity={productQuantity}
-                    />
-                  </div>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button
-                    className="bg-[#d19c22]"
-                    onClick={() => handleOrderCompleted()}
-                  >
-                    অর্ডারটি সম্পন্ন হয়েছে
-                  </Button>
-                </Modal.Footer>
-              </Modal>
-            </form>
-          </>
-        ) : (
-          <></>
-        )}
+            </Modal.Footer>
+          </Modal>
+        </form>
 
         <div>
           <div className="mt-5 border-2 border-[#000000] p-5">
