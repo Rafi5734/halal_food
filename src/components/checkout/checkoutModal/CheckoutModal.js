@@ -10,8 +10,8 @@ import {
 import Image from "next/image";
 
 const CheckoutModal = ({ checkoutFormData, productQuantity }) => {
-  console.log(checkoutFormData);
-  console.log("product quantity", productQuantity);
+  // console.log(checkoutFormData);
+  // console.log("product quantity", productQuantity);
   return (
     <div>
       <div className="overflow-x-auto">
