@@ -40,7 +40,7 @@ const Checkout = () => {
   });
 
   useEffect(() => {
-    const myCookieValue = getCookie("bisuddho_cookies");
+    // const myCookieValue = getCookie("bisuddho_cookies");
     if (myCookieValue) {
       // Parse the cookie value and update the order array in the state
       const parsedCookieValue = JSON.parse(myCookieValue);
@@ -53,7 +53,13 @@ const Checkout = () => {
       }));
     }
     setProductQuantity(checkoutFormData?.product_quantity);
-  }, [checkoutFormData?.product_quantity, deliveryCharge, productQuantity]);
+  }, [
+    checkoutFormData?.product_quantity,
+    deliveryCharge,
+    totalPrice,
+    productQuantity,
+    myCookieValue,
+  ]);
   const handleCheckoutInputChange = (event) => {
     const { name, value } = event.target;
     setCheckoutFormData((prevData) => ({ ...prevData, [name]: value }));
