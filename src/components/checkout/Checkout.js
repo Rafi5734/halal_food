@@ -56,7 +56,6 @@ const Checkout = () => {
   }, [
     checkoutFormData?.product_quantity,
     deliveryCharge,
-    totalPrice,
     productQuantity,
     myCookieValue,
   ]);
