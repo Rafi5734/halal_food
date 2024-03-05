@@ -26,7 +26,7 @@ const Checkout = () => {
       JSON.parse(myCookieValue)?.price * Number(productQuantity) +
       Number(deliveryCharge);
   }
-  console.log("i am from form submit button", deliveryCharge);
+  // console.log("i am from form submit button", deliveryCharge);
   const [checkoutFormData, setCheckoutFormData] = useState({
     fullName: "",
     phoneNumber: "",
@@ -97,7 +97,7 @@ const Checkout = () => {
     setOpenModal(false);
     router.push("/");
   };
-  console.log("i am from form productQuantity", productQuantity);
+  // console.log("i am from form productQuantity", productQuantity);
   return (
     <div className="container mx-auto mt-8">
       <div className="text-center">
