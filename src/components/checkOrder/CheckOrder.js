@@ -4,8 +4,10 @@ import { Button, Modal } from "flowbite-react";
 import { getCookie } from "../helper/cookies";
 import { useCheckoutPostMutation } from "@/api/checkoutSlice/checkoutSlice";
 import Swal from "sweetalert2";
+import CheckoutModal from "../checkout/checkoutModal/CheckoutModal";
+import { useRouter } from "next/navigation";
 const CheckOrder = () => {
-  // const myCookieValue = getCookie("bisuddho_cookies");
+  const router = useRouter();
   
   const [checkoutFormData, setCheckoutFormData] = useState({
     fullName: "",
@@ -18,6 +20,7 @@ const CheckOrder = () => {
     status: "pending",
     order: {},
   });
+  const [openModal, setOpenModal] = useState(false);
   const [productQuantity, setProductQuantity] = useState("");
   const [deliveryCharge, setDeliveryCharge] = useState();
   const [storedData, setStoredData] = useState('');
@@ -65,7 +68,12 @@ const CheckOrder = () => {
       });
     }
 
-    // setOpenModal(true);
+    setOpenModal(true);
+  };
+
+  const handleOrderCompleted = () => {
+    setOpenModal(false);
+    router.push("/");
   };
 
   console.log("storedData", storedData);
@@ -207,9 +215,9 @@ const CheckOrder = () => {
                 অর্ডারটি সম্পূর্ণ করুন
               </span>
             </Button>
-            {/* <Modal show={openModal} onClose={() => handleOrderCompleted()}>
+            <Modal show={openModal} onClose={() => handleOrderCompleted()}>
             <Modal.Header>
-              Invoice #{JSON.parse(myCookieValue)?.SKUId}
+              Invoice #{storedData?.SKUId}
             </Modal.Header>
             <Modal.Body>
               <div className="space-y-6">
@@ -227,7 +235,7 @@ const CheckOrder = () => {
                 অর্ডারটি সম্পন্ন হয়েছে
               </Button>
             </Modal.Footer>
-          </Modal> */}
+          </Modal>
           </form>
 
           <div>
