@@ -4,7 +4,7 @@ import React from "react";
 const page = () => {
   return (
     <div>
-      <Checkout />
+      <p>i am from testing</p>
     </div>
   );
 };
