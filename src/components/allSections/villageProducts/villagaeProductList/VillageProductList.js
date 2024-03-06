@@ -37,7 +37,7 @@ const VillageProductList = () => {
                       <Image
                         className="rounded object-cover"
                         src={product?.imageLink}
-                        width={100}
+                        width={500}
                         height={100}
                         // sizes="100vw"
                         quality={75}

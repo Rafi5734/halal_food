@@ -94,7 +94,7 @@ const PopularProductList = () => {
                     <Image
                       className="rounded object-cover"
                       src={product?.imageLink}
-                      width={100}
+                      width={500}
                       // width="100%"
                       height={100}
                       // sizes="100vw"
