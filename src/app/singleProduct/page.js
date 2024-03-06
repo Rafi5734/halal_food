@@ -168,7 +168,7 @@ const SingleProduct = ({ searchParams }) => {
                   <div>
                     <Link
                       href={{
-                        pathname: "/checkoutOrder",
+                        pathname: "/checkOrder",
                       }}
                     >
                       <button
