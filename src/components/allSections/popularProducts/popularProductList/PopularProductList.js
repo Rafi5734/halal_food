@@ -80,7 +80,7 @@ const PopularProductList = () => {
             {popularProducts?.map((product, index) => (
               <div
                 key={index}
-                className="w-full relative mt-5 flex flex-col rounded-lg border border-gray-100 bg-white shadow-md"
+                className="w-full relative mt-5 flex flex-row rounded-lg border border-gray-100 bg-white shadow-md"
               >
                 <div>
                   <Link

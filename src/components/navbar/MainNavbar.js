@@ -324,7 +324,7 @@ const MainNavbar = () => {
                           <Link href="/">Home</Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          <Dropdown label="All Foods" inline>
+                          <Dropdown label="Menu" inline>
                             {categoryData?.map((category, index) => (
                               <Dropdown.Item key={index}>
                                 {category?.category}
@@ -804,7 +804,7 @@ const MainNavbar = () => {
                 <span>Home</span>
               </Link>
               <Navbar.Link className="mt-2">
-                <Dropdown label="All Food" inline={true}>
+                <Dropdown label="Menu" inline={true}>
                   {categoryData?.map((category, index) => (
                     <Dropdown.Item key={index}>
                       {category?.category}
