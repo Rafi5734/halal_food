@@ -38,17 +38,17 @@ const CheckOrder = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   setCheckoutFormData((prevFormData) => ({
-  //     ...prevFormData,
-  //     order: JSON.parse(myCookieValue),
-  //     delivery_charge: deliveryCharge,
-  //     totalPrice:
-  //       JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-  //       Number(deliveryCharge),
-  //     productQuantity: productQuantity,
-  //   }));
-  // }, [deliveryCharge, productQuantity, myCookieValue]);
+  useEffect(() => {
+    setCheckoutFormData((prevFormData) => ({
+      ...prevFormData,
+      order: JSON.parse(myCookieValue),
+      delivery_charge: deliveryCharge,
+      totalPrice:
+        JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+        Number(deliveryCharge),
+      productQuantity: productQuantity,
+    }));
+  }, [deliveryCharge, productQuantity,]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
