@@ -22,9 +22,6 @@ const CheckoutModal = ({ checkoutFormData, productQuantity }) => {
             <TableHeadCell>Price</TableHeadCell>
             <TableHeadCell>Sub Total</TableHeadCell>
             <TableHeadCell>Total</TableHeadCell>
-            {/* <TableHeadCell>
-              <span className="sr-only">Edit</span>
-            </TableHeadCell> */}
           </TableHead>
           <TableBody className="divide-y">
             <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
