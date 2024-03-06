@@ -16,16 +16,16 @@ const Checkout = () => {
   const [checkoutPost] = useCheckoutPostMutation();
   const [deliveryCharge, setDeliveryCharge] = useState();
 
-  if (myCookieValue) {
-    var totalPrice =
-      JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-      Number(deliveryCharge);
-  }
-  if (myCookieValue && dhakaOutside) {
-    var totalPrice =
-      JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-      Number(deliveryCharge);
-  }
+  // if (myCookieValue) {
+  //   var totalPrice =
+  //     JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+  //     Number(deliveryCharge);
+  // }
+  // if (myCookieValue && dhakaOutside) {
+  //   var totalPrice =
+  //     JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+  //     Number(deliveryCharge);
+  // }
   // console.log("i am from form submit button", deliveryCharge);
   const [checkoutFormData, setCheckoutFormData] = useState({
     fullName: "",
@@ -39,28 +39,28 @@ const Checkout = () => {
     order: {},
   });
 
-  useEffect(() => {
-    const myCookieValue = getCookie("bisuddho_cookies");
+  // useEffect(() => {
+  //   const myCookieValue = getCookie("bisuddho_cookies");
 
-    if (myCookieValue) {
-      // Parse the cookie value and update the order array in the state
-      const parsedCookieValue = JSON.parse(myCookieValue);
-      setCheckoutFormData((prevFormData) => ({
-        ...prevFormData,
-        order: parsedCookieValue,
-        delivery_charge: deliveryCharge,
-        totalPrice: totalPrice,
-        productQuantity: productQuantity,
-      }));
-    }
-    setProductQuantity(checkoutFormData?.product_quantity);
-  }, [
-    checkoutFormData?.product_quantity,
-    deliveryCharge,
-    productQuantity,
-    totalPrice,
-    myCookieValue,
-  ]);
+  //   if (myCookieValue) {
+  //     // Parse the cookie value and update the order array in the state
+  //     const parsedCookieValue = JSON.parse(myCookieValue);
+  //     setCheckoutFormData((prevFormData) => ({
+  //       ...prevFormData,
+  //       order: parsedCookieValue,
+  //       delivery_charge: deliveryCharge,
+  //       totalPrice: totalPrice,
+  //       productQuantity: productQuantity,
+  //     }));
+  //   }
+  //   setProductQuantity(checkoutFormData?.product_quantity);
+  // }, [
+  //   checkoutFormData?.product_quantity,
+  //   deliveryCharge,
+  //   productQuantity,
+  //   totalPrice,
+  //   myCookieValue,
+  // ]);
   const handleCheckoutInputChange = (event) => {
     const { name, value } = event.target;
     setCheckoutFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -68,37 +68,27 @@ const Checkout = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const result = await checkoutPost(checkoutFormData);
-    if (result) {
-      Swal.fire({
-        title: "Good job!",
-        text: "Your successfully order the product",
-        icon: "success",
-      });
-    }
+    console.log("checkoutFormData", checkoutFormData);
+    // const result = await checkoutPost(checkoutFormData);
+    // if (result) {
+    //   Swal.fire({
+    //     title: "Good job!",
+    //     text: "Your successfully order the product",
+    //     icon: "success",
+    //   });
+    // }
 
-    // setCheckoutFormData({
-    //   fullName: "",
-    //   phoneNumber: "",
-    //   address: "",
-    //   thanaDistrict: "",
-    //   delivery_charge: "",
-    //   totalPrice: 0,
-    //   product_quantity: "",
-    //   status: "pending",
-    //   order: {},
-    // });
     setOpenModal(true);
   };
-  if (myCookieValue) {
-    var subTotalPrice =
-      JSON.parse(myCookieValue)?.price * Number(productQuantity);
-  }
+  // if (myCookieValue) {
+  //   var subTotalPrice =
+  //     JSON.parse(myCookieValue)?.price * Number(productQuantity);
+  // }
 
-  const handleOrderCompleted = () => {
-    setOpenModal(false);
-    router.push("/");
-  };
+  // const handleOrderCompleted = () => {
+  //   setOpenModal(false);
+  //   router.push("/");
+  // };
   // console.log("i am from form productQuantity", productQuantity);
   return (
     <div className="container mx-auto mt-8">
