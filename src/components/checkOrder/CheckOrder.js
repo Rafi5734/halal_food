@@ -50,8 +50,8 @@ const CheckOrder = () => {
     // setOpenModal(true);
   };
 
-  console.log("productQuantity", productQuantity);
-  console.log("myCookieValue", JSON.parse(myCookieValue));
+  // console.log("productQuantity", productQuantity);
+  // console.log("myCookieValue", JSON.parse(myCookieValue));
 
   return (
     <div>
