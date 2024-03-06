@@ -41,14 +41,14 @@ const CheckOrder = () => {
   useEffect(() => {
     setCheckoutFormData((prevFormData) => ({
       ...prevFormData,
-      order: JSON.parse(myCookieValue),
+      order: storedData,
       delivery_charge: deliveryCharge,
       totalPrice:
-        JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+      storedData?.price * Number(productQuantity) +
         Number(deliveryCharge),
       productQuantity: productQuantity,
     }));
-  }, [deliveryCharge, productQuantity,]);
+  }, [deliveryCharge, productQuantity, storedData]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
