@@ -14,10 +14,10 @@ const AllSections = () => {
     <div className="container mx-auto">
       <MainBanner></MainBanner>
       <PopularProducts />
-      {/* <TopCategory />
+      <TopCategory />
       <VillageProducts />
       <PremiumHoney />
-      <PremiumBadam /> */}
+      <PremiumBadam />
       {/* <OtherProducts />
       <ProductDetails /> */}
       {/* <Footer /> */}
