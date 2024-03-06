@@ -23,17 +23,17 @@ const CheckOrder = () => {
     setCheckoutFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  useEffect(() => {
-    setCheckoutFormData((prevFormData) => ({
-      ...prevFormData,
-      order: JSON.parse(myCookieValue),
-      delivery_charge: deliveryCharge,
-      totalPrice:
-        JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-        Number(deliveryCharge),
-      productQuantity: productQuantity,
-    }));
-  }, [deliveryCharge, productQuantity, myCookieValue]);
+  // useEffect(() => {
+  //   setCheckoutFormData((prevFormData) => ({
+  //     ...prevFormData,
+  //     order: JSON.parse(myCookieValue),
+  //     delivery_charge: deliveryCharge,
+  //     totalPrice:
+  //       JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+  //       Number(deliveryCharge),
+  //     productQuantity: productQuantity,
+  //   }));
+  // }, [deliveryCharge, productQuantity, myCookieValue]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
