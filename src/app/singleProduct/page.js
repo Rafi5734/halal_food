@@ -20,6 +20,7 @@ const SingleProduct = ({ searchParams }) => {
     useGetSingleProductsQuery(_idString);
   const getSingleProduct = () => {
     console.log(singleProduct);
+    localStorage.setItem('bisuddho_localData', JSON.stringify(singleProduct));
     setCookie("bisuddho_cookies", JSON.stringify(singleProduct));
   };
   return (
