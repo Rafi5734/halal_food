@@ -28,7 +28,7 @@ const CheckOrder = () => {
   useEffect(() => {
     const myCookieValue = localStorage.getItem('bisuddho_localData');
     if (myCookieValue) {
-      setStoredData(myCookieValue);
+      setStoredData((myCookieValue));
     }
   }, []);
 
@@ -59,7 +59,7 @@ const CheckOrder = () => {
     // setOpenModal(true);
   };
 
-  // console.log("productQuantity", productQuantity);
+  console.log("storedData", JSON.parse(storedData));
   // console.log("myCookieValue", JSON.parse(myCookieValue));
 
   return (
@@ -221,7 +221,7 @@ const CheckOrder = () => {
           </Modal> */}
           </form>
 
-          {/* <div>
+          <div>
             <div className="mt-5 border-2 border-[#000000] p-5">
               <div className="">
                 <p className="font-bold pb-2 text-xl">আপনার অর্ডার</p>
@@ -232,7 +232,7 @@ const CheckOrder = () => {
                 <div className="flex justify-between mt-5 border-b-2 border-[#ccccd6]">
                   <p className="text-muted">
                     <span className="font-bold">
-                      {JSON.parse(myCookieValue)?.name}
+                      {JSON.parse(storedData)?.name}
                     </span>{" "}
                     <span className="font-bold">
                       {" "}
@@ -240,7 +240,7 @@ const CheckOrder = () => {
                     </span>
                   </p>
                   <p className="font-bold">
-                    {JSON.parse(myCookieValue)?.price} <span>Tk</span> *{" "}
+                    {JSON.parse(storedData)?.price} <span>Tk</span> *{" "}
                     {Number(productQuantity)} <span>items</span>{" "}
                   </p>
                 </div>
@@ -250,7 +250,7 @@ const CheckOrder = () => {
                     
                   </p>
                   <p className="font-bold">
-                    {JSON.parse(myCookieValue)?.price * Number(productQuantity)}{" "}
+                    {JSON.parse(storedData)?.price * Number(productQuantity)}{" "}
                     TK
                   </p>
                 </div>
@@ -291,7 +291,7 @@ const CheckOrder = () => {
                 <p className="">মোট</p>
                 
                 <p className="font-bold">
-                  {JSON.parse(myCookieValue)?.price * Number(productQuantity) +
+                  {JSON.parse(storedData)?.price * Number(productQuantity) +
                     Number(deliveryCharge)}{" "}
                   TK
                 </p>
@@ -301,7 +301,7 @@ const CheckOrder = () => {
                 <p className="font-normal">Pay with cash upon delivery.</p>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
