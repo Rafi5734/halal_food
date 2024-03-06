@@ -1,9 +1,10 @@
+import Checkout from "@/components/checkout/Checkout";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <p>I am from order check page.</p>
+      <Checkout />
     </div>
   );
 };
