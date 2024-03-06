@@ -4,7 +4,7 @@ import { Button, Modal } from "flowbite-react";
 import { getCookie } from "../helper/cookies";
 const CheckOrder = () => {
   // const myCookieValue = getCookie("bisuddho_cookies");
-  const myCookieValue = localStorage.getItem('bisuddho_localData');
+  
   const [checkoutFormData, setCheckoutFormData] = useState({
     fullName: "",
     phoneNumber: "",
@@ -18,11 +18,19 @@ const CheckOrder = () => {
   });
   const [productQuantity, setProductQuantity] = useState("");
   const [deliveryCharge, setDeliveryCharge] = useState();
+  const [storedData, setStoredData] = useState('');
 
   const handleCheckoutInputChange = (event) => {
     const { name, value } = event.target;
     setCheckoutFormData((prevData) => ({ ...prevData, [name]: value }));
   };
+
+  useEffect(() => {
+    const myCookieValue = localStorage.getItem('bisuddho_localData');
+    if (myCookieValue) {
+      setStoredData(myCookieValue);
+    }
+  }, []);
 
   // useEffect(() => {
   //   setCheckoutFormData((prevFormData) => ({
@@ -213,7 +221,7 @@ const CheckOrder = () => {
           </Modal> */}
           </form>
 
-          <div>
+          {/* <div>
             <div className="mt-5 border-2 border-[#000000] p-5">
               <div className="">
                 <p className="font-bold pb-2 text-xl">আপনার অর্ডার</p>
@@ -293,7 +301,7 @@ const CheckOrder = () => {
                 <p className="font-normal">Pay with cash upon delivery.</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
