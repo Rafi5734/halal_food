@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { Button, Modal } from "flowbite-react";
 import { getCookie } from "../helper/cookies";
+import { useCheckoutPostMutation } from "@/api/checkoutSlice/checkoutSlice";
+import Swal from "sweetalert2";
 const CheckOrder = () => {
   // const myCookieValue = getCookie("bisuddho_cookies");
   
@@ -19,6 +21,7 @@ const CheckOrder = () => {
   const [productQuantity, setProductQuantity] = useState("");
   const [deliveryCharge, setDeliveryCharge] = useState();
   const [storedData, setStoredData] = useState('');
+  const [checkoutPost] = useCheckoutPostMutation();
 
   const handleCheckoutInputChange = (event) => {
     const { name, value } = event.target;
@@ -52,15 +55,15 @@ const CheckOrder = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log("checkoutFormData", checkoutFormData);
-    // const result = await checkoutPost(checkoutFormData);
-    // if (result) {
-    //   Swal.fire({
-    //     title: "Good job!",
-    //     text: "Your successfully order the product",
-    //     icon: "success",
-    //   });
-    // }
+    // console.log("checkoutFormData", checkoutFormData);
+    const result = await checkoutPost(checkoutFormData);
+    if (result) {
+      Swal.fire({
+        title: "Good job!",
+        text: "Your successfully order the product",
+        icon: "success",
+      });
+    }
 
     // setOpenModal(true);
   };
