@@ -212,7 +212,7 @@ const CheckOrder = () => {
           </Modal> */}
           </form>
 
-          <div>
+          {/* <div>
             <div className="mt-5 border-2 border-[#000000] p-5">
               <div className="">
                 <p className="font-bold pb-2 text-xl">আপনার অর্ডার</p>
@@ -238,7 +238,7 @@ const CheckOrder = () => {
                 <div className="flex justify-between mt-5 border-b-2 border-[#ccccd6]">
                   <p className="text-muted">
                     <span className="font-bold">Sub Total</span>{" "}
-                    {/* <span className="font-bold"> - 1</span> */}
+                    
                   </p>
                   <p className="font-bold">
                     {JSON.parse(myCookieValue)?.price * Number(productQuantity)}{" "}
@@ -280,7 +280,7 @@ const CheckOrder = () => {
               </div>
               <div className="flex justify-between mt-5 border-b-2 border-t-2 border-[#ccccd6]">
                 <p className="">মোট</p>
-                {/* <p className="font-bold">{totalPrice} tk</p> */}
+                
                 <p className="font-bold">
                   {JSON.parse(myCookieValue)?.price * Number(productQuantity) +
                     Number(deliveryCharge)}{" "}
@@ -292,7 +292,7 @@ const CheckOrder = () => {
                 <p className="font-normal">Pay with cash upon delivery.</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
