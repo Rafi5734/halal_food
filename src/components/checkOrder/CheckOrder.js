@@ -59,7 +59,7 @@ const CheckOrder = () => {
     // setOpenModal(true);
   };
 
-  console.log("storedData", JSON.parse(storedData));
+  // console.log("storedData", JSON.parse(storedData));
   // console.log("myCookieValue", JSON.parse(myCookieValue));
 
   return (
@@ -232,7 +232,7 @@ const CheckOrder = () => {
                 <div className="flex justify-between mt-5 border-b-2 border-[#ccccd6]">
                   <p className="text-muted">
                     <span className="font-bold">
-                      {JSON.parse(storedData)?.name}
+                      {/* {JSON.parse(storedData)?.name} */}
                     </span>{" "}
                     <span className="font-bold">
                       {" "}
@@ -240,7 +240,7 @@ const CheckOrder = () => {
                     </span>
                   </p>
                   <p className="font-bold">
-                    {JSON.parse(storedData)?.price} <span>Tk</span> *{" "}
+                    {/* {JSON.parse(storedData)?.price} <span>Tk</span> *{" "} */}
                     {Number(productQuantity)} <span>items</span>{" "}
                   </p>
                 </div>
@@ -250,7 +250,7 @@ const CheckOrder = () => {
                     
                   </p>
                   <p className="font-bold">
-                    {JSON.parse(storedData)?.price * Number(productQuantity)}{" "}
+                    {/* {JSON.parse(storedData)?.price * Number(productQuantity)}{" "} */}
                     TK
                   </p>
                 </div>
@@ -291,8 +291,8 @@ const CheckOrder = () => {
                 <p className="">মোট</p>
                 
                 <p className="font-bold">
-                  {JSON.parse(storedData)?.price * Number(productQuantity) +
-                    Number(deliveryCharge)}{" "}
+                  {/* {JSON.parse(storedData)?.price * Number(productQuantity) +
+                    Number(deliveryCharge)}{" "} */}
                   TK
                 </p>
               </div>
