@@ -346,41 +346,44 @@ const MainNavbar = () => {
                         </Dropdown.Item>
                       </Dropdown>
 
-                      {/* <button
-                        type="button"
-                        className="border border-[#7d7d7d] ms-3 relative inline-flex items-center p-3 text-sm font-medium text-center text-white rounded-lg"
-                      >
-                        <svg
-                          width="22px"
-                          height="22px"
-                          viewBox="0 0 24 24"
-                          fill="#000000"
-                          xmlns="http://www.w3.org/2000/svg"
+                      <Link href="/admin/addProduct">
+                        <button
+                          type="button"
+                          className="relative inline-flex items-center p-2 text-sm font-medium text-center text-white border border-white rounded-full hover:bg-[#fdb414]"
                         >
-                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                          <g
-                            id="SVGRepo_tracerCarrier"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></g>
-                          <g id="SVGRepo_iconCarrier">
-                            {" "}
-                            <path
-                              d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
-                              stroke="#000000"
-                              stroke-width="2"
+                          <svg
+                            width="27px"
+                            height="27px"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            stroke="#000000"
+                          >
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g
+                              id="SVGRepo_tracerCarrier"
                               stroke-linecap="round"
                               stroke-linejoin="round"
-                            ></path>{" "}
-                          </g>
-                        </svg>
-                        <span className="sr-only">Notifications</span>
-                        <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                          <Link href={"/cart"}>
-                            {loggedInUser?.cart?.length}
-                          </Link>
-                        </div>
-                      </button> */}
+                            ></g>
+                            <g id="SVGRepo_iconCarrier">
+                              {" "}
+                              <circle
+                                cx="12"
+                                cy="6"
+                                r="4"
+                                stroke="#000000"
+                                stroke-width="1.5"
+                              ></circle>{" "}
+                              <path
+                                d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634"
+                                stroke="#000000"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                              ></path>{" "}
+                            </g>
+                          </svg>
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
