@@ -664,48 +664,51 @@ const MainNavbar = () => {
                     20
                   </div>
                 </button> */}
-                {/* <div className="me-5">
+                <div className="me-5">
                   <p className="text-white">
                     {loggedInUser && <span>{loggedInUser?.userName}</span>}
                   </p>
-                </div> */}
+                </div>
 
-                {/* <button
-                  type="button"
-                  className="relative inline-flex items-center p-2 text-sm font-medium text-center text-white border border-white rounded-full hover:bg-[#fdb414]"
-                >
-                  <svg
-                    width="27px"
-                    height="27px"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    stroke="#ffffff"
+                <Link href="/admin/addProduct">
+                  <button
+                    type="button"
+                    className="relative inline-flex items-center p-2 text-sm font-medium text-center text-white border border-white rounded-full hover:bg-[#fdb414]"
                   >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                      {" "}
-                      <circle
-                        cx="12"
-                        cy="6"
-                        r="4"
-                        stroke="#ffffff"
-                        stroke-width="1.5"
-                      ></circle>{" "}
-                      <path
-                        d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634"
-                        stroke="#ffffff"
-                        stroke-width="1.5"
+                    <svg
+                      width="27px"
+                      height="27px"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      stroke="#ffffff"
+                    >
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g
+                        id="SVGRepo_tracerCarrier"
                         stroke-linecap="round"
-                      ></path>{" "}
-                    </g>
-                  </svg>
-                </button> */}
+                        stroke-linejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        {" "}
+                        <circle
+                          cx="12"
+                          cy="6"
+                          r="4"
+                          stroke="#ffffff"
+                          stroke-width="1.5"
+                        ></circle>{" "}
+                        <path
+                          d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634"
+                          stroke="#ffffff"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                        ></path>{" "}
+                      </g>
+                    </svg>
+                  </button>
+                </Link>
+
                 {/* <Link href={"/cart"}>
                   <button
                     type="button"

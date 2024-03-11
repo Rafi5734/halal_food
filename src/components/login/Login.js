@@ -35,7 +35,7 @@ const Login = () => {
           icon: "success",
         });
         setCookie("bisuddho_auth", JSON.stringify(formData));
-        router.push("/");
+        router.push("/admin/addProduct");
       } else {
         Swal.fire({
           title: "Oops...",
