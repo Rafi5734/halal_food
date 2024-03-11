@@ -257,9 +257,9 @@ const MainNavbar = () => {
               </div>
             </div>
           </div>
-          <div>
-            <div className="bg-gray-50">
-              <div className="relative z-20 border-b bg-white">
+          <div className="bg-[#1f2937]">
+            <div>
+              <div className="relative z-20 border-b bg-[#1f2937]">
                 <div className="px-6 md:px-12 lg:container lg:mx-auto lg:px-6 lg:py-4">
                   <div className="flex items-center justify-between">
                     <div className="relative z-20">
@@ -349,7 +349,7 @@ const MainNavbar = () => {
                       <Link href="/admin/addProduct">
                         <button
                           type="button"
-                          className="relative inline-flex items-center p-2 text-sm font-medium text-center text-white border border-white rounded-full hover:bg-[#fdb414]"
+                          className="ms-3 relative inline-flex items-center p-2 text-sm font-medium text-center text-white border border-white rounded-full hover:bg-[#fdb414]"
                         >
                           <svg
                             width="27px"
@@ -357,7 +357,7 @@ const MainNavbar = () => {
                             viewBox="0 0 24 24"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
-                            stroke="#000000"
+                            stroke="#ffffff"
                           >
                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                             <g
@@ -371,12 +371,12 @@ const MainNavbar = () => {
                                 cx="12"
                                 cy="6"
                                 r="4"
-                                stroke="#000000"
+                                stroke="#ffffff"
                                 stroke-width="1.5"
                               ></circle>{" "}
                               <path
                                 d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634"
-                                stroke="#000000"
+                                stroke="#ffffff"
                                 stroke-width="1.5"
                                 stroke-linecap="round"
                               ></path>{" "}
@@ -616,7 +616,7 @@ const MainNavbar = () => {
               </div>
             </div>
           </div>
-          <Navbar fluid rounded={true} className="shadow-md pt-0 pb-0">
+          <Navbar fluid rounded={false} className="shadow-md pt-0 pb-0">
             <a href="/">
               <Image
                 src={logo}
