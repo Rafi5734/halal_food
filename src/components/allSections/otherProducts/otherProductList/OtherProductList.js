@@ -122,7 +122,7 @@ const OtherProductList = () => {
                               stroke="#ffffff"
                               className="me-3"
                             >
-                              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                               <g
                                 id="SVGRepo_tracerCarrier"
                                 stroke-linecap="round"
@@ -134,7 +134,7 @@ const OtherProductList = () => {
                                 <g
                                   id="Page-1"
                                   stroke="none"
-                                  stroke-width="1"
+                                  strokeWidth="1"
                                   fill="none"
                                   fill-rule="evenodd"
                                 >

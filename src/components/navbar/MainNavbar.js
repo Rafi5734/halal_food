@@ -44,7 +44,7 @@ const MainNavbar = () => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
                     stroke-linecap="round"
@@ -55,7 +55,7 @@ const MainNavbar = () => {
                     <path
                       d="M12 17V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
                       stroke="#000000"
-                      stroke-width="2"
+                      strokeWidth="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     ></path>{" "}
@@ -106,7 +106,7 @@ const MainNavbar = () => {
                   fill="#000000"
                   stroke="#000000"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
                     strokeLinecap="round"
@@ -154,7 +154,7 @@ const MainNavbar = () => {
                   fill="#000000"
                   stroke="#000000"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
                     strokeLinecap="round"
@@ -203,7 +203,7 @@ const MainNavbar = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   stroke="#000000"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
                     strokeLinecap="round"
@@ -228,7 +228,7 @@ const MainNavbar = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   stroke="#000000"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
                     stroke-linecap="round"
@@ -290,7 +290,7 @@ const MainNavbar = () => {
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
                           >
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                             <g
                               id="SVGRepo_tracerCarrier"
                               stroke-linecap="round"
@@ -301,19 +301,19 @@ const MainNavbar = () => {
                               <path
                                 d="M5 12H20"
                                 stroke="#7d7d7d"
-                                stroke-width="2"
+                                strokeWidth="2"
                                 stroke-linecap="round"
                               ></path>{" "}
                               <path
                                 d="M5 17H20"
                                 stroke="#7d7d7d"
-                                stroke-width="2"
+                                strokeWidth="2"
                                 stroke-linecap="round"
                               ></path>{" "}
                               <path
                                 d="M5 7H20"
                                 stroke="#7d7d7d"
-                                stroke-width="2"
+                                strokeWidth="2"
                                 stroke-linecap="round"
                               ></path>{" "}
                             </g>
@@ -359,7 +359,7 @@ const MainNavbar = () => {
                             xmlns="http://www.w3.org/2000/svg"
                             stroke="#ffffff"
                           >
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                             <g
                               id="SVGRepo_tracerCarrier"
                               stroke-linecap="round"
@@ -372,12 +372,12 @@ const MainNavbar = () => {
                                 cy="6"
                                 r="4"
                                 stroke="#ffffff"
-                                stroke-width="1.5"
+                                strokeWidth="1.5"
                               ></circle>{" "}
                               <path
                                 d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634"
                                 stroke="#ffffff"
-                                stroke-width="1.5"
+                                strokeWidth="1.5"
                                 stroke-linecap="round"
                               ></path>{" "}
                             </g>
@@ -403,7 +403,7 @@ const MainNavbar = () => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
                     stroke-linecap="round"
@@ -414,7 +414,7 @@ const MainNavbar = () => {
                     <path
                       d="M12 17V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
                       stroke="#000000"
-                      stroke-width="2"
+                      strokeWidth="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     ></path>{" "}
@@ -465,7 +465,7 @@ const MainNavbar = () => {
                   fill="#000000"
                   stroke="#000000"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
                     strokeLinecap="round"
@@ -513,7 +513,7 @@ const MainNavbar = () => {
                   fill="#000000"
                   stroke="#000000"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
                     strokeLinecap="round"
@@ -562,7 +562,7 @@ const MainNavbar = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   stroke="#000000"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
                     strokeLinecap="round"
@@ -587,7 +587,7 @@ const MainNavbar = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   stroke="#000000"
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g
                     id="SVGRepo_tracerCarrier"
                     stroke-linecap="round"
@@ -648,7 +648,7 @@ const MainNavbar = () => {
                     stroke="#ffffff"
                     transform="matrix(1, 0, 0, 1, 0, 0)"
                   >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                     <g
                       id="SVGRepo_tracerCarrier"
                       stroke-linecap="round"
@@ -661,7 +661,7 @@ const MainNavbar = () => {
                         clip-rule="evenodd"
                         d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
                         stroke="#ffffff"
-                        stroke-width="2"
+                        strokeWidth="2"
                         stroke-linecap="round"
                         stroke-linejoin="round"
                       ></path>{" "}
@@ -690,7 +690,7 @@ const MainNavbar = () => {
                       xmlns="http://www.w3.org/2000/svg"
                       stroke="#ffffff"
                     >
-                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                       <g
                         id="SVGRepo_tracerCarrier"
                         stroke-linecap="round"
@@ -703,12 +703,12 @@ const MainNavbar = () => {
                           cy="6"
                           r="4"
                           stroke="#ffffff"
-                          stroke-width="1.5"
+                          strokeWidth="1.5"
                         ></circle>{" "}
                         <path
                           d="M19.9975 18C20 17.8358 20 17.669 20 17.5C20 15.0147 16.4183 13 12 13C7.58172 13 4 15.0147 4 17.5C4 19.9853 4 22 12 22C14.231 22 15.8398 21.8433 17 21.5634"
                           stroke="#ffffff"
-                          stroke-width="1.5"
+                          strokeWidth="1.5"
                           stroke-linecap="round"
                         ></path>{" "}
                       </g>
@@ -733,7 +733,7 @@ const MainNavbar = () => {
                           xmlns="http://www.w3.org/2000/svg"
                           className="icon flat-line"
                         >
-                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                           <g
                             id="SVGRepo_tracerCarrier"
                             stroke-linecap="round"
@@ -777,7 +777,7 @@ const MainNavbar = () => {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                         <g
                           id="SVGRepo_tracerCarrier"
                           stroke-linecap="round"
