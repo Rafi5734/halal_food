@@ -8,7 +8,7 @@ const VillageProductList = () => {
   const { data: productList, isLoading } = useGetAllProductsQuery();
 
   const villageProducts = productList?.filter(
-    (product) => product.category === "Baby_toys"
+    (product) => product.category === "Baby Toys"
   );
 
   //   console.log("villageProducts product", villageProducts);
