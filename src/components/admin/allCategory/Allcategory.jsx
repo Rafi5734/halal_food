@@ -2,14 +2,18 @@
 
 import { useState } from "react";
 import CategoryModal from "./CategoryModal";
+import { useGetSingleCategoryQuery } from "@/api/categorySlice/categorySlice";
 
 const Allcategory = ({ data }) => {
   const [openModal, setOpenModal] = useState(false);
   const [categoryId, setCategoryId] = useState();
+  const { data: singleCategory, isLoading } =
+    useGetSingleCategoryQuery(categoryId);
   const handleCategoryEdit = (category) => {
     setOpenModal(true);
     setCategoryId(category);
   };
+  //   console.log("data", data);
   return (
     <div>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full">
@@ -50,6 +54,7 @@ const Allcategory = ({ data }) => {
         </table>
         <CategoryModal
           categoryId={categoryId}
+          singleCategory={singleCategory}
           openModal={openModal}
           setOpenModal={setOpenModal}
         />

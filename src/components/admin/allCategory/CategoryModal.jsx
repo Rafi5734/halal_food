@@ -1,43 +1,68 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Button, Modal, Label, TextInput } from "flowbite-react";
-import { useGetSingleCategoryQuery } from "@/api/categorySlice/categorySlice";
+import { useUpdateSingleCategoryMutation } from "@/api/categorySlice/categorySlice";
 
-const CategoryModal = ({ setOpenModal, openModal, categoryId }) => {
-  //   console.log("i am from edit category", categoryId);
-  const { data: singleCategory, isLoading } =
-    useGetSingleCategoryQuery(categoryId);
+const CategoryModal = ({
+  setOpenModal,
+  openModal,
+  singleCategory,
+  categoryId,
+}) => {
+  const [formData, setFormData] = useState({
+    category: "",
+  });
+  const [updateSingleCategory, { data: updateCategoryData }] =
+    useUpdateSingleCategoryMutation();
 
-  //   console.log("singleCategory", singleCategory);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const updateCategory = async (e) => {
+    e.preventDefault();
+    const category = formData;
+    const result = await updateSingleCategory({ categoryId, category });
+    // console.log("updated", result);
+    setOpenModal(false);
+  };
+  //   console.log("i am from edit formData", formData?.category);
   return (
     <div>
       <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
-        <Modal.Header>
-          <p className="text-center">Change Category Name</p>
-        </Modal.Header>
-        <Modal.Body>
-          <div className="space-y-6">
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="category_name" value="Category Name" />
+        <form onSubmit={updateCategory}>
+          <Modal.Header>
+            <p className="text-center">Change Category Name</p>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="space-y-6">
+              <div>
+                <div className="mb-2 block">
+                  <Label htmlFor="category" value="Category Name" />
+                </div>
+                <input
+                  id="category"
+                  name="category"
+                  //   value={formData.category}
+                  onChange={handleInputChange}
+                  defaultValue={singleCategory?.category}
+                  type="text"
+                  autocomplete="category"
+                  required
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Enter your category"
+                />
               </div>
-              <TextInput
-                id="category_name"
-                placeholder="Category Name"
-                defaultValue={singleCategory?.category}
-                // value={singleCategory?.category}
-                // onChange={(event) => setEmail(event.target.value)}
-                required
-              />
             </div>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={() => setOpenModal(false)}>Change</Button>
-          <Button color="gray" onClick={() => setOpenModal(false)}>
-            Decline
-          </Button>
-        </Modal.Footer>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button type="submit">Change</Button>
+            <Button color="gray" onClick={() => setOpenModal(false)}>
+              Decline
+            </Button>
+          </Modal.Footer>
+        </form>
       </Modal>
     </div>
   );

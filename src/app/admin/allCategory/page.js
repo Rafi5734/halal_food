@@ -3,7 +3,7 @@ import React from "react";
 
 async function getData() {
   const res = await fetch("https://hala-food-server-zg6m.vercel.app/category", {
-    cache: "force-cache",
+    cache: "no-store",
   });
 
   if (!res.ok) {
