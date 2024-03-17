@@ -58,53 +58,55 @@ const OrderList = () => {
             </tr>
           </thead>
           <tbody>
-            {checkoutData?.map((product, index) => (
-              <tr
-                key={index}
-                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-              >
-                <td className="p-4">
-                  <Image
-                    src={product?.order?.imageLink}
-                    className="w-16 md:w-32 max-w-full max-h-full rounded"
-                    alt="Apple Watch"
-                    width={100}
-                    height={100}
-                  />
-                  <p className="mt-3 font-bold">{product?.order?.name}</p>
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  {product?.fullName}
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  {product?.product_quantity}
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  $ {product?.order?.price}
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  $ {product?.product_quantity * product?.order?.price}
-                </td>
-                <td className="px-6 font-semibold text-gray-900 dark:text-white">
-                  $ {product?.totalPrice}
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  {product?.phoneNumber}
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  <p>{product?.address}</p>
-                  <p>{product?.thanaDistrict}</p>
-                </td>
-                <td className="px-6 py-4">
-                  <button
-                    onClick={() => handleDeleteProduct(product?._id)}
-                    className="font-medium text-red-600 dark:text-red-500 hover:underline"
-                  >
-                    Remove
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {checkoutData
+              ?.map((product, index) => (
+                <tr
+                  key={index}
+                  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                >
+                  <td className="p-4">
+                    <Image
+                      src={product?.order?.imageLink}
+                      className="w-16 md:w-32 max-w-full max-h-full rounded"
+                      alt="Apple Watch"
+                      width={100}
+                      height={100}
+                    />
+                    <p className="mt-3 font-bold">{product?.order?.name}</p>
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {product?.fullName}
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {product?.product_quantity}
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    $ {product?.order?.price}
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    $ {product?.product_quantity * product?.order?.price}
+                  </td>
+                  <td className="px-6 font-semibold text-gray-900 dark:text-white">
+                    $ {product?.totalPrice}
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {product?.phoneNumber}
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    <p>{product?.address}</p>
+                    <p>{product?.thanaDistrict}</p>
+                  </td>
+                  <td className="px-6 py-4">
+                    <button
+                      onClick={() => handleDeleteProduct(product?._id)}
+                      className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))
+              ?.reverse()}
           </tbody>
         </table>
       </div>

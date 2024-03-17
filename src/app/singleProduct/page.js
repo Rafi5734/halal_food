@@ -84,7 +84,7 @@ const SingleProduct = ({ searchParams }) => {
                     {singleProduct?.price} TK
                   </h5>
                   <p className="mt-3 font-bold">ঢাকার মধ্যে ৮০ টাকা</p>
-                  <p className="font-bold">ঢাকার বাহিরে ১০০ টাকা</p>
+                  <p className="font-bold">ঢাকার বাহিরে ১৩০ টাকা</p>
                 </div>
 
                 <div className="mt-5">
@@ -108,7 +108,7 @@ const SingleProduct = ({ searchParams }) => {
                 </div>
 
                 <div className="mt-3 flex">
-                  <form className="">
+                  {/* <form className="">
                     <div className="relative flex items-center max-w-[8rem]">
                       <button
                         type="button"
@@ -165,7 +165,7 @@ const SingleProduct = ({ searchParams }) => {
                         </svg>
                       </button>
                     </div>
-                  </form>
+                  </form> */}
                   <div>
                     <Link
                       href={{
@@ -175,7 +175,7 @@ const SingleProduct = ({ searchParams }) => {
                       <button
                         onClick={getSingleProduct}
                         type="button"
-                        className="ms-3 font-bold focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
+                        className="font-bold focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
                       >
                         পন্যটি ক্রয় করুন
                       </button>
@@ -204,7 +204,7 @@ const SingleProduct = ({ searchParams }) => {
 
             <div className="mt-5">
               <p className="text-2xl font-bold">
-                <span>{singleProduct?.name}</span> এর উপকারিতাঃ
+                <span>{singleProduct?.name}</span> এর বিবরণী:
               </p>
               <p className="mt-3">{singleProduct?.description}</p>
             </div>

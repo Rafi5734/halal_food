@@ -216,26 +216,24 @@ const CheckOrder = () => {
               </span>
             </Button>
             <Modal show={openModal} onClose={() => handleOrderCompleted()}>
-            <Modal.Header>
-              Invoice #{storedData?.SKUId}
-            </Modal.Header>
-            <Modal.Body>
-              <div className="space-y-6">
-                <CheckoutModal
-                  checkoutFormData={checkoutFormData}
-                  productQuantity={productQuantity}
-                />
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button
-                className="bg-[#d19c22]"
-                onClick={() => handleOrderCompleted()}
-              >
-                অর্ডারটি সম্পন্ন হয়েছে
-              </Button>
-            </Modal.Footer>
-          </Modal>
+              <Modal.Header>Invoice #{storedData?.SKUId}</Modal.Header>
+              <Modal.Body>
+                <div className="space-y-6">
+                  <CheckoutModal
+                    checkoutFormData={checkoutFormData}
+                    productQuantity={productQuantity}
+                  />
+                </div>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button
+                  className="bg-[#d19c22]"
+                  onClick={() => handleOrderCompleted()}
+                >
+                  অর্ডারটি সম্পন্ন হয়েছে
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </form>
 
           <div>
@@ -248,9 +246,7 @@ const CheckOrder = () => {
                 </div>
                 <div className="flex justify-between mt-5 border-b-2 border-[#ccccd6]">
                   <p className="text-muted">
-                    <span className="font-bold">
-                      {storedData?.name}
-                    </span>{" "}
+                    <span className="font-bold">{storedData?.name}</span>{" "}
                     <span className="font-bold">
                       {" "}
                       {"-"} {productQuantity}
@@ -264,11 +260,9 @@ const CheckOrder = () => {
                 <div className="flex justify-between mt-5 border-b-2 border-[#ccccd6]">
                   <p className="text-muted">
                     <span className="font-bold">Sub Total</span>{" "}
-                    
                   </p>
                   <p className="font-bold">
-                    {storedData?.price * Number(productQuantity)}{" "}
-                    TK
+                    {storedData?.price * Number(productQuantity)} TK
                   </p>
                 </div>
               </div>
@@ -292,7 +286,7 @@ const CheckOrder = () => {
                 <input
                   id="default-radio-2"
                   type="radio"
-                  value="100"
+                  value="130"
                   name="delivery_charge"
                   onChange={(e) => setDeliveryCharge(e.target.value)}
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
@@ -301,12 +295,12 @@ const CheckOrder = () => {
                   htmlFor="default-radio-2"
                   className="ms-2 text-sm font-medium text-gray-900"
                 >
-                  ঢাকার বাহিরে - <span className="font-bold">100 tk</span>
+                  ঢাকার বাহিরে - <span className="font-bold">130 tk</span>
                 </label>
               </div>
               <div className="flex justify-between mt-5 border-b-2 border-t-2 border-[#ccccd6]">
                 <p className="">মোট</p>
-                
+
                 <p className="font-bold">
                   {storedData?.price * Number(productQuantity) +
                     Number(deliveryCharge)}{" "}

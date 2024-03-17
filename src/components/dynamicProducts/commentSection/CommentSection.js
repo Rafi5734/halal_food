@@ -107,8 +107,10 @@ const CommentSection = ({ singleProduct }) => {
                   <p className="inline-flex items-center mr-3 text-sm text-gray-900 font-semibold">
                     <Image
                       className="mr-2 w-6 h-6 rounded-full"
-                      src="../../../../public/images/user_image.png"
-                      alt="Michael Gough"
+                      src="https://i.ibb.co/6n6JDq1/istockphoto-1337144146-612x612.jpg"
+                      alt="user_img"
+                      width={100}
+                      height={100}
                     />
                     {comment?.username}
                   </p>
@@ -123,14 +125,14 @@ const CommentSection = ({ singleProduct }) => {
                   </p> */}
                 </div>
 
-                <Dropdown label="Actions" size="sm">
+                {/* <Dropdown label="Actions" size="sm">
                   <DropdownItem as={Link} href="#">
                     Edit
                   </DropdownItem>
                   <DropdownItem>
                     <button onClick={handleDeleteComment}>Delete</button>
                   </DropdownItem>
-                </Dropdown>
+                </Dropdown> */}
               </footer>
               <p className="text-gray-500">{comment?.text}</p>
             </article>
