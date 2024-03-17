@@ -20,7 +20,7 @@ const PopularProductList = () => {
   }
 
   const popularProducts = popularProductList?.filter(
-    (product) => product.category === "Food_items"
+    (product) => product.category === "Food Items"
   );
 
   if (myCookieValue) {

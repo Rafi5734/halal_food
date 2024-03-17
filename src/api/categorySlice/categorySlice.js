@@ -22,8 +22,15 @@ export const categorySlice = createApi({
       query: () => "/category",
       providesTags: ["category"],
     }),
+    getSingleCategory: builder.query({
+      query: (categoryId) => `/category/${categoryId}`,
+      providesTags: ["category"],
+    }),
   }),
 });
 
-export const { useCategoryPostMutation, useGetAllCategoriesQuery } =
-  categorySlice;
+export const {
+  useCategoryPostMutation,
+  useGetAllCategoriesQuery,
+  useGetSingleCategoryQuery,
+} = categorySlice;
