@@ -14,8 +14,10 @@ const AdminDashboard = () => {
   const handleLogout = () => {
     console.log("logout");
     removeCookie("bisuddho_auth");
-    window.location.reload();
+    
     router.push("/");
+
+    window.location.reload();
   };
   return (
     <div className="flex">
