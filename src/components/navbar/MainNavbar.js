@@ -92,7 +92,7 @@ const MainNavbar = () => {
                   </g>
                 </svg>
                 <p className="text-black text-[12px] ms-1 pe-2 font-bold">
-                  09613-657755
+                  01683-591544
                 </p>
               </div>
             </div>
@@ -451,7 +451,7 @@ const MainNavbar = () => {
                   </g>
                 </svg>
                 <p className="text-black text-[12px] ms-1 pe-2 font-bold">
-                  09613-657755
+                  01683-591544
                 </p>
               </div>
             </div>
