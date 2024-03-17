@@ -616,7 +616,11 @@ const MainNavbar = () => {
               </div>
             </div>
           </div>
-          <Navbar fluid rounded={false} className="shadow-md pt-0 pb-0">
+          <Navbar
+            fluid
+            rounded={false}
+            className="bg-black shadow-md pt-0 pb-0"
+          >
             <a href="/">
               <Image
                 src={logo}

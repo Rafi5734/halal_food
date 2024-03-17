@@ -11,9 +11,9 @@ const FooterColumn = () => {
                 ABOUT
               </p>
               <p className="mt-4 font-bold text-white">
-                Halal food service foods that Muslims are allowed to eat or
-                drink under Islamic Law. We are trying to provide you 100% halal
-                food.
+                City Shop BD is a qualityful business website for
+                multi-products. It is 100% trust worthy website for yours desire
+                products.
               </p>
               <div className="mt-3 flex flex-row">
                 <Tooltip content="Follow on Facebook">
@@ -192,27 +192,21 @@ const FooterColumn = () => {
           <div className="w-full mt-5 flex flex-col rounded-lg">
             <div className="mt-4 px-5 pb-5">
               <p className="font-bold border-b-4 border-[#dfba65] pb-2">
-                COMPANY
+                INFORMATION
               </p>
               <div>
                 <ul className="mt-3 font-bold">
                   <li className="border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
-                    About
+                    Wishlist
                   </li>
                   <li className="mt-3 border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
-                    About
+                    Privacy Policy
                   </li>
                   <li className="mt-3 border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
-                    About
+                    Refund and Return
                   </li>
                   <li className="mt-3 border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
-                    About
-                  </li>
-                  <li className="mt-3 border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
-                    About
-                  </li>
-                  <li className="mt-3 pb-2 cursor-pointer hover:text-[#ffffff]">
-                    About
+                    Terms & Conditions
                   </li>
                 </ul>
               </div>
@@ -221,27 +215,18 @@ const FooterColumn = () => {
           <div className="w-full relative mt-5 flex flex-col">
             <div className="mt-4 px-5 pb-5">
               <p className="font-bold border-b-4 border-[#dfba65] pb-2">
-                INFORMATION
+                ABOUT
               </p>
               <div>
                 <ul className="mt-3 font-bold">
                   <li className="border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
-                    About
+                    CEO Message
                   </li>
                   <li className="mt-3 border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
-                    About
+                    COO Message
                   </li>
                   <li className="mt-3 border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
-                    About
-                  </li>
-                  <li className="mt-3 border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
-                    About
-                  </li>
-                  <li className="mt-3 border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
-                    About
-                  </li>
-                  <li className="mt-3 pb-2 cursor-pointer hover:text-[#ffffff]">
-                    About
+                    CMO Message
                   </li>
                 </ul>
               </div>
@@ -252,6 +237,19 @@ const FooterColumn = () => {
               <p className="font-bold border-b-4 border-[#dfba65] pb-2 text-nowrap">
                 LIKE ON US FACEBOOK
               </p>
+              <div>
+                <ul className="mt-3 font-bold">
+                  <li className="border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
+                    Coming Soon!
+                  </li>
+                  {/* <li className="mt-3 border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
+                    COO Message
+                  </li>
+                  <li className="mt-3 border-b-[1px] border-[#dfba65] pb-2 cursor-pointer hover:text-[#ffffff]">
+                    CMO Message
+                  </li> */}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
