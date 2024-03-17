@@ -92,7 +92,7 @@ const PopularProductList = () => {
                     className="relative mx-3 mt-3 flex h-70 rounded-xl"
                   >
                     <Image
-                      className="rounded object-cover"
+                      className="rounded object-cover img_sizing"
                       src={product?.imageLink}
                       width={500}
                       // width="100%"

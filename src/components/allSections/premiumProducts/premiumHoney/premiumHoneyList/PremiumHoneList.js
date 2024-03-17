@@ -15,8 +15,8 @@ const PremiumHoneList = () => {
   //   console.log("villageProducts product", honeyProducts);
   return (
     <div className="container mb-10">
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 lg:gap-3 md:gap-2 sm:gap2">
-        <div className="mt-0 pt-0">
+      <div className="">
+        <div className="mt-0 pt-0 w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 lg:gap-3 md:gap-2 sm:gap-2">
           {isLoading ? (
             <Loader />
           ) : (
@@ -36,7 +36,7 @@ const PremiumHoneList = () => {
                       className="relative mx-3 mt-3 flex h-70 rounded-xl"
                     >
                       <Image
-                        className="rounded object-cover"
+                        className="rounded object-cover img_sizing"
                         src={product?.imageLink}
                         width={500}
                         // width="100%"

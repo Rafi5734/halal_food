@@ -13,17 +13,17 @@ const TopCategoryList = () => {
 
   // console.log("top product", topProducts);
   return (
-    <div className="container w-full">
-      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 gap-3">
+    <div className="container w-full flex">
+      <div className="">
         <div className="mt-0 pt-0">
           {isLoading ? (
             <Loader />
           ) : (
-            <>
+            <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 lg:gap-3 md:gap-2 sm:gap-2">
               {topProducts?.map((product, index) => (
                 <div
                   key={index}
-                  className="w-full relative mt-5 flex flex-row rounded-lg border border-gray-100 bg-white shadow-md"
+                  className="w-full relative mt-5 rounded-lg border border-gray-100 bg-white shadow-md"
                 >
                   <div>
                     <Link
@@ -35,12 +35,13 @@ const TopCategoryList = () => {
                       className="relative mx-3 mt-3 flex h-70 rounded-xl"
                     >
                       <Image
-                        className="rounded object-cover"
+                        className="rounded object-cover img_sizing"
                         src={product?.imageLink}
                         width={500}
+                        // width="100%"
                         height={100}
                         // sizes="100vw"
-                        // quality={75}
+                        quality={75}
                         // placeholder="blur"
                         sizes="(max-width: 100%)"
                         alt="product image"
@@ -154,7 +155,7 @@ const TopCategoryList = () => {
                   </div>
                 </div>
               ))}
-            </>
+            </div>
           )}
         </div>
       </div>

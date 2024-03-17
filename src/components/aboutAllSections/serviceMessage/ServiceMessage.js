@@ -17,8 +17,15 @@ const ServiceMessage = () => {
             <div className="flex flex-col items-center pb-10 pt-5">
               <Image
                 className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                src="https://i0.wp.com/halalfoodservicebd.com/wp-content/uploads/2022/01/quality.png?resize=400%2C400&ssl=1"
-                alt="Bonnie image"
+                src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                width={500}
+                // width="100%"
+                height={100}
+                // sizes="100vw"
+                quality={75}
+                // placeholder="blur"
+                sizes="(max-width: 100%)"
+                alt="about image"
               />
               <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                 Quality
@@ -34,8 +41,15 @@ const ServiceMessage = () => {
             <div className="flex flex-col items-center pb-10 pt-5">
               <Image
                 className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                src="https://i0.wp.com/halalfoodservicebd.com/wp-content/uploads/2022/01/customer-service-agent.png?w=256&ssl=1"
-                alt="Bonnie image"
+                src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                width={500}
+                // width="100%"
+                height={100}
+                // sizes="100vw"
+                quality={75}
+                // placeholder="blur"
+                sizes="(max-width: 100%)"
+                alt="about image"
               />
               <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                 Quality
@@ -51,8 +65,15 @@ const ServiceMessage = () => {
             <div className="flex flex-col items-center pb-10 pt-5">
               <Image
                 className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                src="https://i0.wp.com/halalfoodservicebd.com/wp-content/uploads/2022/01/delivery.png?w=256&ssl=1"
-                alt="Bonnie image"
+                src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                width={500}
+                // width="100%"
+                height={100}
+                // sizes="100vw"
+                quality={75}
+                // placeholder="blur"
+                sizes="(max-width: 100%)"
+                alt="about image"
               />
               <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                 Quality
@@ -68,8 +89,15 @@ const ServiceMessage = () => {
             <div className="flex flex-col items-center pb-10 pt-5">
               <Image
                 className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                src="https://i0.wp.com/halalfoodservicebd.com/wp-content/uploads/2022/01/trust.png?w=256&ssl=1"
-                alt="Bonnie image"
+                src="https://images.unsplash.com/photo-1567958451986-2de427a4a0be?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                width={500}
+                // width="100%"
+                height={100}
+                // sizes="100vw"
+                quality={75}
+                // placeholder="blur"
+                sizes="(max-width: 100%)"
+                alt="about image"
               />
               <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                 Quality

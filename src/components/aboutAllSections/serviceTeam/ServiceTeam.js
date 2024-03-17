@@ -15,7 +15,14 @@ const ServiceTeam = () => {
                 <Image
                   className="rounded-t-lg"
                   src="https://cdn.pixabay.com/photo/2014/03/25/16/24/female-296990_640.png"
-                  alt=""
+                  width={500}
+                  // width="100%"
+                  height={100}
+                  // sizes="100vw"
+                  quality={75}
+                  // placeholder="blur"
+                  sizes="(max-width: 100%)"
+                  alt="team image"
                 />
               </a>
               <div className="p-5">
@@ -37,7 +44,14 @@ const ServiceTeam = () => {
                 <Image
                   className="rounded-t-lg"
                   src="https://cdn.pixabay.com/photo/2014/03/25/16/24/female-296990_640.png"
-                  alt=""
+                  width={500}
+                  // width="100%"
+                  height={100}
+                  // sizes="100vw"
+                  quality={75}
+                  // placeholder="blur"
+                  sizes="(max-width: 100%)"
+                  alt="team image"
                 />
               </a>
               <div className="p-5">
@@ -59,7 +73,14 @@ const ServiceTeam = () => {
                 <Image
                   className="rounded-t-lg"
                   src="https://cdn.pixabay.com/photo/2014/03/25/16/24/female-296990_640.png"
-                  alt=""
+                  width={500}
+                  // width="100%"
+                  height={100}
+                  // sizes="100vw"
+                  quality={75}
+                  // placeholder="blur"
+                  sizes="(max-width: 100%)"
+                  alt="team image"
                 />
               </a>
               <div className="p-5">
