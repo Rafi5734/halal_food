@@ -29,13 +29,13 @@ const Login = () => {
         formData?.phoneNumber === "0124567890" &&
         formData?.password === "ovi@789"
       ) {
+        router.push("/admin/addProduct");
         Swal.fire({
           title: "Good job!",
           text: "Logged In Successfully",
           icon: "success",
         });
         setCookie("bisuddho_auth", JSON.stringify(formData));
-        router.push("/admin/addProduct");
       } else {
         Swal.fire({
           title: "Oops...",

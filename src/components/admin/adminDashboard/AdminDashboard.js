@@ -73,6 +73,111 @@ const AdminDashboard = () => {
             </li>
           </Link>
 
+          <Link href="/admin/allProducts">
+            <li
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-5`}
+            >
+              <svg
+                width="24px"
+                height="24px"
+                viewBox="0 0 24 24"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="#ffffff"
+              >
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  {" "}
+                  <title></title>{" "}
+                  <g
+                    fill="none"
+                    fillRule="evenodd"
+                    id="页面-1"
+                    stroke="none"
+                    strokeWidth="1"
+                  >
+                    {" "}
+                    <g
+                      id="导航图标"
+                      transform="translate(-325.000000, -80.000000)"
+                    >
+                      {" "}
+                      <g id="编组" transform="translate(325.000000, 80.000000)">
+                        {" "}
+                        <polygon
+                          fill="#FFFFFF"
+                          fillOpacity="0.01"
+                          fillRule="nonzero"
+                          id="路径"
+                          points="24 0 0 0 0 24 24 24"
+                        ></polygon>{" "}
+                        <polygon
+                          id="路径"
+                          points="22 7 12 2 2 7 2 17 12 22 22 17"
+                          stroke="#ffffff"
+                          strokeLinejoin="round"
+                          strokeWidth="1.5"
+                        ></polygon>{" "}
+                        <line
+                          id="路径"
+                          stroke="#ffffff"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1.5"
+                          x1="2"
+                          x2="12"
+                          y1="7"
+                          y2="12"
+                        ></line>{" "}
+                        <line
+                          id="路径"
+                          stroke="#ffffff"
+                          strokeLinecap="round"
+                          strokeWnejoin="round"
+                          strokeWidth="1.5"
+                          x1="12"
+                          x2="12"
+                          y1="22"
+                          y2="12"
+                        ></line>{" "}
+                        <line
+                          id="路径"
+                          stroke="#ffffff"
+                          strokeLinecap="round"
+                          strokeWnejoin="round"
+                          strokeWidth="1.5"
+                          x1="22"
+                          x2="12"
+                          y1="7"
+                          y2="12"
+                        ></line>{" "}
+                        <line
+                          id="路径"
+                          stroke="#ffffff"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1.5"
+                          x1="17"
+                          x2="7"
+                          y1="4.5"
+                          y2="9.5"
+                        ></line>{" "}
+                      </g>{" "}
+                    </g>{" "}
+                  </g>{" "}
+                </g>
+              </svg>
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                All product
+              </span>
+            </li>
+          </Link>
+
           <Link href="/admin/users">
             <li
               className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-5`}
