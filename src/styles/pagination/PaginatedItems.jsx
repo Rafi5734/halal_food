@@ -8,9 +8,6 @@ const PaginatedItems = ({ itemsPerPage, data }) => {
   const items = data;
   const [itemOffset, setItemOffset] = useState(0);
 
-  // Simulate fetching items from another resources.
-  // (This could be items from props; or items loaded in a local state
-  // from an API endpoint with useEffect and useState)
   const endOffset = itemOffset + itemsPerPage;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = items?.slice(itemOffset, endOffset);
@@ -26,15 +23,18 @@ const PaginatedItems = ({ itemsPerPage, data }) => {
   return (
     <div>
       <PaginatedProducts currentItems={currentItems} />
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-      />
+      <div className="flex justify-center items-center">
+        <ReactPaginate
+          className="flex m-3"
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+        />
+      </div>
     </div>
   );
 };

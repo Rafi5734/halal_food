@@ -6,8 +6,8 @@ const PaginatedProducts = ({ currentItems }) => {
     <div class="rounded">
       <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="rounded text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr class="rounded">
-            <th scope="col" class="px-5 py-3 rounded">
+          <tr class="">
+            <th scope="col" class="px-5 py-3 rounded-tl-lg">
               <span class="rounded">#SN</span>
             </th>
             <th scope="col" class="px-5 py-3">
@@ -22,7 +22,7 @@ const PaginatedProducts = ({ currentItems }) => {
             <th scope="col" class="px-6 py-3">
               Price
             </th>
-            <th scope="col" class="px-6 py-3">
+            <th scope="col" class="px-6 py-3 rounded-tr-lg">
               Actions
             </th>
           </tr>
@@ -32,9 +32,9 @@ const PaginatedProducts = ({ currentItems }) => {
             currentItems?.map((product, index) => (
               <tr
                 key={index}
-                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                class="rounded bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
               >
-                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white rounded-bl-lg">
                   {index + 1}
                 </td>
                 <td class="p-4">
@@ -61,7 +61,7 @@ const PaginatedProducts = ({ currentItems }) => {
                 <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                   ${product?.price}
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-6 py-4 rounded-br-lg">
                   <a
                     href="#"
                     class="font-medium text-red-600 dark:text-red-500 hover:underline"
