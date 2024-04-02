@@ -3,9 +3,12 @@ import React, { useEffect, useState } from "react";
 
 import ReactPaginate from "react-paginate";
 import PaginatedProducts from "./paginatedProducts/PaginatedProducts";
+import { useGetAllProductsQuery } from "@/api/productSlice/productSlice";
 
-const PaginatedItems = ({ itemsPerPage, data }) => {
-  const items = data;
+const PaginatedItems = ({ itemsPerPage }) => {
+  const { data: popularProductList, isLoading } = useGetAllProductsQuery();
+  const items = popularProductList;
+  console.log(items);
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + itemsPerPage;

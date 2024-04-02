@@ -13,6 +13,7 @@ async function getData() {
 }
 const page = async () => {
   const data = await getData();
+  console.log("data", data);
 
   return (
     <div className="ms-5 mt-5 w-full me-3">

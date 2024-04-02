@@ -37,6 +37,15 @@ export const productSlice = createApi({
       }),
       invalidatesTags: ["product"],
     }),
+
+    deleteProduct: builder.mutation({
+      query: ({ productId }) => ({
+        url: `/product/${productId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["product"],
+    }),
+
     deleteComment: builder.mutation({
       query: ({ productId, commentId }) => ({
         url: `/product/${productId}/comments/${commentId}`,
@@ -53,4 +62,5 @@ export const {
   useGetSingleProductsQuery,
   usePostCommentMutation,
   useDeleteCommentMutation,
+  useDeleteProductMutation,
 } = productSlice;
