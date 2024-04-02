@@ -8,3 +8,37 @@
     object-fit: cover;
     object-position: center;
 }
+/* styles.css */
+
+ul[role="navigation"][aria-label="Pagination"] {
+  display: flex;
+  margin: 1rem 0;
+}
+
+ul[role="navigation"][aria-label="Pagination"] li {
+  list-style: none;
+}
+
+ul[role="navigation"][aria-label="Pagination"] li a {
+  display: inline-block;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  background-color: #d19c22;
+  color: #555;
+  text-decoration: none;
+}
+
+ul[role="navigation"][aria-label="Pagination"] li a:hover {
+  color: #ffffff;
+}
+
+ul[role="navigation"][aria-label="Pagination"] li.selected a {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+ul[role="navigation"][aria-label="Pagination"] li.disabled a {
+  pointer-events: none;
+  color: #ccc;
+}
+
