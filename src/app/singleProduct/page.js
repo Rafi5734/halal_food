@@ -65,7 +65,7 @@ const SingleProduct = ({ searchParams }) => {
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-5">
               <div>
                 <Image
-                  className="rounded"
+                  className="rounded object-contain"
                   alt="product_image"
                   src={singleProduct?.imageLink}
                   width={500}
