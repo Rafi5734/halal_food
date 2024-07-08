@@ -29,7 +29,6 @@ const Login = () => {
         formData?.phoneNumber === "01864952552" &&
         formData?.password === "omni12345!@#$%"
       ) {
-        router.push("/admin/addProduct");
         Swal.fire({
           title: "Good job!",
           text: "Logged In Successfully",
@@ -59,6 +58,7 @@ const Login = () => {
         });
       }
     }
+    router.push("/admin/addProduct");
     setFormData({
       userName: "",
       phoneNumber: "",
