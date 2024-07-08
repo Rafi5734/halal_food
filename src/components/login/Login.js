@@ -25,9 +25,9 @@ const Login = () => {
     try {
       console.log("formdata", formData);
       if (
-        formData?.userName === "ovi" &&
-        formData?.phoneNumber === "0124567890" &&
-        formData?.password === "ovi@789"
+        formData?.userName === "Omni" &&
+        formData?.phoneNumber === "01864952552" &&
+        formData?.password === "omni12345!@#$%"
       ) {
         router.push("/admin/addProduct");
         Swal.fire({
