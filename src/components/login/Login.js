@@ -42,13 +42,6 @@ const Login = () => {
           icon: "error",
         });
       }
-      // const result = await userLogin(formData);
-
-      // console.log("form submitted", result?.data?.user);
-
-      // if (result.error) {
-
-      // }
     } catch (err) {
       if (err) {
         Swal.fire({
