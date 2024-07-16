@@ -80,7 +80,7 @@ const PopularProductList = () => {
             {popularProducts?.map((product, index) => (
               <div
                 key={index}
-                className="w-full relative mt-5 flex flex-row rounded-lg border border-gray-100 bg-white shadow-md"
+                className="w-full relative mt-5 flex flex-row rounded-lg border border-gray-100 bg-[#bef0bd] shadow-md"
               >
                 <div>
                   <Link
@@ -161,7 +161,7 @@ const PopularProductList = () => {
                       >
                         <button
                           href="#"
-                          className="w-full flex items-center justify-center rounded-md bg-[#fdb414] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                          className="w-full flex items-center justify-center rounded-md bg-[#21bd1e] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
                         >
                           <svg
                             width="25px"

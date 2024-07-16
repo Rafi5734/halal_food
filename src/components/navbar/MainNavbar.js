@@ -2,9 +2,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
-// import useWindowSize from "./useWindowSize";
 import { useWindowSize } from "@react-hook/window-size";
-import styles from "./mainNavbar.module.css"
+import styles from "./mainNavbar.module.css";
 import Drawer from "@/styles/drawer/Drawer";
 import logo from "../../../public/images/logo.webp";
 import Link from "next/link";
@@ -34,7 +33,7 @@ const MainNavbar = () => {
     <div>
       {width && width <= 767 ? (
         <main>
-          <div className="pt-1 pb-2 flex bg-[#fdb414] justify-between ps-3 pe-3">
+          <div className="pt-1 pb-2 flex bg-[#bef0bd] justify-between ps-3 pe-3">
             <div className="flex justify-between">
               <div className="flex justify-between">
                 <svg
@@ -61,7 +60,7 @@ const MainNavbar = () => {
                     ></path>{" "}
                   </g>
                 </svg>
-                <p className="text-black text-[12px] ms-1 pe-2 border-r-[1px]">
+                <p className="text-black text-[12px] font-bold ms-1 pe-2 border-r-[1px]">
                   08:30 AM - 10:30 PM
                 </p>
               </div>
@@ -393,7 +392,7 @@ const MainNavbar = () => {
         </main>
       ) : (
         <main>
-          <div className="pt-1 pb-2 flex bg-[#fdb414] justify-between ps-3 pe-3">
+          <div className="pt-1 pb-2 flex bg-[#bef0bd] justify-between ps-3 pe-3">
             <div className="flex justify-between">
               <div className="flex justify-between">
                 <svg
@@ -420,7 +419,7 @@ const MainNavbar = () => {
                     ></path>{" "}
                   </g>
                 </svg>
-                <p className="text-black text-[12px] ms-1 pe-2 border-r-[1px]">
+                <p className="text-black text-[12px] ms-1 pe-2 font-bold border-r-[1px]">
                   08:30 AM - 10:30 PM
                 </p>
               </div>
@@ -619,7 +618,7 @@ const MainNavbar = () => {
           <Navbar
             fluid
             rounded={false}
-            className="bg-black shadow-md pt-0 pb-0"
+            className="bg-[#21bd1e] shadow-md pt-0 pb-0"
           >
             <a href="/">
               <Image
@@ -635,42 +634,6 @@ const MainNavbar = () => {
             </a>
             <div className="flex md:order-2">
               <div className="flex items-center justify-center">
-                {/* <button
-                  type="button"
-                  className="me-4 relative inline-flex items-center p-2 text-sm font-medium text-center text-white border border-white rounded-full hover:bg-[#fdb414]"
-                >
-                  <svg
-                    width="27px"
-                    height="27px"
-                    viewBox="-2.4 -2.4 28.80 28.80"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    stroke="#ffffff"
-                    transform="matrix(1, 0, 0, 1, 0, 0)"
-                  >
-                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                      {" "}
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
-                        stroke="#ffffff"
-                        strokeWidth="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>{" "}
-                    </g>
-                  </svg>
-                  <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                    20
-                  </div>
-                </button> */}
                 <div className="me-5">
                   <p className="text-white">
                     {loggedInUser && <span>{loggedInUser?.userName}</span>}
@@ -715,105 +678,13 @@ const MainNavbar = () => {
                     </svg>
                   </button>
                 </Link>
-
-                {/* <Link href={"/cart"}>
-                  <button
-                    type="button"
-                    className=" ms-3 relative inline-flex items-center p-2 text-sm font-medium text-center text-white border border-white rounded-lg hover:bg-[#fdb414]"
-                  >
-                    <div className="flex">
-                      <span className="flex items-center">
-                        <svg
-                          fill="#ffffff"
-                          width="14px"
-                          height="14px"
-                          viewBox="0 0 24 24"
-                          id="taka-2"
-                          data-name="Flat Line"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="icon flat-line"
-                        >
-                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                          <g
-                            id="SVGRepo_tracerCarrier"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></g>
-                          <g id="SVGRepo_iconCarrier">
-                            <path
-                              id="primary"
-                              d="M6,3H6A3,3,0,0,1,9,6V16.5A4.49,4.49,0,0,0,13.5,21h0A4.49,4.49,0,0,0,18,16.5V12"
-                              style={{
-                                fill: "none",
-                                stroke: "#ffffff",
-                                strokeLinecap: "round",
-                                strokeLinejoin: "round",
-                                strokeWidth: 2,
-                              }}
-                            ></path>
-                            <line
-                              id="primary-2"
-                              data-name="primary"
-                              x1="6"
-                              y1="11"
-                              x2="12"
-                              y2="11"
-                              style={{
-                                fill: "none",
-                                stroke: "#ffffff",
-                                strokeLinecap: "round",
-                                strokeLinejoin: "round",
-                                strokeWidth: 2,
-                              }}
-                            ></line>
-                          </g>
-                        </svg>
-                        <span className="text-white">1000.00</span>
-                      </span>
-                      <svg
-                        width="27px"
-                        height="27px"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                        <g
-                          id="SVGRepo_tracerCarrier"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        ></g>
-                        <g id="SVGRepo_iconCarrier">
-                          {" "}
-                          <path
-                            d="M2.08416 2.7512C2.22155 2.36044 2.6497 2.15503 3.04047 2.29242L3.34187 2.39838C3.95839 2.61511 4.48203 2.79919 4.89411 3.00139C5.33474 3.21759 5.71259 3.48393 5.99677 3.89979C6.27875 4.31243 6.39517 4.76515 6.4489 5.26153C6.47295 5.48373 6.48564 5.72967 6.49233 6H17.1305C18.8155 6 20.3323 6 20.7762 6.57708C21.2202 7.15417 21.0466 8.02369 20.6995 9.76275L20.1997 12.1875C19.8846 13.7164 19.727 14.4808 19.1753 14.9304C18.6236 15.38 17.8431 15.38 16.2821 15.38H10.9792C8.19028 15.38 6.79583 15.38 5.92943 14.4662C5.06302 13.5523 4.99979 12.5816 4.99979 9.64L4.99979 7.03832C4.99979 6.29837 4.99877 5.80316 4.95761 5.42295C4.91828 5.0596 4.84858 4.87818 4.75832 4.74609C4.67026 4.61723 4.53659 4.4968 4.23336 4.34802C3.91052 4.18961 3.47177 4.03406 2.80416 3.79934L2.54295 3.7075C2.15218 3.57012 1.94678 3.14197 2.08416 2.7512Z"
-                            fill="#ffffff"
-                          ></path>{" "}
-                          <path
-                            d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z"
-                            fill="#ffffff"
-                          ></path>{" "}
-                          <path
-                            d="M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z"
-                            fill="#ffffff"
-                          ></path>{" "}
-                        </g>
-                      </svg>
-                    </div>
-
-                    <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">
-                      <Link href={"/cart"}>{loggedInUser?.cart?.length}</Link>
-                    </div>
-                  </button>
-                </Link> */}
               </div>
-              {/* <Navbar.Toggle /> */}
             </div>
             <Navbar.Collapse className={styles.res_nav_options}>
-              <Link href="/" className="text-white mt-2" active={true}>
+              <Link href="/" className="text-white mt-1" active={true}>
                 <span>Home</span>
               </Link>
-              <Navbar.Link className="mt-2">
+              <Navbar.Link className="mt-1">
                 <Dropdown label="Menu" inline={true}>
                   {categoryData?.map((category, index) => (
                     <Dropdown.Item key={index}>
@@ -822,60 +693,25 @@ const MainNavbar = () => {
                   ))}
                 </Dropdown>
               </Navbar.Link>
-              <Link href="/about" className="text-white mt-2">
+              <Navbar.Link className="mt-1">
+                <Dropdown label="Top Brands" inline={true}>
+                  <Dropdown.Item>Easy</Dropdown.Item>
+                  <Dropdown.Item>Arong</Dropdown.Item>
+                  <Dropdown.Item>Sailor</Dropdown.Item>
+                  <Dropdown.Item>Sara</Dropdown.Item>
+                  <Dropdown.Item>Yellow</Dropdown.Item>
+                  <Dropdown.Item>RichMan</Dropdown.Item>
+                </Dropdown>
+              </Navbar.Link>
+              <Link href="/about" className="text-white mt-1">
                 <span>About</span>
               </Link>
-              <Link href="/contact" className="text-white mt-2">
+              <Link href="/contact" className="text-white mt-1">
                 <span>Contact</span>
               </Link>
-              <Link href="/blog" className="mt-2 text-white">
+              <Link href="/blog" className="mt-1 text-white">
                 Blog
               </Link>
-              {/* <div>
-                <form className="p-0">
-                  <div className="flex">
-                    <div className="relative lg:w-[400px] md:max-sm:w-[200px] sm:w-[200px]">
-                      <input
-                        type="search"
-                        id="search-dropdown"
-                        className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-lg border-gray-50 border-s-2 border border-gray-300 focus:ring-[#fdb414] focus:border-[#fdb414] dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-[#fdb414]"
-                        placeholder="Search here"
-                        required
-                      />
-                      <button
-                        type="submit"
-                        className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-[#f7f7f7] rounded-e-lg border border-gray hover:bg-[#fdb414] focus:ring-4 focus:outline-none focus:ring-[#fdb414] dark:bg-[#fdb414] dark:hover:bg-[#fdb414] dark:focus:ring-[#fdb414]"
-                      >
-                        <svg
-                          width="14px"
-                          height="14px"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                          <g
-                            id="SVGRepo_tracerCarrier"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          ></g>
-                          <g id="SVGRepo_iconCarrier">
-                            {" "}
-                            <path
-                              d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
-                              stroke="#000000"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            ></path>{" "}
-                          </g>
-                        </svg>
-                        <span className="sr-only">Search</span>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div> */}
             </Navbar.Collapse>
           </Navbar>
         </main>

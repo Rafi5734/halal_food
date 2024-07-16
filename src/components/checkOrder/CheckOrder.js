@@ -8,7 +8,7 @@ import CheckoutModal from "../checkout/checkoutModal/CheckoutModal";
 import { useRouter } from "next/navigation";
 const CheckOrder = () => {
   const router = useRouter();
-  
+
   const [checkoutFormData, setCheckoutFormData] = useState({
     fullName: "",
     phoneNumber: "",
@@ -23,7 +23,7 @@ const CheckOrder = () => {
   const [openModal, setOpenModal] = useState(false);
   const [productQuantity, setProductQuantity] = useState("");
   const [deliveryCharge, setDeliveryCharge] = useState();
-  const [storedData, setStoredData] = useState('');
+  const [storedData, setStoredData] = useState("");
   const [checkoutPost] = useCheckoutPostMutation();
 
   const handleCheckoutInputChange = (event) => {
@@ -32,13 +32,13 @@ const CheckOrder = () => {
   };
 
   useEffect(() => {
-    const myCookieValue = localStorage.getItem('bisuddho_localData');
+    const myCookieValue = localStorage.getItem("bisuddho_localData");
     if (myCookieValue) {
       try {
         const parsedData = JSON.parse(myCookieValue);
         setStoredData(parsedData);
       } catch (error) {
-        console.error('Error parsing JSON data:', error);
+        console.error("Error parsing JSON data:", error);
         // Handle error if parsing fails
       }
     }
@@ -50,8 +50,7 @@ const CheckOrder = () => {
       order: storedData,
       delivery_charge: deliveryCharge,
       totalPrice:
-      storedData?.price * Number(productQuantity) +
-        Number(deliveryCharge),
+        storedData?.price * Number(productQuantity) + Number(deliveryCharge),
       productQuantity: productQuantity,
     }));
   }, [deliveryCharge, productQuantity, storedData]);
@@ -76,7 +75,7 @@ const CheckOrder = () => {
     router.push("/");
   };
 
-  console.log("storedData", storedData);
+  // console.log("storedData", storedData);
   // console.log("myCookieValue", JSON.parse(myCookieValue));
 
   return (
@@ -210,7 +209,7 @@ const CheckOrder = () => {
                 </div>
               </div>
             </div>
-            <Button type="submit" color="warning" className="w-full mt-8">
+            <Button type="submit" className="w-full mt-8 bg-[#26b825]">
               <span className="text-black font-bold">
                 অর্ডারটি সম্পূর্ণ করুন
               </span>
@@ -227,7 +226,7 @@ const CheckOrder = () => {
               </Modal.Body>
               <Modal.Footer>
                 <Button
-                  className="bg-[#d19c22]"
+                  className="bg-[#26b825]"
                   onClick={() => handleOrderCompleted()}
                 >
                   অর্ডারটি সম্পন্ন হয়েছে
