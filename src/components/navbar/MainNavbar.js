@@ -5,7 +5,7 @@ import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import { useWindowSize } from "@react-hook/window-size";
 import styles from "./mainNavbar.module.css";
 import Drawer from "@/styles/drawer/Drawer";
-import logo from "../../../public/images/logo.webp";
+import logo from "../../../public/images/e-comm.png";
 import Link from "next/link";
 import { useGetAllCategoriesQuery } from "@/api/categorySlice/categorySlice";
 import { getCookie } from "../helper/cookies";
@@ -13,7 +13,7 @@ import { useGetUsersQuery } from "@/api/auth/authSlice";
 const MainNavbar = () => {
   const { data: categoryData, isLoading: getAllCategoriesIsLoading } =
     useGetAllCategoriesQuery();
-  const [width, height] = useWindowSize();
+  const [width] = useWindowSize();
 
   const myCookieValue = getCookie("bisuddho_cookies");
 
@@ -266,7 +266,7 @@ const MainNavbar = () => {
                         <Image
                           src={logo}
                           alt="Picture of the logo"
-                          sizes="20vw"
+                          sizes="40vw"
                           placeholder="blur"
                           style={{
                             width: "100%",
@@ -627,7 +627,7 @@ const MainNavbar = () => {
                 sizes="5vw"
                 placeholder="blur"
                 style={{
-                  width: "90%",
+                  width: "120%",
                   height: "auto",
                 }}
               />

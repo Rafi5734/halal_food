@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import control_img from "../../../../public/control.png";
-import logo_main from "../../../../public/images/logo.webp";
+import logo_main from "../../../../public/images/e-comm.png";
 import users_img from "../../../../public/User.png";
 import Link from "next/link";
 import { removeCookie } from "@/components/helper/cookies";
