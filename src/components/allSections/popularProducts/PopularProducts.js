@@ -9,7 +9,7 @@ const PopularProducts = () => {
             <hr />
           </div>
           <div>
-            <p className="mt-0 pt-0 text-center font-bold text-xl text-wrap">
+            <p className="mt-0 pt-0 text-center font-bold text-4xl text-[#ff7f00] text-wrap">
               Food Items
             </p>
           </div>

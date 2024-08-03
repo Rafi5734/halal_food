@@ -4,6 +4,8 @@ import Script from "next/script";
 import MainNavbar from "@/components/navbar/MainNavbar";
 import Footer from "@/components/allSections/footer/Footer";
 import Providers from "@/store/providers";
+import UpdatedNavbar from "@/components/navbar/updatedNavbar/UpdatedNavbar";
+import { NextUIProvider } from "@nextui-org/react";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -23,14 +25,17 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <Providers>
-          <MainNavbar />
-          {children}
-          <Footer />
-        </Providers>
+        <NextUIProvider>
+          <Providers>
+            <UpdatedNavbar />
+            {/* <MainNavbar /> */}
+            {children}
+            <Footer />
+          </Providers>
+        </NextUIProvider>
       </body>
-      <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js" />
       <Script src="../path/to/flowbite/dist/flowbite.min.js" />
+      <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js" />
     </html>
   );
 }

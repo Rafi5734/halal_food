@@ -1,10 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 import flowbite from "flowbite/plugin";
+const { nextui } = require("@nextui-org/react");
+
 module.exports = {
   content: [
+    "node_modules/flowbite-react/lib/esm/**/*.js",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "./node_modules/flowbite/**/*.js",
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -16,6 +18,6 @@ module.exports = {
       // },
     },
   },
-  plugins: [flowbite],
+  plugins: [nextui(), require("flowbite/plugin")],
   theme: {},
 };

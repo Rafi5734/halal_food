@@ -3,7 +3,7 @@ import FooterColumn from './footerColumn/FooterColumn';
 
 const Footer = () => {
     return (
-      <div className="container mx-auto mb-5 mt-5 bg-[#bef0bd]">
+      <div className="container mx-auto mb-5 mt-5 bg-[#F0CCA8] rounded-lg">
         <FooterColumn />
       </div>
     );
