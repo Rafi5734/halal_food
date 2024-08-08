@@ -12,21 +12,9 @@ const Checkout = () => {
   const myCookieValue = getCookie("bisuddho_cookies");
   const [openModal, setOpenModal] = useState(false);
   const [productQuantity, setProductQuantity] = useState("");
-  // console.log("singleProduct", JSON.parse(myCookieValue));
   const [checkoutPost] = useCheckoutPostMutation();
   const [deliveryCharge, setDeliveryCharge] = useState();
 
-  // if (myCookieValue) {
-  //   var totalPrice =
-  //     JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-  //     Number(deliveryCharge);
-  // }
-  // if (myCookieValue && dhakaOutside) {
-  //   var totalPrice =
-  //     JSON.parse(myCookieValue)?.price * Number(productQuantity) +
-  //     Number(deliveryCharge);
-  // }
-  // console.log("i am from form submit button", deliveryCharge);
   const [checkoutFormData, setCheckoutFormData] = useState({
     fullName: "",
     phoneNumber: "",
@@ -39,28 +27,6 @@ const Checkout = () => {
     order: {},
   });
 
-  // useEffect(() => {
-  //   const myCookieValue = getCookie("bisuddho_cookies");
-
-  //   if (myCookieValue) {
-  //     // Parse the cookie value and update the order array in the state
-  //     const parsedCookieValue = JSON.parse(myCookieValue);
-  //     setCheckoutFormData((prevFormData) => ({
-  //       ...prevFormData,
-  //       order: parsedCookieValue,
-  //       delivery_charge: deliveryCharge,
-  //       totalPrice: totalPrice,
-  //       productQuantity: productQuantity,
-  //     }));
-  //   }
-  //   setProductQuantity(checkoutFormData?.product_quantity);
-  // }, [
-  //   checkoutFormData?.product_quantity,
-  //   deliveryCharge,
-  //   productQuantity,
-  //   totalPrice,
-  //   myCookieValue,
-  // ]);
   const handleCheckoutInputChange = (event) => {
     const { name, value } = event.target;
     setCheckoutFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -69,32 +35,17 @@ const Checkout = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     console.log("checkoutFormData", checkoutFormData);
-    // const result = await checkoutPost(checkoutFormData);
-    // if (result) {
-    //   Swal.fire({
-    //     title: "Good job!",
-    //     text: "Your successfully order the product",
-    //     icon: "success",
-    //   });
-    // }
 
     setOpenModal(true);
   };
-  // if (myCookieValue) {
-  //   var subTotalPrice =
-  //     JSON.parse(myCookieValue)?.price * Number(productQuantity);
-  // }
 
-  // const handleOrderCompleted = () => {
-  //   setOpenModal(false);
-  //   router.push("/");
-  // };
-  // console.log("i am from form productQuantity", productQuantity);
   return (
     <div className="container mx-auto mt-8">
       <div className="text-center">
         <div className="flex justify-center">
-          <span className="text-4xl font-bold">Checkout Details</span>{" "}
+          <span className="text-4xl font-bold text-[#ff7f00]">
+            Checkout Details
+          </span>{" "}
         </div>
       </div>
 
@@ -102,9 +53,6 @@ const Checkout = () => {
         <form onSubmit={handleFormSubmit}>
           <div className="space-y-12">
             <div className="border-b border-gray-900/10 pb-12">
-              <h2 className="text-base font-semibold leading-7 text-gray-900">
-                Billing and Shipping
-              </h2>
               <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div className="col-span-full">
                   <label

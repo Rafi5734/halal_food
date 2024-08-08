@@ -7,25 +7,16 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 const SingleProduct = ({ searchParams }) => {
-  // const response = await fetch(
-  //   `http://localhost:8800/product/${searchParams?._id}`,
-  //   { cache: "force-cache" }
-  // );
-  // console.log("Response:", response);
-  // const singleProduct = await response.json();
-  // console.log("singleProduct", singleProduct?.category);
-
   const _idString = searchParams?._id;
   const { data: singleProduct, isLoading } =
     useGetSingleProductsQuery(_idString);
   const getSingleProduct = () => {
-    console.log(singleProduct);
-    localStorage.setItem('bisuddho_localData', JSON.stringify(singleProduct));
+    localStorage.setItem("bisuddho_localData", JSON.stringify(singleProduct));
     setCookie("bisuddho_cookies", JSON.stringify(singleProduct));
   };
   return (
     <div className="container mx-auto mt-3">
-      <p className="ps-3">
+      <p className="ps-3 text-[#ff7f00]">
         Home {"/"} {singleProduct?.category}
       </p>
 
@@ -55,7 +46,6 @@ const SingleProduct = ({ searchParams }) => {
                 <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
                 <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
               </div>
-              <span className="sr-only">Loading...</span>
             </div>
           </div>
         </>
@@ -70,31 +60,34 @@ const SingleProduct = ({ searchParams }) => {
                   src={singleProduct?.imageLink}
                   width={500}
                   height={500}
-                  // sizes="100vw"
                   sizes="(max-width: 100%)"
                 />
               </div>
               <div>
-                <h4 className="text-3xl font-bold pb-3">
+                <h4 className="text-3xl font-bold pb-3 text-[#ff7f00]">
                   {singleProduct?.name}
                 </h4>
                 <hr />
                 <div className="mt-5">
-                  <h5 className="text-2xl font-bold">
+                  <h5 className="text-2xl font-bold text-[#ff7f00]">
                     {singleProduct?.price} TK
                   </h5>
-                  <p className="mt-3 font-bold">ঢাকার মধ্যে ৮০ টাকা</p>
-                  <p className="font-bold">ঢাকার বাহিরে ১৩০ টাকা</p>
+                  <p className="mt-3 font-bold text-[#ff7f00]">
+                    ঢাকার মধ্যে ৮০ টাকা
+                  </p>
+                  <p className="font-bold text-[#ff7f00]">
+                    ঢাকার বাহিরে ১৩০ টাকা
+                  </p>
                 </div>
 
                 <div className="mt-5">
-                  <p>
+                  <p className="text-[#ff7f00]">
                     weight: <span>{singleProduct?.weight}</span>KG
                   </p>
                   <div>
                     <button
                       type="button"
-                      className="disabled mt-3 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+                      className="disabled mt-3 text-[#ff7f00] bg-[#f0cca8] border border-[#f0cca8] focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2"
                     >
                       <span>{singleProduct?.weight}</span> KG
                     </button>
@@ -102,70 +95,12 @@ const SingleProduct = ({ searchParams }) => {
                 </div>
 
                 <div className="mt-5 border-dotted border-t-2">
-                  <h5 className="text-lg font-bold mt-1">
+                  <h5 className="text-lg font-bold mt-1 text-[#ff7f00]">
                     {singleProduct?.price} TK
                   </h5>
                 </div>
 
                 <div className="mt-3 flex">
-                  {/* <form className="">
-                    <div className="relative flex items-center max-w-[8rem]">
-                      <button
-                        type="button"
-                        id="decrement-button"
-                        data-input-counter-decrement="quantity-input"
-                        className="bg-gray-100 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
-                      >
-                        <svg
-                          className="w-3 h-3 text-gray-900"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="#000000"
-                          viewBox="0 0 18 2"
-                        >
-                          <path
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            strokeWidth="2"
-                            d="M1 1h16"
-                          />
-                        </svg>
-                      </button>
-                      <input
-                        type="text"
-                        id="quantity-input"
-                        defaultValue={singleProduct?.quantity}
-                        data-input-counter
-                        aria-describedby="helper-text-explanation"
-                        className="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-gray-500 focus:border-gray-500 block w-full py-2.5"
-                        placeholder="33"
-                        required
-                      />
-                      <button
-                        type="button"
-                        id="increment-button"
-                        data-input-counter-increment="quantity-input"
-                        className="bg-gray-100 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 focus:ring-2 focus:outline-none"
-                      >
-                        <svg
-                          className="w-3 h-3 text-gray-900"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="#000000"
-                          viewBox="0 0 18 18"
-                        >
-                          <path
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            strokeWidth="2"
-                            d="M9 1v16M1 9h16"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </form> */}
                   <div>
                     <Link
                       href={{
@@ -175,7 +110,7 @@ const SingleProduct = ({ searchParams }) => {
                       <button
                         onClick={getSingleProduct}
                         type="button"
-                        className="font-bold focus:outline-none text-black bg-[#21bd1e] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
+                        className="font-bold focus:outline-none text-[#ff7f00] bg-[#f0cca8] font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2"
                       >
                         পন্যটি ক্রয় করুন
                       </button>
@@ -184,15 +119,15 @@ const SingleProduct = ({ searchParams }) => {
                 </div>
 
                 <div className="mt-5">
-                  <div className="border-t-2 border-b-2">
-                    <p className="p-1">
+                  <div className="border-dotted border-t-2 border-b-2">
+                    <p className="p-1 text-[#ff7f00]">
                       SKU: <span>{singleProduct?.SKUId}</span>
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-5">
-                  <p>
+                  <p className="text-[#ff7f00]">
                     Categories:{" "}
                     <a href="#" className="hover:text-[#eab308]">
                       {singleProduct?.category}
@@ -203,14 +138,16 @@ const SingleProduct = ({ searchParams }) => {
             </div>
 
             <div className="mt-5">
-              <p className="text-2xl font-bold">
+              <p className="text-2xl font-bold text-[#ff7f00]">
                 <span>{singleProduct?.name}</span> এর বিবরণী:
               </p>
-              <p className="mt-3">{singleProduct?.description}</p>
+              <p className="mt-3 text-[#ff7f00]">
+                {singleProduct?.description}
+              </p>
             </div>
 
             <div className="mt-5">
-              <p className="text-center text-2xl font-bold border-b-2 pb-2">
+              <p className="text-center text-2xl font-bold border-b-2 pb-2 text-[#ff7f00]">
                 Customer Reviews
               </p>
             </div>

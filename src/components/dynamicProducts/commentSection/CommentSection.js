@@ -66,36 +66,30 @@ const CommentSection = ({ singleProduct }) => {
     });
   };
 
-  // Do something with the cookie value
-  // console.log(JSON.parse(myCookieValue)?.userName);
-  // console.log("singleProduct", singleProduct?._id);
   return (
     <div>
       <section className="bg-white py-8 lg:py-16 antialiased">
         <div className=" mx-auto px-4">
           <div className="flex mb-6">
-            <h2 className="text-lg lg:text-2xl font-bold text-black">
+            <h2 className="text-lg lg:text-2xl font-bold text-[#ff7f00]">
               Comment (<span>{singleProduct?.reviews?.length}</span>)
             </h2>
           </div>
           <form className="mb-6" onSubmit={handleFormSubmit}>
             <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200">
-              <label for="comment" className="sr-only">
-                Your comment
-              </label>
               <textarea
                 name="text"
                 value={formData.text}
                 onChange={handleCommentInputChange}
                 rows="6"
-                className="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none"
+                className="px-0 w-full text-sm text-[#ff7f00] border-0 focus:ring-0 focus:outline-none"
                 placeholder="Write a comment..."
                 required
               ></textarea>
             </div>
             <button
               type="submit"
-              className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-white bg-black rounded-lg border border-gray-200"
+              className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-[#ff7f00] bg-[#f0cca8] rounded-lg border border-[#f0cca8]"
             >
               Post a comment
             </button>

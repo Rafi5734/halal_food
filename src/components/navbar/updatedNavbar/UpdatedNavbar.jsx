@@ -16,6 +16,7 @@ import SignInToolTip from "@/styles/tooltip/signInToolTip/SignInToolTip";
 import OrderIcon from "@/assets/OrderIcon";
 import LoveIcon from "@/assets/LoveIcon";
 import Cart from "@/assets/Cart";
+import Link from "next/link";
 
 const UpdatedNavbar = () => {
   return (
@@ -123,7 +124,10 @@ const UpdatedNavbar = () => {
             </DropdownSection>
 
             <DropdownSection aria-label="Help & Feedback">
-              <DropdownItem key="registration">Registration</DropdownItem>
+              <DropdownItem key="registration">
+                <Link href="/login">Registration / Login</Link>
+              </DropdownItem>
+
               <DropdownItem key="logout">Log Out</DropdownItem>
             </DropdownSection>
           </DropdownMenu>

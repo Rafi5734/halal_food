@@ -13,10 +13,10 @@ const CheckoutModal = ({ checkoutFormData, productQuantity }) => {
   // console.log(checkoutFormData);
   // console.log("product quantity", productQuantity);
   return (
-    <div>
+    <div className="">
       <div className="overflow-x-auto">
         <Table striped>
-          <TableHead className="bg-[#374151]">
+          <TableHead className="">
             <TableHeadCell>Product name</TableHeadCell>
             <TableHeadCell>QTY</TableHeadCell>
             <TableHeadCell>Price</TableHeadCell>
