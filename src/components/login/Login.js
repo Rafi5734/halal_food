@@ -31,7 +31,7 @@ const Login = () => {
     try {
       if (
         formData?.userName === "Omni" &&
-        formData?.phoneNumber === "01864952552" &&
+        formData?.phoneNumber === "8801307409333" &&
         formData?.password === "omni12345!@#$%"
       ) {
         Swal.fire({
