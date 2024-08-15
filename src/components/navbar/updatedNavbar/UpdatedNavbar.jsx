@@ -10,19 +10,22 @@ import {
   Badge,
 } from "@nextui-org/react";
 
-import { Button, Tooltip } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import UserIcon from "@/assets/UserIcon";
-import SignInToolTip from "@/styles/tooltip/signInToolTip/SignInToolTip";
 import OrderIcon from "@/assets/OrderIcon";
 import LoveIcon from "@/assets/LoveIcon";
 import Cart from "@/assets/Cart";
 import Link from "next/link";
+import { useGetAllCategoriesQuery } from "@/api/categorySlice/categorySlice";
 
 const UpdatedNavbar = () => {
+  const { data: getAllCategories } = useGetAllCategoriesQuery();
   return (
     <div className="bg-[#f37c00] p-4">
       <div className="container mx-auto flex flex-row w-full justify-center items-center">
-        <p className="text-2xl text-white font-bold">Logo</p>
+        <Link href="/">
+          <p className="text-2xl text-white font-bold">Logo</p>
+        </Link>
 
         <form className="w-full mx-auto ms-4 me-4">
           <div className="relative">
@@ -143,6 +146,25 @@ const UpdatedNavbar = () => {
             <Cart size={24} />
           </Button>
         </Badge>
+      </div>
+      <div className="mt-3 text-white container mx-auto flex flex-row w-full justify-center items-center">
+        {getAllCategories?.map((category) => (
+          <Button
+            className="me-2 text-white"
+            color="primary"
+            variant="bordered"
+            key={category?.category}
+          >
+            <Link
+              href={{
+                pathname: "/categoryProducts",
+                query: { category: category?.category },
+              }}
+            >
+              {category?.category}
+            </Link>
+          </Button>
+        ))}
       </div>
     </div>
   );

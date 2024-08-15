@@ -8,6 +8,8 @@ import Image from "next/image";
 const OtherProductList = () => {
   const { data: productList, isLoading } = useGetAllProductsQuery();
 
+  console.log("productList", productList);
+
   const othersProducts = productList?.filter(
     (product) => product.category === "কেমিক্যাল মুক্ত শুঁটকি"
   );

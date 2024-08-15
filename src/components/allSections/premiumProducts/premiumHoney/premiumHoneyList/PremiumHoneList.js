@@ -5,11 +5,11 @@ import Link from "next/link";
 import Loader from "@/styles/Loader/Loader";
 import Image from "next/image";
 
-const PremiumHoneList = () => {
+const PremiumHoneList = ({ fourthCategory }) => {
   const { data: productList, isLoading } = useGetAllProductsQuery();
 
   const honeyProducts = productList?.filter(
-    (product) => product.category === "Gadget"
+    (product) => product.category === fourthCategory
   );
 
   //   console.log("villageProducts product", honeyProducts);
@@ -24,7 +24,7 @@ const PremiumHoneList = () => {
               {honeyProducts?.map((product, index) => (
                 <div
                   key={index}
-                  className="w-full relative mt-5 flex flex-row rounded-lg border border-gray-100 bg-[#bef0bd] shadow-md"
+                  className="w-full relative mt-5 flex flex-row rounded-lg border border-[#f0cca8] bg-[#f0cca8] shadow-md"
                 >
                   <div>
                     <Link
@@ -58,7 +58,7 @@ const PremiumHoneList = () => {
                           query: { _id: product._id },
                         }}
                       >
-                        <h5 className="text-xl tracking-tight text-slate-900 font-bold">
+                        <h5 className="text-xl tracking-tight text-[#ff7f00] font-bold">
                           {product?.name}
                         </h5>
                       </Link>
@@ -89,7 +89,7 @@ const PremiumHoneList = () => {
                                 ></path>
                               </g>
                             </svg>
-                            <span className="text-center">
+                            <span className="text-center text-[#ff7f00]">
                               {product?.price}
                             </span>
                           </span>
@@ -107,7 +107,7 @@ const PremiumHoneList = () => {
                         >
                           <button
                             href="#"
-                            className="w-full flex items-center justify-center rounded-md bg-[#21bd1e] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                            className="w-full flex items-center justify-center rounded-full bg-[#ff7f00] px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none"
                           >
                             <svg
                               width="25px"

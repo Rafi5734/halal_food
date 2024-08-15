@@ -4,11 +4,11 @@ import React from "react";
 import Link from "next/link";
 import Loader from "@/styles/Loader/Loader";
 import Image from "next/image";
-const TopCategoryList = () => {
+const TopCategoryList = ({ secondCategory }) => {
   const { data: productList, isLoading } = useGetAllProductsQuery();
 
   const topProducts = productList?.filter(
-    (product) => product.category === "Jewellery"
+    (product) => product.category === secondCategory
   );
 
   // console.log("top product", topProducts);
@@ -23,7 +23,7 @@ const TopCategoryList = () => {
               {topProducts?.map((product, index) => (
                 <div
                   key={index}
-                  className="w-full relative mt-5 rounded-lg border border-gray-100 bg-[#bef0bd] shadow-md"
+                  className="w-full relative mt-5 flex flex-row rounded-lg border border-[#f0cca8] bg-[#f0cca8] shadow-md"
                 >
                   <div>
                     <Link
@@ -57,7 +57,7 @@ const TopCategoryList = () => {
                           query: { _id: product._id },
                         }}
                       >
-                        <h5 className="text-xl tracking-tight text-slate-900 font-bold">
+                        <h5 className="text-xl tracking-tight text-[#ff7f00] font-bold">
                           {product?.name}
                         </h5>
                       </Link>
@@ -65,7 +65,7 @@ const TopCategoryList = () => {
                         <p className="">
                           <span className="flex justify-center items-center text-3xl font-bold text-slate-900">
                             <svg
-                              fill="#000000"
+                              fill="#ff7f00"
                               width="30px"
                               height="30px"
                               viewBox="0 0 24 24"
@@ -84,11 +84,11 @@ const TopCategoryList = () => {
                                 <path
                                   id="primary"
                                   d="M18,11a1,1,0,0,0-1,1v4.5a3.5,3.5,0,0,1-7,0V12h2a1,1,0,0,0,0-2H10V6A4,4,0,0,0,6,2,1,1,0,0,0,6,4,2,2,0,0,1,8,6v4H6a1,1,0,0,0,0,2H8v4.5a5.5,5.5,0,0,0,11,0V12A1,1,0,0,0,18,11Z"
-                                  style={{ fill: "#000000" }}
+                                  style={{ fill: "#ff7f00" }}
                                 ></path>
                               </g>
                             </svg>
-                            <span className="text-center">
+                            <span className="text-center text-[#ff7f00]">
                               {product?.price}
                             </span>
                           </span>
@@ -106,7 +106,7 @@ const TopCategoryList = () => {
                         >
                           <button
                             href="#"
-                            className="w-full flex items-center justify-center rounded-md bg-[#21bd1e] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                            className="w-full flex items-center justify-center rounded-full bg-[#ff7f00] px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none"
                           >
                             <svg
                               width="25px"

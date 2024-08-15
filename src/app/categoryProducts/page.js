@@ -1,79 +1,28 @@
 "use client";
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { useGetAllProductsQuery } from "@/api/productSlice/productSlice";
 import Loader from "@/styles/Loader/Loader";
-import { getCookie } from "@/components/helper/cookies";
-import Swal from "sweetalert2";
-import { usePostCartMutation } from "@/api/productSlice/orderSlice/orderSlice";
-import { useGetUsersQuery } from "@/api/auth/authSlice";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
-const PopularProductList = ({ firstCategory }) => {
-  const myCookieValue = getCookie("bisuddho_cookies");
+const CategoryProducts = ({ searchParams }) => {
   const { data: popularProductList, isLoading } = useGetAllProductsQuery();
-  const [postCart, { isLoading: cartLoader }] = usePostCartMutation();
-  const { data: userData, isLoading: userDataLoader } = useGetUsersQuery();
 
-  if (myCookieValue) {
-    var userId = JSON.parse(myCookieValue)?._id || null;
-  }
-
-  const popularProducts = popularProductList?.filter(
-    (product) => product.category === firstCategory
+  const categoryProduct = popularProductList?.filter(
+    (product) => product.category === searchParams?.category
   );
-
-  if (myCookieValue) {
-    var loggedInUser = userData?.find(
-      (user) =>
-        user.userName === JSON?.parse(myCookieValue)?.userName &&
-        user.phoneNumber === JSON?.parse(myCookieValue)?.phoneNumber
-    );
-  }
-
-  const handleCartButton = async (productId) => {
-    const duplicateProduct = loggedInUser?.cart?.find(
-      (product) => product?._id === productId
-    );
-
-    if (duplicateProduct) {
-      return Swal.fire({
-        title: "This product already added in your cart",
-        text: "Check your cart",
-        icon: "warning",
-      });
-    }
-
-    const singleProductId = {
-      _id: productId,
-    };
-    try {
-      const res = await postCart({
-        userId,
-        singleProductId,
-      });
-
-      if (res?.data) {
-        Swal.fire({
-          title: res?.data?.message,
-          text: "Check your cart",
-          icon: "success",
-        });
-        window.location.reload();
-      }
-    } catch (err) {}
-
-    // console.log("kinun", productId);
-  };
-
+  console.log("categoryProduct:", categoryProduct);
   return (
-    <div className="container w-full">
+    <div className="p-4">
+      <p className="text-center text-4xl font-bold text-[#ff7f00]">
+        {searchParams?.category} Products
+      </p>
       <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 lg:gap-3 md:gap-2 sm:gap-2">
         {isLoading ? (
           <Loader />
         ) : (
           <>
-            {popularProducts?.map((product, index) => (
+            {categoryProduct?.map((product, index) => (
               <div
                 key={index}
                 className="w-full relative mt-5 flex flex-row rounded-lg border border-[#f0cca8] bg-[#f0cca8] shadow-md"
@@ -212,4 +161,4 @@ const PopularProductList = ({ firstCategory }) => {
   );
 };
 
-export default PopularProductList;
+export default CategoryProducts;

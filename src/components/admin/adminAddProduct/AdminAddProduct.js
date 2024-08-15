@@ -1,13 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import {
-  Button,
-  Checkbox,
-  Label,
-  TextInput,
-  Select,
-  Textarea,
-} from "flowbite-react";
+import { Button, Label, TextInput, Select, Textarea } from "flowbite-react";
 import {
   useCategoryPostMutation,
   useGetAllCategoriesQuery,
@@ -46,6 +39,7 @@ const AdminAddProduct = () => {
 
   const handleProductFormSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const result = await productPost(productFormData);
       console.log("products", result);
@@ -87,6 +81,15 @@ const AdminAddProduct = () => {
   };
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    if (categoryData?.length > 10) {
+      Swal.fire({
+        title: "Sorry!",
+        text: "You can not add more category.",
+        icon: "error",
+      });
+      return;
+    }
+
     try {
       const result = await categoryPost(formData);
 
