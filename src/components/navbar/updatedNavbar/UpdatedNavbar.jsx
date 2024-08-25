@@ -20,6 +20,7 @@ import { useGetAllCategoriesQuery } from "@/api/categorySlice/categorySlice";
 import { useWindowSize } from "@react-hook/window-size";
 import CategoryIcon from "@/assets/CategoryIcon";
 import CloseIcon from "@/assets/CloseIcon";
+import ThreeDotIcon from "@/assets/ThreeDotIcon";
 
 const UpdatedNavbar = () => {
   const [width] = useWindowSize();
@@ -111,7 +112,6 @@ const UpdatedNavbar = () => {
             </>
           )}
 
-          <UserIcon />
           <Dropdown
             showArrow
             radius="sm"
@@ -122,12 +122,12 @@ const UpdatedNavbar = () => {
           >
             <DropdownTrigger>
               <Button
+                isIconOnly
                 radius="full"
                 variant="light"
                 className="text-white"
-                disableRipple
               >
-                Sign In / Register
+                <UserIcon />
               </Button>
             </DropdownTrigger>
             <DropdownMenu
@@ -203,7 +203,7 @@ const UpdatedNavbar = () => {
                 variant="flat"
                 aria-label="Like"
               >
-                <CategoryIcon />
+                <ThreeDotIcon />
               </Button>{" "}
             </>
           ) : (
