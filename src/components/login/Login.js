@@ -13,9 +13,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
-    userName: "",
-    phoneNumber: "",
-    password: "",
+    userName: "Omni",
+    phoneNumber: "8801307409333",
+    password: "omni12345!@#$%",
   });
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -34,13 +34,13 @@ const Login = () => {
         formData?.phoneNumber === "8801307409333" &&
         formData?.password === "omni12345!@#$%"
       ) {
+        router.push("/admin/addProduct");
+        setCookie("bisuddho_auth", JSON.stringify(formData));
         Swal.fire({
           title: "Good job!",
           text: "Logged In Successfully",
           icon: "success",
         });
-        router.push("/admin/addProduct");
-        setCookie("bisuddho_auth", JSON.stringify(formData));
       } else {
         Swal.fire({
           title: "Oops...",
