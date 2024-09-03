@@ -40,54 +40,57 @@ const PaginatedProducts = ({ currentItems }) => {
         </thead>
         <tbody>
           {currentItems &&
-            currentItems?.map((product, index) => (
-              <tr
-                key={index}
-                className="rounded bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-              >
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white rounded-bl-lg">
-                  {index + 1}
-                </td>
-                <td className="p-4">
-                  <Image
-                    classNameName="rounded object-contain"
-                    src={product?.imageLink}
-                    width={150}
-                    // width="100%"
-                    height={150}
-                    // sizes="100vw"
-                    quality={75}
-                    // placeholder="blur"
-                    sizes="(max-width: 100%)"
-                    alt="all product image"
-                  />
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  {product?.name}
-                </td>
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  {product?.weight} KG
-                </td>
+            currentItems
+              ?.slice()
+              ?.reverse()
+              ?.map((product, index) => (
+                <tr
+                  key={index}
+                  className="rounded bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                >
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white rounded-bl-lg">
+                    {index + 1}
+                  </td>
+                  <td className="p-4">
+                    <Image
+                      classNameName="rounded object-contain"
+                      src={product?.imageLink}
+                      width={150}
+                      // width="100%"
+                      height={150}
+                      // sizes="100vw"
+                      quality={75}
+                      // placeholder="blur"
+                      sizes="(max-width: 100%)"
+                      alt="all product image"
+                    />
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {product?.name}
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {product?.weight} KG
+                  </td>
 
-                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                  ${product?.price}
-                </td>
-                <td className="px-6 py-4 rounded-br-lg">
-                  <button
-                    onClick={() => handleProductDelete(product?._id)}
-                    className="font-medium text-red-600 dark:text-red-500 hover:underline"
-                  >
-                    Remove
-                  </button>
-                  <a
-                    href="#"
-                    className="ms-3 font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Edit
-                  </a>
-                </td>
-              </tr>
-            ))}
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    ${product?.price}
+                  </td>
+                  <td className="px-6 py-4 rounded-br-lg">
+                    <button
+                      onClick={() => handleProductDelete(product?._id)}
+                      className="font-medium text-red-600 dark:text-red-500 hover:underline"
+                    >
+                      Remove
+                    </button>
+                    <a
+                      href="#"
+                      className="ms-3 font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    >
+                      Edit
+                    </a>
+                  </td>
+                </tr>
+              ))}
         </tbody>
       </table>
     </div>
