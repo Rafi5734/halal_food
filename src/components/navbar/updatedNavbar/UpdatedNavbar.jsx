@@ -28,6 +28,7 @@ const UpdatedNavbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const handleCategory = () => {
+    console.log("categoryOpen");
     setSidebarOpen(!isSidebarOpen);
   };
   return (
