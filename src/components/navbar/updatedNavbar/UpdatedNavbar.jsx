@@ -198,12 +198,7 @@ const UpdatedNavbar = () => {
           </Badge>
           {width && width <= 870 ? (
             <>
-              <Button
-                onClick={handleCategory}
-                isIconOnly
-                variant="flat"
-                aria-label="Like"
-              >
+              <Button onClick={handleCategory} isIconOnly variant="flat">
                 <ThreeDotIcon />
               </Button>{" "}
             </>
