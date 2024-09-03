@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button, Label, TextInput, Select, Textarea } from "flowbite-react";
 import {
   useCategoryPostMutation,
@@ -8,6 +8,7 @@ import {
 import Swal from "sweetalert2";
 import { useProductPostMutation } from "@/api/productSlice/productSlice";
 const AdminAddProduct = () => {
+  const fileInputRef = useRef(null);
   const [categoryPost, { isLoading }] = useCategoryPostMutation();
   const [productPost, { isLoading: productIsLoading }] =
     useProductPostMutation();
@@ -41,44 +42,83 @@ const AdminAddProduct = () => {
     e.preventDefault();
 
     try {
-      const result = await productPost(productFormData);
-      console.log("products", result);
-      if (result) {
-        Swal.fire({
-          title: "Good job!",
-          text: "A product added successfully",
-          icon: "success",
+      const file = fileInputRef.current.files[0];
+
+      console.log("file: ", file);
+
+      if (file) {
+        const formData = new FormData();
+        formData.append("image", file);
+        formData.append("key", "9cf415951d8543caa0ce3bef03190e06");
+
+        const imgbbResponse = await fetch("https://api.imgbb.com/1/upload", {
+          method: "POST",
+          body: formData,
         });
-      }
-      if (result.error) {
+        const imgbbResult = await imgbbResponse.json();
+
+        console.log("imgbbResult", imgbbResult);
+
+        if (imgbbResult.success) {
+          const imageUrl = imgbbResult.data.url;
+          const updatedProductFormData = {
+            ...productFormData,
+            imageLink: imageUrl,
+          };
+          const result = await productPost(updatedProductFormData);
+          console.log("products", result);
+
+          if (result) {
+            Swal.fire({
+              title: "Good job!",
+              text: "A product added successfully",
+              icon: "success",
+            });
+          }
+          if (result.error) {
+            Swal.fire({
+              title: "Oops...",
+              text: result.error,
+              icon: "error",
+            });
+          }
+        } else {
+          Swal.fire({
+            title: "Oops...",
+            text: "Image upload failed",
+            icon: "error",
+          });
+        }
+      } else {
         Swal.fire({
           title: "Oops...",
-          text: result.error,
+          text: "Please select an image",
           icon: "error",
         });
       }
     } catch (err) {
-      if (err) {
-        Swal.fire({
-          title: "Oops...",
-          text: "User name or phone already existed",
-          icon: "error",
-        });
-      }
+      // if (err) {
+      //   Swal.fire({
+      //     title: "Oops...",
+      //     text: "Recheck your product upload data.",
+      //     icon: "error",
+      //   });
+      // }
     }
-    setProductFormData({
-      category: "",
-      name: "",
-      imageLink: "",
-      price: "",
-      description: "",
-      weight: "",
-      status: "pending",
-      quantity: 0,
-      SKUId: "",
-      reviews: [],
-    });
+    // setProductFormData({
+    //   category: "",
+    //   name: "",
+    //   imageLink: "",
+    //   price: "",
+    //   description: "",
+    //   weight: "",
+    //   status: "pending",
+    //   quantity: 0,
+    //   SKUId: "",
+    //   reviews: [],
+    // });
   };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (categoryData?.length > 10) {
@@ -118,9 +158,17 @@ const AdminAddProduct = () => {
     }
     setFormData({
       category: "",
+      name: "",
+      imageLink: "",
+      price: "",
+      description: "",
+      weight: "",
+      status: "pending",
+      quantity: 0,
+      SKUId: "",
+      reviews: [],
     });
   };
-  console.log("form submitted", categoryData);
   return (
     <main className="">
       <p className="text-center text-4xl mt-5 font-bold mb-10">Add product</p>
@@ -168,14 +216,11 @@ const AdminAddProduct = () => {
               <div className="mb-2 block">
                 <Label htmlFor="imageLink" value="Product Image" />
               </div>
-              <TextInput
-                id="imageLink"
-                type="text"
-                name="imageLink"
-                value={productFormData.imageLink}
-                onChange={handleProductInputChange}
-                placeholder="Product Image"
-                required
+              <input
+                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                id="file_input"
+                type="file"
+                ref={fileInputRef}
               />
             </div>
             <div>
