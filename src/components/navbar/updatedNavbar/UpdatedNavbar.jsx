@@ -28,11 +28,9 @@ const UpdatedNavbar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const handleCategory = () => {
-    console.log("categoryOpen");
     setSidebarOpen(!isSidebarOpen);
-    console.log("isSidebarOpen", isSidebarOpen);
   };
-  
+
   return (
     <div className="bg-[#f37c00] p-4">
       <div className="container mx-auto flex flex-row w-full justify-between items-center">
