@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button, Label, TextInput, Select, Textarea } from "flowbite-react";
 import {
   useCategoryPostMutation,
@@ -25,14 +25,20 @@ const AdminAddProduct = () => {
     quantity: 0,
     SKUId: "",
     reviews: [],
+    subCategory: "",
   });
+
   const [formData, setFormData] = useState({
     category: "",
   });
+
+  const [subCategory, setSubCategory] = useState("");
+
   const handleProductInputChange = (event) => {
     const { name, value } = event.target;
     setProductFormData((prevData) => ({ ...prevData, [name]: value }));
   };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -40,6 +46,8 @@ const AdminAddProduct = () => {
 
   const handleProductFormSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("productFormData", productFormData);
 
     try {
       const file = fileInputRef.current.files[0];
@@ -96,28 +104,14 @@ const AdminAddProduct = () => {
           icon: "error",
         });
       }
-    } catch (err) {
-      // if (err) {
-      //   Swal.fire({
-      //     title: "Oops...",
-      //     text: "Recheck your product upload data.",
-      //     icon: "error",
-      //   });
-      // }
-    }
-    // setProductFormData({
-    //   category: "",
-    //   name: "",
-    //   imageLink: "",
-    //   price: "",
-    //   description: "",
-    //   weight: "",
-    //   status: "pending",
-    //   quantity: 0,
-    //   SKUId: "",
-    //   reviews: [],
-    // });
+    } catch (err) {}
   };
+
+  useEffect(() => {
+    if (productFormData) {
+      setSubCategory(productFormData?.category);
+    }
+  }, [productFormData]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -167,6 +161,7 @@ const AdminAddProduct = () => {
       quantity: 0,
       SKUId: "",
       reviews: [],
+      subCategory: "",
     });
   };
   return (
@@ -256,6 +251,25 @@ const AdminAddProduct = () => {
                 ))}
               </Select>
             </div>
+
+            {subCategory === "Clothing" && (
+              <div className="w-full">
+                <div className="mb-2 block">
+                  <Label htmlFor="subCategory" value="Select a sub category" />
+                </div>
+                <Select
+                  id="sub_category"
+                  name="subCategory"
+                  value={productFormData.subCategory}
+                  onChange={handleProductInputChange}
+                  required
+                >
+                  <option>Select a category</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </Select>
+              </div>
+            )}
 
             <div>
               <div className="mb-2 block">

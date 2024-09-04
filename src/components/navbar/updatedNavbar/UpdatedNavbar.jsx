@@ -199,31 +199,12 @@ const UpdatedNavbar = () => {
           </Badge>
           {width && width <= 870 ? (
             <>
-              {/* <Button
-                onClick={handleCategory}
-                isIconOnly
-                variant="flat"
-                className="ms-1"
-              >
-                <ThreeDotIcon />
-              </Button>{" "} */}
               <div className="flex items-center gap-4">
                 <Dropdown placement="bottom-end">
                   <DropdownTrigger>
-                    <Button
-                      // onClick={handleCategory}
-                      isIconOnly
-                      variant="flat"
-                      className="ms-1"
-                    >
+                    <Button isIconOnly variant="flat" className="ms-1">
                       <ThreeDotIcon />
                     </Button>
-                    {/* <Avatar
-                      isBordered
-                      as="button"
-                      className="transition-transform w-10"
-                      src="https://i.ibb.co/hcF4cLg/three-dots-vertical-svgrepo-com.png"
-                    /> */}
                   </DropdownTrigger>
                   <DropdownMenu aria-label="Profile Actions" variant="flat">
                     {getAllCategories?.map((category) => (
