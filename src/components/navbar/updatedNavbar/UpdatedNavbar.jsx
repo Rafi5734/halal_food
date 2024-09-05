@@ -21,7 +21,7 @@ import { useGetAllCategoriesQuery } from "@/api/categorySlice/categorySlice";
 import { useWindowSize } from "@react-hook/window-size";
 import CategoryIcon from "@/assets/CategoryIcon";
 import CloseIcon from "@/assets/CloseIcon";
-import ThreeDotIcon from "@/assets/ThreeDotIcon";
+import HumburgerMenu from "@/assets/HumburgerMenu";
 
 const UpdatedNavbar = () => {
   const [width] = useWindowSize();
@@ -203,7 +203,7 @@ const UpdatedNavbar = () => {
                 <Dropdown placement="bottom-end">
                   <DropdownTrigger>
                     <Button isIconOnly variant="flat" className="ms-1">
-                      <ThreeDotIcon />
+                      <HumburgerMenu />
                     </Button>
                   </DropdownTrigger>
                   <DropdownMenu aria-label="Profile Actions" variant="flat">
