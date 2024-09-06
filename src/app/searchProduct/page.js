@@ -4,14 +4,11 @@ import Loader from "@/styles/Loader/Loader";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Image } from "@nextui-org/image";
-import { emptyProduct } from "../../assets/emptyProduct.png";
 
-const page = ({ searchParams }) => {
+const Page = ({ searchParams }) => {
   const { data: ProductList, isLoading } = useGetAllProductsQuery();
 
   const [filteredProducts, setFilteredProducts] = useState(ProductList);
-
-  console.log("searchParams?.category", searchParams?.searchItem);
 
   useEffect(() => {
     if (searchParams?.searchItem) {
@@ -29,8 +26,6 @@ const page = ({ searchParams }) => {
       setFilteredProducts(ProductList);
     }
   }, [ProductList, searchParams?.searchItem]);
-
-  console.log("filteredProducts", filteredProducts);
 
   return (
     <div>
@@ -188,4 +183,4 @@ const page = ({ searchParams }) => {
   );
 };
 
-export default page;
+export default Page;

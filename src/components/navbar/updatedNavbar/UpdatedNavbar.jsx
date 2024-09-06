@@ -222,14 +222,16 @@ const UpdatedNavbar = () => {
           </Dropdown>
 
           <Badge content="99+" shape="circle" color="default">
-            <Button
-              radius="full"
-              isIconOnly
-              aria-label="more than 99 notifications text-black"
-              variant="light"
-            >
-              <Cart size={24} />
-            </Button>
+            <Link href="/cart">
+              <Button
+                radius="full"
+                isIconOnly
+                aria-label="more than 99 notifications text-black"
+                variant="light"
+              >
+                <Cart size={24} />
+              </Button>
+            </Link>
           </Badge>
           {width && width <= 870 ? (
             <>
