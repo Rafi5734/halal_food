@@ -14,14 +14,13 @@ const CategoryProducts = ({ searchParams }) => {
   const categoryProduct = popularProductList?.filter(
     (product) => product.category === searchParams?.category
   );
-  console.log("searchParams:", searchParams);
   return (
     <div className="p-4">
       <p className="text-center text-4xl font-bold text-[#ff7f00]">
         {searchParams?.category} Products
       </p>
       {searchParams?.category === "Clothing" && (
-        <div className="flex w-full flex-col">
+        <div className="flex w-full flex-col mt-4">
           <Tabs aria-label="Options">
             <Tab key="all" title="All">
               <Card>

@@ -1,5 +1,5 @@
 import AllSections from "@/components/allSections/AllSections";
-import MainNavbar from "@/components/navbar/MainNavbar";
+import UpdatedNavbar from "@/components/navbar/updatedNavbar/UpdatedNavbar";
 export default function Home() {
   return (
     <div className="">
