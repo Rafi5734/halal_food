@@ -8,7 +8,7 @@ import {
   incrementQuantity,
   removeFromCart,
 } from "@/utils/CartUtils";
-import { Image } from "@nextui-org/react";
+import { Image, Input } from "@nextui-org/react";
 import { Tabs, Tab, Card, CardBody, Button } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 
@@ -216,16 +216,91 @@ const Cart = () => {
               <Tab key="bkash" title="Bkash">
                 <Card>
                   <CardBody>
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                    irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu fugiat nulla pariatur.
+                    <div>
+                      <div>
+                        <label
+                          htmlFor="referenceId"
+                          className="block mb-2 text-sm font-medium text-gray-900"
+                        >
+                          Reference ID
+                        </label>
+                        <input
+                          type="text"
+                          id="referenceId"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                          placeholder="Enter your reference id"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="bkashNumber"
+                          className="block mb-2 text-sm font-medium text-gray-900"
+                        >
+                          Bkash Number
+                        </label>
+                        <input
+                          type="text"
+                          id="bkashNumber"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                          placeholder="Enter your reference id"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <Button
+                      color="primary"
+                      onClick={handleCheckout}
+                      className="mt-6 bg-[#f37c00] font-bold"
+                    >
+                      Proceed to checkout
+                    </Button>
                   </CardBody>
                 </Card>
               </Tab>
               <Tab key="nagad" title="Nagad">
                 <Card>
-                  <CardBody></CardBody>
+                  <CardBody>
+                    <div>
+                      <div>
+                        <label
+                          htmlFor="trasactionId"
+                          className="block mb-2 text-sm font-medium text-gray-900"
+                        >
+                          Transaction ID
+                        </label>
+                        <input
+                          type="text"
+                          id="trasactionId"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                          placeholder="Enter your reference id"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="nagadNumber"
+                          className="block mb-2 text-sm font-medium text-gray-900"
+                        >
+                          Nagad Number
+                        </label>
+                        <input
+                          type="text"
+                          id="nagadNumber"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                          placeholder="Enter your reference id"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <Button
+                      color="primary"
+                      onClick={handleCheckout}
+                      className="mt-6 bg-[#f37c00] font-bold"
+                    >
+                      Proceed to checkout
+                    </Button>
+                  </CardBody>
                 </Card>
               </Tab>
             </Tabs>
