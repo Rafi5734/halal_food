@@ -1,5 +1,6 @@
 import { allUsersSlice } from "@/api/allUsers";
 import { authSlice } from "@/api/auth/authSlice";
+import { cartSlice } from "@/api/cartSlice/CartSlice";
 import { categorySlice } from "@/api/categorySlice/categorySlice";
 import { checkoutSlice } from "@/api/checkoutSlice/checkoutSlice";
 import { orderSlice } from "@/api/productSlice/orderSlice/orderSlice";
@@ -15,6 +16,7 @@ export const store = configureStore({
     [authSlice.reducerPath]: authSlice.reducer,
     [orderSlice.reducerPath]: orderSlice.reducer,
     [checkoutSlice.reducerPath]: checkoutSlice.reducer,
+    [cartSlice.reducerPath]: cartSlice.reducer,
   },
   middleware: (getDefaultMiddlewares) =>
     getDefaultMiddlewares().concat(
@@ -23,7 +25,8 @@ export const store = configureStore({
       productSlice.middleware,
       authSlice.middleware,
       orderSlice.middleware,
-      checkoutSlice.middleware
+      checkoutSlice.middleware,
+      cartSlice.middleware
     ),
 });
 setupListeners(store.dispatch);

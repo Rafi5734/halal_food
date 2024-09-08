@@ -34,10 +34,10 @@ const Checkout = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log("checkoutFormData", checkoutFormData);
-
     setOpenModal(true);
   };
+
+  // console.log("checkoutFormData", checkoutFormData);
 
   return (
     <div className="container mx-auto mt-8">

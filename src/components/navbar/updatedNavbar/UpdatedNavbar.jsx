@@ -20,10 +20,13 @@ import Link from "next/link";
 import { useGetAllCategoriesQuery } from "@/api/categorySlice/categorySlice";
 import { useWindowSize } from "@react-hook/window-size";
 import HumburgerMenu from "@/assets/HumburgerMenu";
+import { getCart } from "@/utils/CartUtils";
 
 const UpdatedNavbar = () => {
   const router = useRouter();
   const [width] = useWindowSize();
+
+  const cartLength = getCart();
 
   const [searchItem, setSearchItem] = useState("");
 
@@ -221,7 +224,7 @@ const UpdatedNavbar = () => {
             </DropdownMenu>
           </Dropdown>
 
-          <Badge content="99+" shape="circle" color="default">
+          <Badge content={cartLength?.length} shape="circle" color="default">
             <Link href="/cart">
               <Button
                 radius="full"

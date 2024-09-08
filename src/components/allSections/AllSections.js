@@ -7,9 +7,14 @@ import Loader from "@/styles/Loader/Loader";
 import Link from "next/link";
 import { Button, Card, CardBody, CardHeader, Image } from "@nextui-org/react";
 import ProductIcon from "@/assets/ProductIcon";
+import { addToCart, getCart } from "@/utils/CartUtils";
 
 const AllSections = () => {
   const { data: getAllProducts } = useGetAllProductsQuery();
+
+  useEffect(() => {
+    const initialCart = getCart();
+  }, []);
 
   if (!getAllProducts || getAllProducts?.length === 0) {
     return <Loader />;
@@ -28,6 +33,11 @@ const AllSections = () => {
     if (b === "Clothing") return 1;
     return a.localeCompare(b); // Alphabetical order for other categories
   });
+
+  const handleStoreProduct = (product) => {
+    addToCart(product);
+    window.location.reload();
+  };
 
   return (
     <div className="container mx-auto p-3">
@@ -102,6 +112,8 @@ const AllSections = () => {
                       color="primary"
                       className="bg-[#ff7f00]"
                       startContent={<ProductIcon />}
+                      // onClick={() => addToCart(product)}
+                      onClick={() => handleStoreProduct(product)}
                     >
                       Add to cart
                     </Button>

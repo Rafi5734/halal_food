@@ -6,6 +6,7 @@ import { useCheckoutPostMutation } from "@/api/checkoutSlice/checkoutSlice";
 import Swal from "sweetalert2";
 import CheckoutModal from "../checkout/checkoutModal/CheckoutModal";
 import { useRouter } from "next/navigation";
+import { clearCart, getCart } from "@/utils/CartUtils";
 const CheckOrder = () => {
   const router = useRouter();
 
@@ -14,7 +15,6 @@ const CheckOrder = () => {
     phoneNumber: "",
     address: "",
     thanaDistrict: "",
-    product_quantity: "",
     delivery_charge: "",
     totalPrice: "",
     status: "pending",
@@ -31,18 +31,19 @@ const CheckOrder = () => {
     setCheckoutFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  useEffect(() => {
-    const myCookieValue = localStorage.getItem("bisuddho_localData");
-    if (myCookieValue) {
-      try {
-        const parsedData = JSON.parse(myCookieValue);
-        setStoredData(parsedData);
-      } catch (error) {
-        console.error("Error parsing JSON data:", error);
-        // Handle error if parsing fails
-      }
-    }
-  }, []);
+  const myCookieValue = getCart();
+
+  // useEffect(() => {
+
+  //   if (myCookieValue) {
+  //     try {
+  //       const parsedData = JSON.parse(myCookieValue);
+  //       setStoredData(parsedData);
+  //     } catch (error) {
+  //       console.error("Error parsing JSON data:", error);
+  //     }
+  //   }
+  // }, []);
 
   useEffect(() => {
     setCheckoutFormData((prevFormData) => ({
@@ -73,6 +74,7 @@ const CheckOrder = () => {
   const handleOrderCompleted = () => {
     setOpenModal(false);
     router.push("/");
+    clearCart();
   };
 
   // console.log("storedData", storedData);
@@ -89,7 +91,7 @@ const CheckOrder = () => {
           </div>
         </div>
 
-        <div className="mt-14 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-5">
+        <div className="grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 xs:grid-cols-1 gap-5">
           <form onSubmit={handleFormSubmit}>
             <div className="space-y-12">
               <div className="border-b border-gray-900/10 pb-12">
@@ -110,30 +112,6 @@ const CheckOrder = () => {
                         id="full_name"
                         placeholder="আপনার পুরো নাম লিখুন"
                         autoComplete="full_name"
-                        className="block w-full rounded-md border-0 py-1.5 text-[#ff7f00] shadow-sm ring-1 ring-inset ring-[#ff7f00] placeholder:text-[#ff7f00] focus:ring-2 focus:ring-inset focus:ring-[#ff7f00] sm:text-sm sm:leading-6"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="col-span-full">
-                    <label
-                      htmlFor="full_name"
-                      className="block text-sm font-bold leading-6 text-[#ff7f00]"
-                    >
-                      পণ্যটির পরিমান
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        type="text"
-                        name="product_quantity"
-                        value={checkoutFormData.product_quantity}
-                        onChange={handleCheckoutInputChange}
-                        onBlur={(e) => {
-                          setProductQuantity(e.target.value);
-                        }}
-                        id="product_quantity"
-                        placeholder="কতটি পণ্য লাগবে"
-                        autoComplete="product_quantity"
                         className="block w-full rounded-md border-0 py-1.5 text-[#ff7f00] shadow-sm ring-1 ring-inset ring-[#ff7f00] placeholder:text-[#ff7f00] focus:ring-2 focus:ring-inset focus:ring-[#ff7f00] sm:text-sm sm:leading-6"
                         required
                       />
@@ -220,10 +198,7 @@ const CheckOrder = () => {
               <Modal.Header>Invoice #{storedData?.SKUId}</Modal.Header>
               <Modal.Body>
                 <div className="space-y-6">
-                  <CheckoutModal
-                    checkoutFormData={checkoutFormData}
-                    productQuantity={productQuantity}
-                  />
+                  <CheckoutModal myCookieValue={myCookieValue} />
                 </div>
               </Modal.Body>
               <Modal.Footer>
@@ -237,7 +212,7 @@ const CheckOrder = () => {
             </Modal>
           </form>
 
-          <div>
+          {/* <div>
             <div className="mt-5 border-2 border-[#ff7f00] p-5">
               <div className="">
                 <p className="font-bold pb-2 text-xl text-[#ff7f00]">
@@ -321,7 +296,7 @@ const CheckOrder = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

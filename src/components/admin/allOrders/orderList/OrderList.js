@@ -11,7 +11,6 @@ const OrderList = () => {
   const { data: checkoutData, isLoading } = useGetAllCheckoutQuery();
   const [deleteCheckout] = useDeleteCheckoutMutation();
   const handleDeleteProduct = async (productId) => {
-    console.log("deleted this item", productId);
     const result = await deleteCheckout({ productId });
     // console.log("deleted", result);
     if (result?.data) {
