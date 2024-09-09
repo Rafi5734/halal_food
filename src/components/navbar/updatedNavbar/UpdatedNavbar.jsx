@@ -9,6 +9,7 @@ import {
   User,
   Badge,
   Avatar,
+  Image,
 } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { Button } from "@nextui-org/react";
@@ -39,18 +40,20 @@ const UpdatedNavbar = () => {
       pathname: "/searchProduct",
       query: { searchItem: searchItem },
     });
-
-    console.log("clicked", searchItem);
   };
 
   return (
     <div className="bg-[#f37c00] p-4">
       <div className="container mx-auto flex flex-row w-full justify-between items-center">
         <Link href="/">
-          <p className="text-2xl text-white font-bold">Logo</p>
+          <Image
+            width="40%"
+            src="https://i.ibb.co/8c7tjyd/LOGO.png"
+            alt="Logo"
+          />
         </Link>
 
-        <div className="flex fle-row justify-center items-center">
+        <div className="flex flex-row justify-center items-center">
           {width && width <= 560 ? (
             <>
               <form
