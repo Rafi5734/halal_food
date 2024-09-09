@@ -10,8 +10,7 @@ import {
 import Image from "next/image";
 import { calculateTotalPrice } from "@/utils/CartUtils";
 
-const CheckoutModal = ({ myCookieValue }) => {
-  console.log(myCookieValue);
+const CheckoutModal = ({ myCookieValuecookies }) => {
   // console.log("product quantity", productQuantity);
 
   const totalPrice = calculateTotalPrice();
@@ -26,7 +25,7 @@ const CheckoutModal = ({ myCookieValue }) => {
             <TableHeadCell>Total</TableHeadCell>
           </TableHead>
           <TableBody className="divide-y">
-            {myCookieValue?.map((product) => (
+            {myCookieValuecookies?.map((product) => (
               <TableRow
                 key={product._id}
                 className="bg-white dark:border-gray-700 dark:bg-gray-800"
@@ -44,7 +43,7 @@ const CheckoutModal = ({ myCookieValue }) => {
                 </TableCell>
                 <TableCell>{product?.quantity}</TableCell>
                 <TableCell>${product?.price}</TableCell>
-                <TableCell>${totalPrice}</TableCell>
+                <TableCell>${product?.quantity * product?.price}</TableCell>
               </TableRow>
             ))}
           </TableBody>
