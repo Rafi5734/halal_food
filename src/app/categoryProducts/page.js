@@ -7,6 +7,9 @@ import React from "react";
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
 import Subcategory1 from "@/components/subcategory/Female/Subcategory1";
 import SubCategory2 from "@/components/subcategory/Male/SubCategory2";
+import SubCategory3 from "@/components/subcategory/easy/Subcategory3";
+import SubCategory4 from "@/components/subcategory/deshal/Subgategory4";
+import SubCategory5 from "@/components/subcategory/arong/Subgategory5";
 
 const CategoryProducts = ({ searchParams }) => {
   const { data: popularProductList, isLoading } = useGetAllProductsQuery();
@@ -101,9 +104,6 @@ const CategoryProducts = ({ searchParams }) => {
                                       {product?.price}
                                     </span>
                                   </span>
-                                  {/* <span className="text-sm text-slate-900 line-through ms-3">
-                    $699
-                  </span> */}
                                 </p>
                               </div>
                               <div className="">
@@ -180,6 +180,21 @@ const CategoryProducts = ({ searchParams }) => {
             <Tab key="female" title="Female">
               <Card>
                 <Subcategory1 female="female" />
+              </Card>
+            </Tab>
+            <Tab key="easy" title="Easy">
+              <Card>
+                <SubCategory3 easy="easy" />
+              </Card>
+            </Tab>
+            <Tab key="deshal" title="Deshal">
+              <Card>
+                <SubCategory4 deshal="deshal" />
+              </Card>
+            </Tab>
+            <Tab key="arong" title="Arong">
+              <Card>
+                <SubCategory5 arong="arong" />
               </Card>
             </Tab>
           </Tabs>

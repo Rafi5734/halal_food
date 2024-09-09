@@ -267,6 +267,9 @@ const AdminAddProduct = () => {
                   <option>Select a category</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
+                  <option value="easy">Easy</option>
+                  <option value="deshal">Deshal</option>
+                  <option value="arong">Arong</option>
                 </Select>
               </div>
             )}
