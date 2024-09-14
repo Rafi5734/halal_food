@@ -34,3 +34,8 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Documetation
+
+This website is build with Next.js for frontend and styling framework, we used Next UI. This website have 2 authization role, User and Admin. User can interact only our services. But business logics are maintained from the admin panel side.
+A user in our application, can buy couple of products with 3 types of payment gateway methods. On the otherhand, an admin can look over the website every user interaction and can handle every product edit, delete, modify and add. Also can manage the categories. An admin can track the every users order.
