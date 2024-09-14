@@ -32,9 +32,15 @@ const AdminAddProduct = () => {
     category: "",
   });
 
+  const [subCategory2, setSubCategory2] = useState("");
   const [subCategory, setSubCategory] = useState("");
 
   const handleProductInputChange = (event) => {
+    const { name, value } = event.target;
+    setProductFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleProductInputChange2 = (event) => {
     const { name, value } = event.target;
     setProductFormData((prevData) => ({ ...prevData, [name]: value }));
   };
@@ -46,8 +52,6 @@ const AdminAddProduct = () => {
 
   const handleProductFormSubmit = async (e) => {
     e.preventDefault();
-
-    console.log("productFormData", productFormData);
 
     try {
       const file = fileInputRef.current.files[0];
@@ -110,6 +114,7 @@ const AdminAddProduct = () => {
   useEffect(() => {
     if (productFormData) {
       setSubCategory(productFormData?.category);
+      setSubCategory2(productFormData?.category);
     }
   }, [productFormData]);
 
@@ -270,6 +275,26 @@ const AdminAddProduct = () => {
                   <option value="easy">Easy</option>
                   <option value="deshal">Deshal</option>
                   <option value="arong">Arong</option>
+                </Select>
+              </div>
+            )}
+
+            {subCategory2 === "Cosmatics" && (
+              <div className="w-full">
+                <div className="mb-2 block">
+                  <Label htmlFor="subCategory2" value="Select a sub category" />
+                </div>
+                <Select
+                  id="sub_category2"
+                  name="subCategory2"
+                  value={productFormData.subCategory2}
+                  onChange={handleProductInputChange2}
+                  required
+                >
+                  <option>Select a category</option>
+                  <option value="lakme">Lakme</option>
+                  <option value="imagic">Imagic</option>
+                  <option value="sheglam">Sheglam</option>
                 </Select>
               </div>
             )}

@@ -44,11 +44,13 @@ const Cart = () => {
     <div className="container mx-auto mt-10 mb-14 w-full p-3">
       <div className="text-center">
         <div className="flex justify-center">
-          <span className="text-4xl font-bold">Shopping Cart</span>{" "}
+          <span className="text-4xl font-bold text-[#f37c00]">
+            Shopping Cart
+          </span>{" "}
         </div>
       </div>
 
-      <div className="mt-16 grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-5">
+      <div className="mt-16 grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 xs:grid-cols-1 gap-5">
         <div className="mt-5 overflow-x-auto rounded-lg mt-5">
           <div className="w-full relative shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
