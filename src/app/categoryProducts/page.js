@@ -10,6 +10,9 @@ import SubCategory2 from "@/components/subcategory/Male/SubCategory2";
 import SubCategory3 from "@/components/subcategory/easy/Subcategory3";
 import SubCategory4 from "@/components/subcategory/deshal/Subgategory4";
 import SubCategory5 from "@/components/subcategory/arong/Subgategory5";
+import LakmeCategory from "@/components/subcategory/lakme/LakmeCategory";
+import ImagicCategory from "@/components/subcategory/imagic/ImagicCategory";
+import SheglamCategory from "@/components/subcategory/sheglam/SheglamCategory";
 
 const CategoryProducts = ({ searchParams }) => {
   const { data: popularProductList, isLoading } = useGetAllProductsQuery();
@@ -209,17 +212,17 @@ const CategoryProducts = ({ searchParams }) => {
                 <Tabs aria-label="Options">
                   <Tab key="lakme" title="Lakme">
                     <Card>
-                      <SubCategory2 />
+                      <LakmeCategory />
                     </Card>
                   </Tab>
                   <Tab key="imagic" title="Imagic">
                     <Card>
-                      <Subcategory1 female="female" />
+                      <ImagicCategory />
                     </Card>
                   </Tab>
                   <Tab key="Sheglam" title="Sheglam">
                     <Card>
-                      <Subcategory1 female="female" />
+                      <SheglamCategory />
                     </Card>
                   </Tab>
                 </Tabs>
