@@ -48,8 +48,9 @@ const UpdatedNavbar = () => {
         <Link href="/">
           <Image
             width="40%"
-            src="https://i.ibb.co/8c7tjyd/LOGO.png"
-            alt="Logo"
+            radius="full"
+            src="https://scontent.fdac152-1.fna.fbcdn.net/v/t39.30808-6/467330360_122123224022479439_3102209727832358549_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeE_h6PlHOV86X1O00cNdi6gkhmhee2PIe6SGaF57Y8h7qMaunDSvc_uERTkgub7xgqnpcmjul8EowxgKVdIdtwx&_nc_ohc=edLjFhEtCiQQ7kNvgHvW2L1&_nc_zt=23&_nc_ht=scontent.fdac152-1.fna&_nc_gid=AeL_tnKwq7PppKVIeBIkXms&oh=00_AYB_TM7S-BTyikHIxwaYAyorxBCE7eIQQv6ao9hLLlecZA&oe=675C56A9"
+            alt="jeckostyle logo"
           />
         </Link>
 

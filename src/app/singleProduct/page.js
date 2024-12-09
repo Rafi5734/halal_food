@@ -17,7 +17,7 @@ const SingleProduct = ({ searchParams }) => {
   return (
     <div className="container mx-auto mt-3">
       <p className="ps-3 text-[#ff7f00]">
-        Home {"/"} {singleProduct?.category}
+        Home {"/"} <span className="font-bold">{singleProduct?.category}</span>
       </p>
 
       {isLoading ? (
@@ -73,10 +73,10 @@ const SingleProduct = ({ searchParams }) => {
                     {singleProduct?.price} TK
                   </h5>
                   <p className="mt-3 font-bold text-[#ff7f00]">
-                    ঢাকার মধ্যে ৮০ টাকা
+                    Inside Dhaka city, delivery charge will be 150 TK.
                   </p>
                   <p className="font-bold text-[#ff7f00]">
-                    ঢাকার বাহিরে ১৩০ টাকা
+                    Outside Dhaka city, delivery charge will be 200 TK.
                   </p>
                 </div>
 

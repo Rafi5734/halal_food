@@ -13,9 +13,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
-    userName: "Omni",
-    phoneNumber: "8801307409333",
-    password: "omni12345!@#$%",
+    userName: "test",
+    phoneNumber: "01887830405",
+    password: "test@789",
   });
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -30,9 +30,9 @@ const Login = () => {
     e.preventDefault();
     try {
       if (
-        formData?.userName === "Omni" &&
-        formData?.phoneNumber === "8801307409333" &&
-        formData?.password === "omni12345!@#$%"
+        formData?.userName === "test" &&
+        formData?.phoneNumber === "01887830405" &&
+        formData?.password === "test@789"
       ) {
         router.push("/admin/addProduct");
         setCookie("bisuddho_auth", JSON.stringify(formData));
