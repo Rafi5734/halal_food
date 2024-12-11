@@ -1,22 +1,45 @@
 "use client";
 import { useGetSingleProductsQuery } from "@/api/productSlice/productSlice";
+import PurchaseIcon from "@/assets/PurchaseIcon";
+import TkIcon from "@/assets/TkIcon";
 import CommentSection from "@/components/dynamicProducts/commentSection/CommentSection";
 import { setCookie } from "@/components/helper/cookies";
-import Image from "next/image";
+import { Image, Input, Radio, RadioGroup } from "@nextui-org/react";
+// import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import required modules
+import { Pagination, Autoplay } from "swiper/modules";
+
+import { useRouter } from "next/navigation";
+
 const SingleProduct = ({ searchParams }) => {
+  const router = useRouter();
+
+  const [productQuantity, setProductQuantity] = useState("1");
+  const [selected, setSelected] = React.useState("");
+
   const _idString = searchParams?._id;
   const { data: singleProduct, isLoading } =
     useGetSingleProductsQuery(_idString);
   const getSingleProduct = () => {
-    localStorage.setItem("bisuddho_localData", JSON.stringify(singleProduct));
     setCookie("bisuddho_cookies", JSON.stringify(singleProduct));
+    setCookie("productQuantity", JSON.stringify(productQuantity));
+    setCookie("size", JSON.stringify(selected));
+    router.push("/checkOrder");
   };
+
   return (
     <div className="container mx-auto mt-3">
-      <p className="ps-3 text-[#ff7f00]">
+      <p className="ps-3 text-[#008f8f]">
         Home {"/"} <span className="font-bold">{singleProduct?.category}</span>
       </p>
 
@@ -54,80 +77,208 @@ const SingleProduct = ({ searchParams }) => {
           <div className="ps-3 pe-3 pt-3">
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-5">
               <div>
-                <Image
-                  className="rounded object-contain"
-                  alt="product_image"
-                  src={singleProduct?.imageLink}
-                  width={500}
-                  height={500}
-                  sizes="(max-width: 100%)"
-                />
+                <Swiper
+                  pagination={{
+                    dynamicBullets: true,
+                  }}
+                  autoplay={{
+                    delay: 2500,
+                    // disableOnInteraction: false,
+                  }}
+                  modules={[Pagination, Autoplay]}
+                  className="mySwiper"
+                >
+                  <SwiperSlide>
+                    <Image
+                      className="rounded object-contain w-full"
+                      alt="product_image"
+                      src={singleProduct?.imageLink}
+                      sizes="(max-width: 100%)"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Image
+                      className="rounded object-contain w-full"
+                      alt="product_image"
+                      src={singleProduct?.firstImageLink}
+                      sizes="(max-width: 100%)"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Image
+                      className="rounded object-contain w-full"
+                      alt="product_image"
+                      src={singleProduct?.secondImageLink}
+                      sizes="(max-width: 100%)"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Image
+                      className="rounded object-contain w-full"
+                      alt="product_image"
+                      src={singleProduct?.thirdImageLink}
+                      sizes="(max-width: 100%)"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Image
+                      className="rounded object-contain w-full"
+                      alt="product_image"
+                      src={singleProduct?.fourthImageLink}
+                      sizes="(max-width: 100%)"
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <Image
+                      className="rounded object-contain w-full"
+                      alt="product_image"
+                      src={singleProduct?.fifthImageLink}
+                      sizes="(max-width: 100%)"
+                    />
+                  </SwiperSlide>
+                </Swiper>
               </div>
               <div>
-                <h4 className="text-3xl font-bold pb-3 text-[#ff7f00]">
+                <h4 className="text-3xl font-bold pb-3 text-[#008f8f]">
                   {singleProduct?.name}
                 </h4>
                 <hr />
                 <div className="mt-5">
-                  <h5 className="text-2xl font-bold text-[#ff7f00]">
-                    {singleProduct?.price} TK
+                  <h5 className="text-2xl font-bold text-[#008f8f] flex flex-row items-center">
+                    <TkIcon />{" "}
+                    {singleProduct?.price -
+                      (singleProduct?.price * singleProduct?.discount) /
+                        100}{" "}
+                    TK
                   </h5>
-                  <p className="mt-3 font-bold text-[#ff7f00]">
+                  <div className="flex flex-row">
+                    <p className="text-md font-bold line-through text-[#a8a8a8] flex flex-row">
+                      {singleProduct?.price} TK
+                    </p>
+                    <span className="ms-3 text-[#ff0000]">
+                      {" "}
+                      - {singleProduct?.discount}% off
+                    </span>
+                  </div>
+                  <p className="mt-3 font-bold text-[#008f8f]">
                     Inside Dhaka city, delivery charge will be 150 TK.
                   </p>
-                  <p className="font-bold text-[#ff7f00]">
+                  <p className="font-bold text-[#008f8f]">
                     Outside Dhaka city, delivery charge will be 200 TK.
                   </p>
                 </div>
 
                 <div className="mt-5">
-                  <p className="text-[#ff7f00]">
-                    weight: <span>{singleProduct?.weight}</span>KG
-                  </p>
-                  <div>
-                    <button
-                      type="button"
-                      className="disabled mt-3 text-[#ff7f00] bg-[#f0cca8] border border-[#f0cca8] focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2"
+                  <p className="text-[#008f8f] font-bold">Sizes:</p>
+                  <RadioGroup
+                    orientation="horizontal"
+                    className="mt-3"
+                    value={selected}
+                    onValueChange={setSelected}
+                  >
+                    <Radio value="35" className="text-[#008f8f]">
+                      35
+                    </Radio>
+                    <Radio value="36">36</Radio>
+                    <Radio value="37">37</Radio>
+                    <Radio value="38">38</Radio>
+                    <Radio value="39">39</Radio>
+                    <Radio value="40">40</Radio>
+                    <Radio value="41">41</Radio>
+                  </RadioGroup>
+                </div>
+
+                <div className="mt-5">
+                  <form className="max-w-full">
+                    <label
+                      htmlFor="counter-input"
+                      className="block mb-1 text-sm font-bold text-[#008f8f]"
                     >
-                      <span>{singleProduct?.weight}</span> KG
-                    </button>
-                  </div>
+                      Quantity:
+                    </label>
+                    <div className="relative flex items-center">
+                      <button
+                        type="button"
+                        id="decrement-button"
+                        data-input-counter-decrement="counter-input"
+                        className="flex-shrink-0 bg-gray-100 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                      >
+                        <svg
+                          className="w-2.5 h-2.5 text-black"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 18 2"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M1 1h16"
+                          />
+                        </svg>
+                      </button>
+                      <input
+                        type="text"
+                        id="counter-input"
+                        data-input-counter
+                        className="flex-shrink-0 text-gray-900 border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-24 text-center"
+                        placeholder=""
+                        defaultValue={productQuantity}
+                        onChange={(e) => setProductQuantity(e.target.value)}
+                        required
+                      />
+                      <button
+                        type="button"
+                        id="increment-button"
+                        data-input-counter-increment="counter-input"
+                        className="flex-shrink-0 bg-gray-100 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                      >
+                        <svg
+                          className="w-2.5 h-2.5 text-black"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 18 18"
+                        >
+                          <path
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M9 1v16M1 9h16"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </form>
                 </div>
 
-                <div className="mt-5 border-dotted border-t-2">
-                  <h5 className="text-lg font-bold mt-1 text-[#ff7f00]">
-                    {singleProduct?.price} TK
-                  </h5>
-                </div>
-
+                <div className="mt-5 border-dotted border-t-2"></div>
                 <div className="mt-3 flex">
                   <div>
-                    <Link
-                      href={{
-                        pathname: "/checkOrder",
-                      }}
+                    <button
+                      onClick={getSingleProduct}
+                      type="button"
+                      className="flex flex-row items-center justify-center font-bold focus:outline-none text-[#008f8f] bg-[#dbfcfc] font-medium rounded-full text-sm px-5 py-2.5 me-2"
                     >
-                      <button
-                        onClick={getSingleProduct}
-                        type="button"
-                        className="font-bold focus:outline-none text-[#ff7f00] bg-[#f0cca8] font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2"
-                      >
-                        পন্যটি ক্রয় করুন
-                      </button>
-                    </Link>
+                      <PurchaseIcon />{" "}
+                      <span className="ms-4">Purchase this item</span>
+                    </button>
                   </div>
                 </div>
 
                 <div className="mt-5">
                   <div className="border-dotted border-t-2 border-b-2">
-                    <p className="p-1 text-[#ff7f00]">
+                    <p className="p-1 text-[#008f8f]">
                       SKU: <span>{singleProduct?.SKUId}</span>
                     </p>
                   </div>
                 </div>
 
-                <div className="mt-5">
-                  <p className="text-[#ff7f00]">
+                <div className="mt-3">
+                  <p className="text-[#008f8f]">
                     Categories:{" "}
                     <a href="#" className="hover:text-[#eab308]">
                       {singleProduct?.category}
@@ -138,16 +289,16 @@ const SingleProduct = ({ searchParams }) => {
             </div>
 
             <div className="mt-5">
-              <p className="text-2xl font-bold text-[#ff7f00]">
-                <span>{singleProduct?.name}</span> এর বিবরণী:
+              <p className="text-2xl font-bold text-[#008f8f] text-center mt-5">
+                Description
               </p>
-              <p className="mt-3 text-[#ff7f00]">
+              <p className="mt-3 text-[#008f8f]">
                 {singleProduct?.description}
               </p>
             </div>
 
             <div className="mt-5">
-              <p className="text-center text-2xl font-bold border-b-2 pb-2 text-[#ff7f00]">
+              <p className="text-center text-2xl font-bold border-b-2 pb-2 text-[#008f8f]">
                 Customer Reviews
               </p>
             </div>

@@ -18,12 +18,19 @@ const AdminAddProduct = () => {
     category: "",
     name: "",
     imageLink: "",
+    firstImageLink: "",
+    secondImageLink: "",
+    thirdImageLink: "",
+    fourthImageLink: "",
+    fifthImageLink: "",
     price: "",
     description: "",
-    weight: "",
+    stock: "",
+    discount: "",
     status: "pending",
     quantity: 0,
     SKUId: "",
+    sold: "",
     reviews: [],
     subCategory: "",
   });
@@ -54,58 +61,11 @@ const AdminAddProduct = () => {
     e.preventDefault();
 
     try {
-      const file = fileInputRef.current.files[0];
-
-      console.log("file: ", file);
-
-      if (file) {
-        const formData = new FormData();
-        formData.append("image", file);
-        formData.append("key", "9cf415951d8543caa0ce3bef03190e06");
-
-        const imgbbResponse = await fetch("https://api.imgbb.com/1/upload", {
-          method: "POST",
-          body: formData,
-        });
-        const imgbbResult = await imgbbResponse.json();
-
-        console.log("imgbbResult", imgbbResult);
-
-        if (imgbbResult.success) {
-          const imageUrl = imgbbResult.data.url;
-          const updatedProductFormData = {
-            ...productFormData,
-            imageLink: imageUrl,
-          };
-          const result = await productPost(updatedProductFormData);
-          console.log("products", result);
-
-          if (result) {
-            Swal.fire({
-              title: "Good job!",
-              text: "A product added successfully",
-              icon: "success",
-            });
-          }
-          if (result.error) {
-            Swal.fire({
-              title: "Oops...",
-              text: result.error,
-              icon: "error",
-            });
-          }
-        } else {
-          Swal.fire({
-            title: "Oops...",
-            text: "Image upload failed",
-            icon: "error",
-          });
-        }
-      } else {
+      const result = await productPost(productFormData);
+      if (result?.data) {
         Swal.fire({
-          title: "Oops...",
-          text: "Please select an image",
-          icon: "error",
+          title: "Product added successfully!",
+          icon: "success",
         });
       }
     } catch (err) {}
@@ -214,13 +174,80 @@ const AdminAddProduct = () => {
             </div>
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="imageLink" value="Product Image" />
+                <Label htmlFor="imageLink" value="Product thumbnail Image" />
               </div>
               <input
                 className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                id="file_input"
-                type="file"
-                ref={fileInputRef}
+                id="imageLink"
+                type="text"
+                name="imageLink"
+                value={productFormData.imageLink}
+                onChange={handleProductInputChange}
+              />
+            </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="firstImageLink" value="Product second image" />
+              </div>
+              <input
+                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                id="firstImageLink"
+                type="text"
+                name="firstImageLink"
+                value={productFormData.firstImageLink}
+                onChange={handleProductInputChange}
+              />
+            </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="secondImageLink" value="Product third image" />
+              </div>
+              <input
+                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                id="secondImageLink"
+                type="text"
+                name="secondImageLink"
+                value={productFormData.secondImageLink}
+                onChange={handleProductInputChange}
+              />
+            </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="thirdImageLink" value="Product fourth image" />
+              </div>
+              <input
+                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                id="thirdImageLink"
+                type="text"
+                name="thirdImageLink"
+                value={productFormData.thirdImageLink}
+                onChange={handleProductInputChange}
+              />
+            </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="fourthImageLink" value="Product fifth image" />
+              </div>
+              <input
+                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                id="fourthImageLink"
+                type="text"
+                name="fourthImageLink"
+                value={productFormData.fourthImageLink}
+                onChange={handleProductInputChange}
+              />
+            </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="fifthImageLink" value="Product sixth image" />
+              </div>
+              <input
+                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                id="fifthImageLink"
+                type="text"
+                name="fifthImageLink"
+                value={productFormData.fifthImageLink}
+                onChange={handleProductInputChange}
               />
             </div>
             <div>
@@ -301,15 +328,29 @@ const AdminAddProduct = () => {
 
             <div>
               <div className="mb-2 block">
-                <Label htmlFor="weight" value="Product Weight (KG)" />
+                <Label htmlFor="discount" value="Product discount %" />
               </div>
               <TextInput
-                id="weight"
-                type="number"
-                name="weight"
-                value={productFormData.weight}
+                id="discount"
+                type="text"
+                name="discount"
+                value={productFormData.discount}
                 onChange={handleProductInputChange}
-                placeholder="Product Weight (KG)"
+                placeholder="Product discount (%)"
+                required
+              />
+            </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="stock" value="Product stock" />
+              </div>
+              <TextInput
+                id="stock"
+                type="text"
+                name="stock"
+                value={productFormData.stock}
+                onChange={handleProductInputChange}
+                placeholder="Product stock"
                 required
               />
             </div>
@@ -343,8 +384,38 @@ const AdminAddProduct = () => {
                 rows={4}
               />
             </div>
-
-            <Button type="submit">Create a product</Button>
+            {productIsLoading ? (
+              <>
+                <button
+                  disabled
+                  type="button"
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+                >
+                  <svg
+                    aria-hidden="true"
+                    role="status"
+                    class="inline w-4 h-4 me-3 text-white animate-spin"
+                    viewBox="0 0 100 101"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                      fill="#E5E7EB"
+                    />
+                    <path
+                      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Loading...
+                </button>
+              </>
+            ) : (
+              <>
+                <Button type="submit">Create a product</Button>
+              </>
+            )}
           </form>
         </div>
       </section>

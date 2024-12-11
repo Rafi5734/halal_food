@@ -28,10 +28,13 @@ const PaginatedProducts = ({ currentItems }) => {
               Product
             </th>
             <th scope="col" className="px-6 py-3">
-              Weight
+              category
             </th>
             <th scope="col" className="px-6 py-3">
               Price
+            </th>
+            <th scope="col" className="px-6 py-3">
+              discount
             </th>
             <th scope="col" className="px-6 py-3 rounded-tr-lg">
               Actions
@@ -69,11 +72,15 @@ const PaginatedProducts = ({ currentItems }) => {
                     {product?.name}
                   </td>
                   <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                    {product?.weight} KG
+                    {product?.category}
                   </td>
 
                   <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                     ${product?.price}
+                  </td>
+
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {product?.discount}%
                   </td>
                   <td className="px-6 py-4 rounded-br-lg">
                     <button

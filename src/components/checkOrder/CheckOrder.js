@@ -7,10 +7,30 @@ import Swal from "sweetalert2";
 import CheckoutModal from "../checkout/checkoutModal/CheckoutModal";
 import { useRouter } from "next/navigation";
 import { clearCart, getCart } from "@/utils/CartUtils";
+import Cookies from "js-cookie";
 
 const CheckOrder = () => {
   const router = useRouter();
   const myCookieValuecookies = getCart();
+
+  var productCookieValue = Cookies.get("bisuddho_cookies");
+  const productQuantity = Cookies.get("productQuantity");
+  const size = Cookies.get("size");
+
+  productCookieValue = productCookieValue
+    ? JSON.parse(productCookieValue)
+    : null;
+
+  if (productCookieValue) {
+    // Add new properties to the object
+    productCookieValue.productQuantity = productQuantity;
+    productCookieValue.size = size;
+
+    // Log the updated object
+    console.log("Updated Product Cookie Values:", productCookieValue);
+  } else {
+    console.error("No productCookieValues found in cookies.");
+  }
 
   const [checkoutFormData, setCheckoutFormData] = useState({
     fullName: "",
@@ -23,7 +43,7 @@ const CheckOrder = () => {
     order: [],
   });
   const [openModal, setOpenModal] = useState(false);
-  const [checkoutPost] = useCheckoutPostMutation();
+  const [checkoutPost, { isLoading: orderLoader }] = useCheckoutPostMutation();
 
   const handleCheckoutInputChange = (event) => {
     const { name, value } = event.target;
@@ -33,38 +53,26 @@ const CheckOrder = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    // Retrieve the cookie data (already in array format)
-    const cookies = getCart(); // Assuming this returns an array directly
+    checkoutFormData.order.push(productCookieValue);
 
-    // Check if cookies exist
-    if (cookies && Array.isArray(cookies)) {
-      // Instead of relying on async state, use the latest form data directly
-      const updatedCheckoutFormData = {
-        ...checkoutFormData,
-        order: cookies, // Directly assign the cookies array to the 'order' property
-      };
+    console.log("checkoutFormData", checkoutFormData);
 
+    const result = await checkoutPost(checkoutFormData);
+    console.log("result", result);
+    if (result?.data) {
       setOpenModal(true);
-
-      // Now, submit the data (API call or further logic)
-      const result = await checkoutPost(updatedCheckoutFormData);
-      if (result) {
-        Swal.fire({
-          title: "Good job!",
-          text: "You successfully ordered the product",
-          icon: "success",
-        });
-        setOpenModal(true);
-      }
-    } else {
-      console.error("No cookies found or cookies are not in array format!");
+      Swal.fire({
+        title: "Good job!",
+        text: "You successfully ordered this product",
+        icon: "success",
+      });
     }
   };
 
   const handleOrderCompleted = () => {
     setOpenModal(false);
     router.push("/");
-    clearCart(); // Clear cart on order completion
+    clearCart();
   };
 
   return (
@@ -72,7 +80,7 @@ const CheckOrder = () => {
       <div className="container mx-auto mt-8">
         <div className="text-center">
           <div className="flex justify-center">
-            <span className="text-4xl font-bold text-[#ff7f00]">
+            <span className="text-4xl font-bold text-[#008f8f]">
               Checkout Details
             </span>
           </div>
@@ -87,9 +95,9 @@ const CheckOrder = () => {
                   <div className="col-span-full">
                     <label
                       htmlFor="full_name"
-                      className="block text-sm font-bold leading-6 text-[#ff7f00]"
+                      className="block text-sm font-bold leading-6 text-[#008f8f]"
                     >
-                      পুরো নাম
+                      Your full name
                     </label>
                     <div className="mt-2">
                       <input
@@ -98,9 +106,9 @@ const CheckOrder = () => {
                         value={checkoutFormData.fullName}
                         onChange={handleCheckoutInputChange}
                         id="full_name"
-                        placeholder="আপনার পুরো নাম লিখুন"
+                        placeholder="Enter your full name"
                         autoComplete="full_name"
-                        className="block w-full rounded-md border-0 py-1.5 text-[#ff7f00] shadow-sm ring-1 ring-inset ring-[#ff7f00] placeholder:text-[#ff7f00] focus:ring-2 focus:ring-inset focus:ring-[#ff7f00] sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
                         required
                       />
                     </div>
@@ -110,9 +118,9 @@ const CheckOrder = () => {
                   <div className="col-span-full">
                     <label
                       htmlFor="phone_number"
-                      className="block text-sm font-bold leading-6 text-[#ff7f00]"
+                      className="block text-sm font-bold leading-6 text-[#008f8f]"
                     >
-                      ফোন নাম্বার
+                      Your phone number
                     </label>
                     <div className="mt-2">
                       <input
@@ -122,8 +130,8 @@ const CheckOrder = () => {
                         onChange={handleCheckoutInputChange}
                         id="phone_number"
                         autoComplete="phone_number"
-                        placeholder="ফোন নাম্বার লিখুন"
-                        className="block w-full rounded-md border-0 py-1.5 text-[#ff7f00] shadow-sm ring-1 ring-inset ring-[#ff7f00] placeholder:text-[#ff7f00] focus:ring-2 focus:ring-inset focus:ring-[#ff7f00] sm:text-sm sm:leading-6"
+                        placeholder="Enter your phone number"
+                        className="block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
                         required
                       />
                     </div>
@@ -133,9 +141,9 @@ const CheckOrder = () => {
                   <div className="col-span-full">
                     <label
                       htmlFor="address"
-                      className="block text-sm font-bold leading-6 text-[#ff7f00]"
+                      className="block text-sm font-bold leading-6 text-[#008f8f]"
                     >
-                      ঠিকানা
+                      Your address
                     </label>
                     <div className="mt-2">
                       <input
@@ -145,8 +153,8 @@ const CheckOrder = () => {
                         onChange={handleCheckoutInputChange}
                         id="address"
                         autoComplete="address"
-                        placeholder="আপনার ঠিকানা লিখুন"
-                        className="block w-full rounded-md border-0 py-1.5 text-[#ff7f00] shadow-sm ring-1 ring-inset ring-[#ff7f00] placeholder:text-[#ff7f00] focus:ring-2 focus:ring-inset focus:ring-[#ff7f00] sm:text-sm sm:leading-6"
+                        placeholder="Enter your full address"
+                        className="block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
                         required
                       />
                     </div>
@@ -156,9 +164,9 @@ const CheckOrder = () => {
                   <div className="col-span-full">
                     <label
                       htmlFor="thana_district"
-                      className="block text-sm font-bold leading-6 text-[#ff7f00]"
+                      className="block text-sm font-bold leading-6 text-[#008f8f]"
                     >
-                      থানা এবং জেলা
+                      Thana & Zilla
                     </label>
                     <div className="mt-2">
                       <input
@@ -167,9 +175,9 @@ const CheckOrder = () => {
                         value={checkoutFormData.thanaDistrict}
                         onChange={handleCheckoutInputChange}
                         id="thana_district"
-                        placeholder="আপনার থানা এবং জেলা নাম লিখুন"
+                        placeholder="Enter your thana & zilla"
                         autoComplete="thana_district"
-                        className="block w-full rounded-md border-0 py-1.5 text-[#ff7f00] shadow-sm ring-1 ring-inset ring-[#ff7f00] placeholder:text-[#ff7f00] focus:ring-2 focus:ring-inset focus:ring-[#ff7f00] sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
                         required
                       />
                     </div>
@@ -178,28 +186,59 @@ const CheckOrder = () => {
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="w-full mt-8 bg-[#f0cca8] pt-3 pb-3 rounded-full"
-            >
-              <span className="text-[#ff7f00] font-bold">
-                অর্ডারটি সম্পূর্ণ করুন
-              </span>
-            </button>
+            {orderLoader ? (
+              <>
+                <button
+                  disabled
+                  type="button"
+                  className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+                >
+                  <svg
+                    aria-hidden="true"
+                    role="status"
+                    className="inline w-4 h-4 me-3 text-white animate-spin"
+                    viewBox="0 0 100 101"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                      fill="#E5E7EB"
+                    />
+                    <path
+                      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Loading...
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  type="submit"
+                  className="w-full mt-8 bg-[#dbfcfc] pt-3 pb-3 rounded-full"
+                >
+                  <span className="text-[#008f8f] font-bold">
+                    Complete your order
+                  </span>
+                </button>
+              </>
+            )}
 
             <Modal show={openModal} onClose={() => handleOrderCompleted()}>
               <Modal.Header>Invoice</Modal.Header>
               <Modal.Body>
                 <div className="space-y-6">
-                  <CheckoutModal myCookieValuecookies={myCookieValuecookies} />
+                  <CheckoutModal productCookieValue={productCookieValue} />
                 </div>
               </Modal.Body>
               <Modal.Footer>
                 <button
-                  className="bg-[#f0cca8] p-3 rounded-full text-[#ff7f00]"
+                  className="bg-[#dbfcfc] p-3 rounded-full text-[#008f8f]"
                   onClick={() => handleOrderCompleted()}
                 >
-                  অর্ডারটি সম্পন্ন হয়েছে
+                  Order completed!
                 </button>
               </Modal.Footer>
             </Modal>

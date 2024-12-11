@@ -9,8 +9,9 @@ import { NextUIProvider } from "@nextui-org/react";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "E-Commerce Website.",
-  description: "This is multi-product E-commerce website",
+  title: "Jeckostyle ",
+  description:
+    "We are promised to offer your desire products with very reasonable price and authentic quality. We never compromise with quality. pls make us your fashion partner. we are sourcing products from renowned Stores from all over the world. Happy Shipping.",
 };
 
 export default function RootLayout({ children }) {

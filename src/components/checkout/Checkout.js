@@ -43,7 +43,7 @@ const Checkout = () => {
     <div className="container mx-auto mt-8">
       <div className="text-center">
         <div className="flex justify-center">
-          <span className="text-4xl font-bold text-[#ff7f00]">
+          <span className="text-4xl font-bold text-[#008f8f]">
             Checkout Details
           </span>{" "}
         </div>
@@ -59,7 +59,7 @@ const Checkout = () => {
                     htmlFor="full_name"
                     className="block text-sm font-bold leading-6 text-gray-900"
                   >
-                    পুরো নাম
+                    Your full name
                   </label>
                   <div className="mt-2">
                     <input

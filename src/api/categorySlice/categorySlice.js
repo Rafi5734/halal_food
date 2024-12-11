@@ -26,6 +26,13 @@ export const categorySlice = createApi({
       query: (categoryId) => `/category/${categoryId}`,
       providesTags: ["category"],
     }),
+    deleteCategory: builder.mutation({
+      query: ({ categoryId }) => ({
+        url: `/category/${categoryId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["category"],
+    }),
     updateSingleCategory: builder.mutation({
       query: ({ categoryId, category }) => ({
         url: `/category/${categoryId}`,
@@ -45,4 +52,5 @@ export const {
   useGetAllCategoriesQuery,
   useGetSingleCategoryQuery,
   useUpdateSingleCategoryMutation,
+  useDeleteCategoryMutation,
 } = categorySlice;

@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+// import { Image } from "@nextui-org/react";
 
 const MainBanner = () => {
   return (
@@ -35,6 +36,7 @@ const MainBanner = () => {
             alt="Picture of the banner"
             placeholder="blur"
             sizes="(max-width: 100%)"
+            className="w-full h-[840px]"
           />
         </SwiperSlide>
         <SwiperSlide>

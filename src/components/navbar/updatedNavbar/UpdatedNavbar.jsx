@@ -43,11 +43,11 @@ const UpdatedNavbar = () => {
   };
 
   return (
-    <div className="bg-[#f37c00] p-4">
+    <div className="bg-[#008f8f] p-4">
       <div className="container mx-auto flex flex-row w-full justify-between items-center">
         <Link href="/">
           <Image
-            width="40%"
+            width="30%"
             radius="full"
             src="https://scontent.fdac152-1.fna.fbcdn.net/v/t39.30808-6/467330360_122123224022479439_3102209727832358549_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeE_h6PlHOV86X1O00cNdi6gkhmhee2PIe6SGaF57Y8h7qMaunDSvc_uERTkgub7xgqnpcmjul8EowxgKVdIdtwx&_nc_ohc=edLjFhEtCiQQ7kNvgHvW2L1&_nc_zt=23&_nc_ht=scontent.fdac152-1.fna&_nc_gid=AeL_tnKwq7PppKVIeBIkXms&oh=00_AYB_TM7S-BTyikHIxwaYAyorxBCE7eIQQv6ao9hLLlecZA&oe=675C56A9"
             alt="jeckostyle logo"
@@ -64,7 +64,7 @@ const UpdatedNavbar = () => {
                 <div className="relative">
                   <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                     <svg
-                      className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                      className="w-4 h-4 text-gray-500"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -97,7 +97,7 @@ const UpdatedNavbar = () => {
                   >
                     <button
                       type="submit"
-                      className="rounded-full text-white absolute end-2.5 bottom-2.5 bg-[#f37c00] hover:bg-[#E89135] focus:ring-4 focus:outline-none focus:ring-[#EAB378] font-medium text-sm px-4 py-2"
+                      className="rounded-full text-white absolute end-2.5 bottom-2.5 bg-[#008f8f] font-medium text-sm px-4 py-2"
                     >
                       Search
                     </button>
@@ -116,7 +116,7 @@ const UpdatedNavbar = () => {
                   <input
                     type="search"
                     id="default-search"
-                    className="w-96 p-4 ps-5 text-sm text-[#f37c00] font-medium border border-gray-300 rounded-full bg-white focus:ring-white focus:border-white"
+                    className="w-96 p-4 ps-5 text-sm text-[#008f8f] font-medium border border-gray-300 rounded-full bg-white focus:ring-white focus:border-white"
                     placeholder="Search your products..."
                     required
                     onChange={(e) => {
@@ -131,7 +131,7 @@ const UpdatedNavbar = () => {
                   >
                     <button
                       type="submit"
-                      className="rounded-full text-white absolute end-2.5 bottom-2.5 bg-[#f37c00] hover:bg-[#E89135] focus:ring-4 focus:outline-none focus:ring-[#EAB378] font-medium text-sm px-4 py-2"
+                      className="rounded-full text-white absolute end-2.5 bottom-2.5 bg-[#008f8f] font-medium text-sm px-4 py-2"
                     >
                       <svg
                         className="w-4 h-4 text-white"
@@ -277,7 +277,7 @@ const UpdatedNavbar = () => {
             <Button
               className="me-2 text-white"
               color="primary"
-              variant="bordered"
+              // variant="bordered"
               key={category?.category}
             >
               <Link

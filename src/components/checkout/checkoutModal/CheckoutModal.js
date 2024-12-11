@@ -10,42 +10,42 @@ import {
 import Image from "next/image";
 import { calculateTotalPrice } from "@/utils/CartUtils";
 
-const CheckoutModal = ({ myCookieValuecookies }) => {
-  // console.log("product quantity", productQuantity);
+const CheckoutModal = ({ productCookieValue }) => {
+  console.log("productCookieValue", productCookieValue);
 
-  const totalPrice = calculateTotalPrice();
   return (
-    <div className="">
+    <div className="w-full">
       <div className="overflow-x-auto">
         <Table striped>
           <TableHead className="">
+            <TableHeadCell>Product image</TableHeadCell>
             <TableHeadCell>Product name</TableHeadCell>
             <TableHeadCell>QTY</TableHeadCell>
             <TableHeadCell>Price</TableHeadCell>
-            <TableHeadCell>Total</TableHeadCell>
+            <TableHeadCell>discount</TableHeadCell>
           </TableHead>
           <TableBody className="divide-y">
-            {myCookieValuecookies?.map((product) => (
-              <TableRow
-                key={product._id}
-                className="bg-white dark:border-gray-700 dark:bg-gray-800"
-              >
-                <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  <Image
-                    src={product?.imageLink}
-                    width={150}
-                    className="rounded-md"
-                    height={150}
-                    sizes="(max-width: 100%)"
-                    alt="checkout_product_img"
-                  />
-                  <p className="mt-2 text-[#d19c22]">{product?.name}</p>
-                </TableCell>
-                <TableCell>{product?.quantity}</TableCell>
-                <TableCell>${product?.price}</TableCell>
-                <TableCell>${product?.quantity * product?.price}</TableCell>
-              </TableRow>
-            ))}
+            <TableRow className="bg-white">
+              <TableCell className="whitespace-nowrap font-medium text-gray-900">
+                <Image
+                  src={productCookieValue?.imageLink}
+                  width={150}
+                  className="rounded-md"
+                  height={150}
+                  sizes="(max-width: 100%)"
+                  alt="checkout_product_img"
+                />
+              </TableCell>
+              <TableCell>{productCookieValue?.name}</TableCell>
+              <TableCell>{productCookieValue?.productQuantity}</TableCell>
+              <TableCell>
+                $
+                {productCookieValue?.price -
+                  (productCookieValue?.price * productCookieValue?.discount) /
+                    100}
+              </TableCell>
+              <TableCell>{productCookieValue?.discount}%</TableCell>
+            </TableRow>
           </TableBody>
         </Table>
       </div>

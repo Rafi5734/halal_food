@@ -71,7 +71,7 @@ const CommentSection = ({ singleProduct }) => {
       <section className="bg-white py-8 lg:py-16 antialiased">
         <div className=" mx-auto px-4">
           <div className="flex mb-6">
-            <h2 className="text-lg lg:text-2xl font-bold text-[#ff7f00]">
+            <h2 className="text-lg lg:text-2xl font-bold text-[#008f8f]">
               Comment (<span>{singleProduct?.reviews?.length}</span>)
             </h2>
           </div>
@@ -82,14 +82,14 @@ const CommentSection = ({ singleProduct }) => {
                 value={formData.text}
                 onChange={handleCommentInputChange}
                 rows="6"
-                className="px-0 w-full text-sm text-[#ff7f00] border-0 focus:ring-0 focus:outline-none"
+                className="px-0 w-full text-sm text-[#008f8f] border-0 focus:ring-0 focus:outline-none"
                 placeholder="Write a comment..."
                 required
               ></textarea>
             </div>
             <button
               type="submit"
-              className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-[#ff7f00] bg-[#f0cca8] rounded-lg border border-[#f0cca8]"
+              className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-[#008f8f] bg-[#dbfcfc] rounded-lg border border-[#008f8f]"
             >
               Post a comment
             </button>

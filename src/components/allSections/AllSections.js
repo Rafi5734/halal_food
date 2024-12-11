@@ -12,9 +12,7 @@ import { addToCart, getCart } from "@/utils/CartUtils";
 const AllSections = () => {
   const { data: getAllProducts } = useGetAllProductsQuery();
 
-  useEffect(() => {
-    const initialCart = getCart();
-  }, []);
+  // console.log("getAllProducts", getAllProducts);
 
   if (!getAllProducts || getAllProducts?.length === 0) {
     return <Loader />;
@@ -50,7 +48,7 @@ const AllSections = () => {
               <hr />
             </div>
             <div className="">
-              <h2 className="text-center font-bold text-4xl text-[#ff7f00] text-wrap mb-8 border-b-1 border-[#ff7f00]">
+              <h2 className="text-center font-bold text-4xl text-[#008f8f] text-wrap mb-8 border-b-1 border-[#008f8f]">
                 {category}
               </h2>
             </div>
@@ -61,7 +59,10 @@ const AllSections = () => {
 
           <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 lg:gap-3 md:gap-2 sm:gap-2">
             {groupedProducts[category].map((product) => (
-              <Card key={product?._id} className="bg-[#f0cca8] shadow-md">
+              <Card
+                key={product?._id}
+                className="bg-[#dbfcfc] shadow-md relative overflow-hidden"
+              >
                 <CardBody className="overflow-hidden">
                   <Image
                     isZoomed
@@ -70,14 +71,14 @@ const AllSections = () => {
                     src={product?.imageLink}
                     width="100%"
                   />
-                  <h5 className="text-xl tracking-tight text-[#ff7f00] font-bold mt-2">
+                  <h5 className="text-xl tracking-tight text-[#008f8f] font-bold mt-2">
                     {product?.name}
                   </h5>
                   <div className="flex justify-center items-center mt-2 mb-5 flex items-center justify-between">
                     <p className="">
                       <span className="flex justify-center items-center text-3xl font-bold text-slate-900">
                         <svg
-                          fill="#ff7f00"
+                          fill="#008f8f"
                           width="30px"
                           height="30px"
                           viewBox="0 0 24 24"
@@ -96,11 +97,15 @@ const AllSections = () => {
                             <path
                               id="primary"
                               d="M18,11a1,1,0,0,0-1,1v4.5a3.5,3.5,0,0,1-7,0V12h2a1,1,0,0,0,0-2H10V6A4,4,0,0,0,6,2,1,1,0,0,0,6,4,2,2,0,0,1,8,6v4H6a1,1,0,0,0,0,2H8v4.5a5.5,5.5,0,0,0,11,0V12A1,1,0,0,0,18,11Z"
-                              style={{ fill: "#ff7f00" }}
+                              style={{ fill: "#008f8f" }}
                             ></path>
                           </g>
                         </svg>
-                        <span className="text-center text-[#ff7f00]">
+                        <span className="text-center text-[#008f8f]">
+                          {product?.price -
+                            (product?.price * product?.discount) / 100}
+                        </span>
+                        <span className="line-through text-[#a8a8a8] ms-4">
                           {product?.price}
                         </span>
                       </span>
@@ -110,9 +115,8 @@ const AllSections = () => {
                     <Button
                       radius="full"
                       color="primary"
-                      className="bg-[#ff7f00]"
+                      className="bg-[#008f8f]"
                       startContent={<ProductIcon />}
-                      // onClick={() => addToCart(product)}
                       onClick={() => handleStoreProduct(product)}
                     >
                       Add to cart
@@ -125,7 +129,7 @@ const AllSections = () => {
                     >
                       <Button
                         href="#"
-                        className="w-full flex items-center justify-center rounded-full bg-[#ff7f00] px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none"
+                        className="w-full flex items-center justify-center rounded-full bg-[#008f8f] px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none"
                       >
                         <svg
                           width="25px"
@@ -139,8 +143,8 @@ const AllSections = () => {
                           <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                           <g
                             id="SVGRepo_tracerCarrier"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                           ></g>
                           <g id="SVGRepo_iconCarrier">
                             {" "}
@@ -166,9 +170,14 @@ const AllSections = () => {
                             </g>{" "}
                           </g>
                         </svg>
-                        পন্যটি দেখুন
+                        See details
                       </Button>
                     </Link>
+                    <div className="absolute right-0 top-0 h-16 w-16 z-50">
+                      <div className="absolute transform rotate-45 bg-green-600 text-center text-white font-semibold py-1 right-[-35px] top-[32px] w-[170px]">
+                        {product?.discount}% off
+                      </div>
+                    </div>
                   </div>
                 </CardBody>
               </Card>
