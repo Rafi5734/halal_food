@@ -11,8 +11,6 @@ import Image from "next/image";
 import { calculateTotalPrice } from "@/utils/CartUtils";
 
 const CheckoutModal = ({ productCookieValue }) => {
-  console.log("productCookieValue", productCookieValue);
-
   return (
     <div className="w-full">
       <div className="overflow-x-auto">

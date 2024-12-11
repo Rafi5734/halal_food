@@ -25,9 +25,6 @@ const CheckOrder = () => {
     // Add new properties to the object
     productCookieValue.productQuantity = productQuantity;
     productCookieValue.size = size;
-
-    // Log the updated object
-    console.log("Updated Product Cookie Values:", productCookieValue);
   } else {
     console.error("No productCookieValues found in cookies.");
   }
@@ -55,10 +52,7 @@ const CheckOrder = () => {
 
     checkoutFormData.order.push(productCookieValue);
 
-    console.log("checkoutFormData", checkoutFormData);
-
     const result = await checkoutPost(checkoutFormData);
-    console.log("result", result);
     if (result?.data) {
       setOpenModal(true);
       Swal.fire({
