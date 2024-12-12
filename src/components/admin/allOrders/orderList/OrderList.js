@@ -41,7 +41,13 @@ const OrderList = () => {
                 Price
               </th>
               <th scope="col" className="px-6 py-3">
-                Total
+                Discount
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Discount Price
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Total Price
               </th>
               <th scope="col" className="px-6 py-3">
                 Address
@@ -79,14 +85,24 @@ const OrderList = () => {
                         </td>
                       )}
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                        {order?.quantity}
+                        {JSON.parse(order?.productQuantity)}
+                      </td>
+                      <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-nowrap">
+                        $ {order?.price}
                       </td>
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                        $ {order?.price}
+                        {order?.discount}%
                       </td>
 
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                        $ {order?.quantity * order?.price}
+                        ${" "}
+                        {order?.price - (order?.price * order?.discount) / 100}
+                      </td>
+                      <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                        ${" "}
+                        {Number(
+                          order?.price - (order?.price * order?.discount) / 100
+                        ) * Number(JSON.parse(order?.productQuantity))}
                       </td>
 
                       {index === 0 && (

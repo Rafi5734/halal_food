@@ -67,9 +67,10 @@ const AllSections = () => {
                   <Image
                     isZoomed
                     alt="Card background"
-                    className="object-cover rounded-xl"
+                    className="object-cover rounded-xl h-[400px]"
                     src={product?.imageLink}
                     width="100%"
+                    
                   />
                   <h5 className="text-xl tracking-tight text-[#008f8f] font-bold mt-2">
                     {product?.name}
