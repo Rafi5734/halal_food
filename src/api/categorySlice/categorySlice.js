@@ -27,8 +27,8 @@ export const categorySlice = createApi({
       providesTags: ["category"],
     }),
     deleteCategory: builder.mutation({
-      query: ({ categoryId }) => ({
-        url: `/category/${categoryId}`,
+      query: (id) => ({
+        url: `/category/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["category"],
