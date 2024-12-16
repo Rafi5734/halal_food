@@ -70,7 +70,7 @@ const CheckOrder = () => {
   };
 
   return (
-    <div>
+    <div className="ps-5 pe-5">
       <div className="container mx-auto mt-8">
         <div className="text-center">
           <div className="flex justify-center">

@@ -28,8 +28,8 @@ const Page = ({ searchParams }) => {
   }, [ProductList, searchParams?.searchItem]);
 
   return (
-    <div>
-      <p className="text-center text-3xl font-bold text-[#ff7f00] mt-6 mb-6">
+    <div className="ps-4 pe-4">
+      <p className="text-center text-3xl font-bold text-[#008f8f] mt-6 mb-6">
         Search Items
       </p>
       {filteredProducts?.length > 0 ? (
@@ -41,7 +41,7 @@ const Page = ({ searchParams }) => {
               {filteredProducts?.map((product, index) => (
                 <div
                   key={index}
-                  className="w-full relative flex flex-row rounded-lg border border-[#f0cca8] bg-[#f0cca8] shadow-md"
+                  className="w-full relative flex flex-row rounded-lg border border-[#dbfcfc] bg-[#dbfcfc] shadow-md"
                 >
                   <div>
                     <Link
@@ -68,7 +68,7 @@ const Page = ({ searchParams }) => {
                           query: { _id: product._id },
                         }}
                       >
-                        <h5 className="text-xl tracking-tight text-[#ff7f00] font-bold">
+                        <h5 className="text-xl tracking-tight text-[#008f8f] font-bold">
                           {product?.name}
                         </h5>
                       </Link>
@@ -76,7 +76,7 @@ const Page = ({ searchParams }) => {
                         <p className="">
                           <span className="flex justify-center items-center text-3xl font-bold text-slate-900">
                             <svg
-                              fill="#ff7f00"
+                              fill="#008f8f"
                               width="30px"
                               height="30px"
                               viewBox="0 0 24 24"
@@ -95,17 +95,18 @@ const Page = ({ searchParams }) => {
                                 <path
                                   id="primary"
                                   d="M18,11a1,1,0,0,0-1,1v4.5a3.5,3.5,0,0,1-7,0V12h2a1,1,0,0,0,0-2H10V6A4,4,0,0,0,6,2,1,1,0,0,0,6,4,2,2,0,0,1,8,6v4H6a1,1,0,0,0,0,2H8v4.5a5.5,5.5,0,0,0,11,0V12A1,1,0,0,0,18,11Z"
-                                  style={{ fill: "#ff7f00" }}
+                                  style={{ fill: "#008f8f" }}
                                 ></path>
                               </g>
                             </svg>
-                            <span className="text-center text-[#ff7f00]">
+                            <span className="text-center text-[#008f8f]">
+                              {product?.price -
+                                (product?.price * product?.discount) / 100}
+                            </span>
+                            <span className="line-through text-[#a8a8a8] ms-4">
                               {product?.price}
                             </span>
                           </span>
-                          {/* <span className="text-sm text-slate-900 line-through ms-3">
-                    $699
-                  </span> */}
                         </p>
                       </div>
                       <div className="">
@@ -117,7 +118,7 @@ const Page = ({ searchParams }) => {
                         >
                           <button
                             href="#"
-                            className="w-full flex items-center justify-center rounded-full bg-[#ff7f00] px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none"
+                            className="w-full flex items-center justify-center rounded-full bg-[#008f8f] px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none"
                           >
                             <svg
                               width="25px"
@@ -158,7 +159,7 @@ const Page = ({ searchParams }) => {
                                 </g>{" "}
                               </g>
                             </svg>
-                            পন্যটি দেখুন
+                            See product
                           </button>
                         </Link>
                       </div>

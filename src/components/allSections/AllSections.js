@@ -66,8 +66,8 @@ const AllSections = () => {
                 <CardBody className="overflow-hidden">
                   <Image
                     isZoomed
-                    alt="Card background"
-                    className="object-cover rounded-xl h-[400px]"
+                    alt={product?.imageLink}
+                    className="object-cover rounded-xl w-full h-[400px]"
                     src={product?.imageLink}
                     width="100%"
                     
@@ -113,7 +113,7 @@ const AllSections = () => {
                     </p>
                   </div>
                   <div className="flex flex-row justify-between">
-                    <Button
+                    {/* <Button
                       radius="full"
                       color="primary"
                       className="bg-[#008f8f]"
@@ -121,8 +121,9 @@ const AllSections = () => {
                       onClick={() => handleStoreProduct(product)}
                     >
                       Add to cart
-                    </Button>
+                    </Button> */}
                     <Link
+                    className="w-full"
                       href={{
                         pathname: "/singleProduct",
                         query: { _id: product._id },

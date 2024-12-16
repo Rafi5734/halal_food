@@ -228,7 +228,7 @@ const UpdatedNavbar = () => {
             </DropdownMenu>
           </Dropdown>
 
-          <Badge content={cartLength?.length} shape="circle" color="default">
+          {/* <Badge content={cartLength?.length} shape="circle" color="default">
             <Link href="/cart">
               <Button
                 radius="full"
@@ -239,7 +239,7 @@ const UpdatedNavbar = () => {
                 <Cart size={24} />
               </Button>
             </Link>
-          </Badge>
+          </Badge> */}
           {width && width <= 870 ? (
             <>
               <div className="flex items-center gap-4">
