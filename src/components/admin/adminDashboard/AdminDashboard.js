@@ -25,7 +25,7 @@ const AdminDashboard = () => {
         style={{ backgroundColor: "#1f2937" }}
         className={` ${
           open ? "w-72" : "w-20 "
-        } h-screen p-5 relative duration-300 rounded-lg`}
+        } h-screen p-5 relative duration-300`}
       >
         <Image
           src={control_img}
@@ -34,15 +34,6 @@ const AdminDashboard = () => {
           onClick={() => setOpen(!open)}
           alt="control_img"
         />
-        <div className="flex items-center">
-          <Image
-            src={logo_main}
-            alt="logo_main"
-            className={`cursor-pointer duration-500 w-40 ${
-              open && "rotate-[360deg]"
-            }`}
-          />
-        </div>
         <ul className="">
           <Link href="/admin/addProduct">
             <li

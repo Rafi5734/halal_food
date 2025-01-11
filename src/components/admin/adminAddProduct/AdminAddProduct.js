@@ -18,11 +18,6 @@ const AdminAddProduct = () => {
     category: "",
     name: "",
     imageLink: "",
-    firstImageLink: "",
-    secondImageLink: "",
-    thirdImageLink: "",
-    fourthImageLink: "",
-    fifthImageLink: "",
     price: "",
     description: "",
     stock: "",
@@ -131,9 +126,9 @@ const AdminAddProduct = () => {
   };
   return (
     <main className="">
-      <p className="text-center text-4xl mt-5 font-bold mb-10">Add product</p>
+      <p className="text-center text-4xl mt-5 font-bold mb-10">Add a product</p>
       <section className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-3">
-        <form className="" onSubmit={handleFormSubmit}>
+        <form className="ms-4" onSubmit={handleFormSubmit}>
           <div className="bg-[#111827] rounded-lg p-3">
             <div className="mb-2 block">
               <Label htmlFor="category" value="Create a product category" />
@@ -182,71 +177,6 @@ const AdminAddProduct = () => {
                 type="text"
                 name="imageLink"
                 value={productFormData.imageLink}
-                onChange={handleProductInputChange}
-              />
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="firstImageLink" value="Product second image" />
-              </div>
-              <input
-                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                id="firstImageLink"
-                type="text"
-                name="firstImageLink"
-                value={productFormData.firstImageLink}
-                onChange={handleProductInputChange}
-              />
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="secondImageLink" value="Product third image" />
-              </div>
-              <input
-                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                id="secondImageLink"
-                type="text"
-                name="secondImageLink"
-                value={productFormData.secondImageLink}
-                onChange={handleProductInputChange}
-              />
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="thirdImageLink" value="Product fourth image" />
-              </div>
-              <input
-                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                id="thirdImageLink"
-                type="text"
-                name="thirdImageLink"
-                value={productFormData.thirdImageLink}
-                onChange={handleProductInputChange}
-              />
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="fourthImageLink" value="Product fifth image" />
-              </div>
-              <input
-                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                id="fourthImageLink"
-                type="text"
-                name="fourthImageLink"
-                value={productFormData.fourthImageLink}
-                onChange={handleProductInputChange}
-              />
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="fifthImageLink" value="Product sixth image" />
-              </div>
-              <input
-                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                id="fifthImageLink"
-                type="text"
-                name="fifthImageLink"
-                value={productFormData.fifthImageLink}
                 onChange={handleProductInputChange}
               />
             </div>
