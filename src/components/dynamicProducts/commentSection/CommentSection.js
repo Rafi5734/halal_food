@@ -128,7 +128,7 @@ const CommentSection = ({ singleProduct }) => {
                   </DropdownItem>
                 </Dropdown> */}
               </footer>
-              <p className="text-gray-500">{comment?.text}</p>
+              <p className="text-[#000000]">{comment?.text}</p>
             </article>
           ))}
         </div>

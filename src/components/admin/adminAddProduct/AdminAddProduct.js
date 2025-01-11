@@ -7,6 +7,7 @@ import {
 } from "@/api/categorySlice/categorySlice";
 import Swal from "sweetalert2";
 import { useProductPostMutation } from "@/api/productSlice/productSlice";
+import axios from "axios";
 const AdminAddProduct = () => {
   const fileInputRef = useRef(null);
   const [categoryPost, { isLoading }] = useCategoryPostMutation();
@@ -14,6 +15,8 @@ const AdminAddProduct = () => {
     useProductPostMutation();
   const { data: categoryData, isLoading: getAllCategoriesIsLoading } =
     useGetAllCategoriesQuery();
+  const [imageUploading, setImageUploading] = useState(false);
+
   const [productFormData, setProductFormData] = useState({
     category: "",
     name: "",
@@ -52,6 +55,49 @@ const AdminAddProduct = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  const handleImageUpload = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "unsigned_images"); // Replace with your Cloudinary preset
+
+    setImageUploading(true);
+
+    try {
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/dhojflhbx/image/upload`,
+        formData
+      );
+      
+      setProductFormData((prevData) => ({
+        ...prevData,
+        imageLink: response.data.secure_url,
+      }));
+      const originalImage = productFormData?.imageLink
+      // Transform Cloudinary link to add width
+      const transformedImage = originalImage.replace(
+        "/upload/",
+        "/upload/w_500/" // Adjust width to 500px
+      );
+      console.log(transformedImage);
+      Swal.fire({
+        title: "Success!",
+        text: "Image uploaded successfully.",
+        icon: "success",
+      });
+    } catch (error) {
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to upload image.",
+        icon: "error",
+      });
+    } finally {
+      setImageUploading(false);
+    }
+  };
+
   const handleProductFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -65,13 +111,6 @@ const AdminAddProduct = () => {
       }
     } catch (err) {}
   };
-
-  useEffect(() => {
-    if (productFormData) {
-      setSubCategory(productFormData?.category);
-      setSubCategory2(productFormData?.category);
-    }
-  }, [productFormData]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -167,7 +206,7 @@ const AdminAddProduct = () => {
                 required
               />
             </div>
-            <div>
+            {/* <div>
               <div className="mb-2 block">
                 <Label htmlFor="imageLink" value="Product thumbnail Image" />
               </div>
@@ -179,6 +218,26 @@ const AdminAddProduct = () => {
                 value={productFormData.imageLink}
                 onChange={handleProductInputChange}
               />
+            </div> */}
+            <div>
+              <Label htmlFor="imageLink" value="Product Image" />
+              <input
+                type="file"
+                id="imageLink"
+                name="imageLink"
+                onChange={handleImageUpload}
+                accept="image/*"
+                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+                required
+              />
+              {imageUploading && <p>Uploading...</p>}
+              {productFormData.imageLink && (
+                <img
+                  src={productFormData.imageLink}
+                  alt="Uploaded"
+                  className="mt-2 w-32 h-32 object-cover"
+                />
+              )}
             </div>
             <div>
               <div className="mb-2 block">

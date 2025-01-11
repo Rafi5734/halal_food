@@ -4,15 +4,9 @@ import Loader from "@/styles/Loader/Loader";
 import Link from "next/link";
 import React from "react";
 import { Tabs, Tab, Card, CardBody, Image, Button } from "@nextui-org/react";
-import Subcategory1 from "@/components/subcategory/Female/Subcategory1";
-import SubCategory2 from "@/components/subcategory/Male/SubCategory2";
-import SubCategory3 from "@/components/subcategory/easy/Subcategory3";
-import SubCategory4 from "@/components/subcategory/deshal/Subgategory4";
-import SubCategory5 from "@/components/subcategory/arong/Subgategory5";
 import LakmeCategory from "@/components/subcategory/lakme/LakmeCategory";
 import ImagicCategory from "@/components/subcategory/imagic/ImagicCategory";
 import SheglamCategory from "@/components/subcategory/sheglam/SheglamCategory";
-import ProductIcon from "@/assets/ProductIcon";
 
 const CategoryProducts = ({ searchParams }) => {
   const { data: popularProductList, isLoading } = useGetAllProductsQuery();
@@ -21,14 +15,18 @@ const CategoryProducts = ({ searchParams }) => {
     (product) => product.category === searchParams?.category
   );
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className="ps-5 pe-5">
-      <p className="text-center text-4xl font-bold text-[#008f8f] mt-10 mb-10">
-        {searchParams?.category} products
+      <p className="text-center text-4xl font-bold text-[#008f8f] mt-10 mb-10 underline underline-offset-3">
+        {searchParams?.category}
       </p>
       {searchParams?.category === "Ladies Shoe" ? (
         <div className="flex w-full flex-col">
-          <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 lg:gap-3 md:gap-2 sm:gap-2">
+          {/* <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 lg:gap-3 md:gap-2 sm:gap-2">
             {isLoading ? (
               <Loader />
             ) : (
@@ -148,13 +146,13 @@ const CategoryProducts = ({ searchParams }) => {
                 ))}
               </>
             )}
-          </div>
+          </div> */}
         </div>
       ) : (
         <>
           {searchParams?.category === "Cosmatics" ? (
             <>
-              <div className="flex w-full flex-col mt-4">
+              {/* <div className="flex w-full flex-col mt-4">
                 <Tabs aria-label="Options">
                   <Tab key="lakme" title="Lakme">
                     <Card>
@@ -172,7 +170,7 @@ const CategoryProducts = ({ searchParams }) => {
                     </Card>
                   </Tab>
                 </Tabs>
-              </div>
+              </div> */}
             </>
           ) : (
             <>
@@ -185,7 +183,7 @@ const CategoryProducts = ({ searchParams }) => {
                     {categoryProduct?.map((product, index) => (
                       <div
                         key={index}
-                        className="w-full relative flex flex-row rounded-lg border border-[#f0cca8] bg-[#f0cca8] shadow-md"
+                        className="w-full relative flex flex-row rounded-lg border border-[#dbfcfc] bg-[#dbfcfc] shadow-md"
                       >
                         <div>
                           <Link
@@ -197,16 +195,14 @@ const CategoryProducts = ({ searchParams }) => {
                             className="relative mx-3 mt-3 flex h-70 rounded-xl"
                           >
                             <Image
+                              isZoomed
                               className="rounded object-contain"
                               src={product?.imageLink}
                               width={500}
-                              // width="100%"
-                              height={100}
-                              // sizes="100vw"
                               quality={75}
                               // placeholder="blur"
                               sizes="(max-width: 100%)"
-                              alt="product image"
+                              alt={product?.imageLink}
                             />
                           </Link>
                           <div className="mt-4 px-5 pb-5">
@@ -216,7 +212,7 @@ const CategoryProducts = ({ searchParams }) => {
                                 query: { _id: product._id },
                               }}
                             >
-                              <h5 className="text-xl tracking-tight text-[#ff7f00] font-bold">
+                              <h5 className="text-xl tracking-tight text-[#008f8f] font-bold">
                                 {product?.name}
                               </h5>
                             </Link>
@@ -224,7 +220,7 @@ const CategoryProducts = ({ searchParams }) => {
                               <p className="">
                                 <span className="flex justify-center items-center text-3xl font-bold text-slate-900">
                                   <svg
-                                    fill="#ff7f00"
+                                    fill="#008f8f"
                                     width="30px"
                                     height="30px"
                                     viewBox="0 0 24 24"
@@ -246,11 +242,16 @@ const CategoryProducts = ({ searchParams }) => {
                                       <path
                                         id="primary"
                                         d="M18,11a1,1,0,0,0-1,1v4.5a3.5,3.5,0,0,1-7,0V12h2a1,1,0,0,0,0-2H10V6A4,4,0,0,0,6,2,1,1,0,0,0,6,4,2,2,0,0,1,8,6v4H6a1,1,0,0,0,0,2H8v4.5a5.5,5.5,0,0,0,11,0V12A1,1,0,0,0,18,11Z"
-                                        style={{ fill: "#ff7f00" }}
+                                        style={{ fill: "#008f8f" }}
                                       ></path>
                                     </g>
                                   </svg>
-                                  <span className="text-center text-[#ff7f00]">
+                                  <span className="text-center text-[#008f8f]">
+                                    {product?.price -
+                                      (product?.price * product?.discount) /
+                                        100}
+                                  </span>
+                                  <span className="line-through text-[#a8a8a8] ms-4">
                                     {product?.price}
                                   </span>
                                 </span>
@@ -265,7 +266,7 @@ const CategoryProducts = ({ searchParams }) => {
                               >
                                 <button
                                   href="#"
-                                  className="w-full flex items-center justify-center rounded-full bg-[#ff7f00] px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none"
+                                  className="w-full flex items-center justify-center rounded-full bg-[#008f8f] px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none"
                                 >
                                   <svg
                                     width="25px"

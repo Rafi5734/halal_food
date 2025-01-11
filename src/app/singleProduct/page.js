@@ -6,20 +6,14 @@ import CommentSection from "@/components/dynamicProducts/commentSection/CommentS
 import { setCookie } from "@/components/helper/cookies";
 import { Image, Input, Radio, RadioGroup } from "@nextui-org/react";
 // import Image from "next/image";
-import Link from "next/link";
 import React, { useState } from "react";
 
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-
-// import required modules
-import { Pagination, Autoplay } from "swiper/modules";
-
 import { useRouter } from "next/navigation";
+import CheckIcon from "../../../public/icons/CheckIcon";
+
+import InnerImageZoom from "react-inner-image-zoom";
+import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
+import CustomImageMagnifier from "./ImageMagnifier/ImageMagnifier";
 
 const SingleProduct = ({ searchParams }) => {
   const router = useRouter();
@@ -77,66 +71,11 @@ const SingleProduct = ({ searchParams }) => {
           <div className="ps-3 pe-3 pt-3">
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-5">
               <div>
-                <Swiper
-                  pagination={{
-                    dynamicBullets: true,
-                  }}
-                  autoplay={{
-                    delay: 2500,
-                    // disableOnInteraction: false,
-                  }}
-                  modules={[Pagination, Autoplay]}
-                  className="mySwiper"
-                >
-                  <SwiperSlide>
-                    <Image
-                      className="rounded object-contain w-full"
-                      alt="product_image"
-                      src={singleProduct?.imageLink}
-                      sizes="(max-width: 100%)"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Image
-                      className="rounded object-contain w-full"
-                      alt="product_image"
-                      src={singleProduct?.firstImageLink}
-                      sizes="(max-width: 100%)"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Image
-                      className="rounded object-contain w-full"
-                      alt="product_image"
-                      src={singleProduct?.secondImageLink}
-                      sizes="(max-width: 100%)"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Image
-                      className="rounded object-contain w-full"
-                      alt="product_image"
-                      src={singleProduct?.thirdImageLink}
-                      sizes="(max-width: 100%)"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Image
-                      className="rounded object-contain w-full"
-                      alt="product_image"
-                      src={singleProduct?.fourthImageLink}
-                      sizes="(max-width: 100%)"
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <Image
-                      className="rounded object-contain w-full"
-                      alt="product_image"
-                      src={singleProduct?.fifthImageLink}
-                      sizes="(max-width: 100%)"
-                    />
-                  </SwiperSlide>
-                </Swiper>
+                <CustomImageMagnifier
+                  imageSrc={singleProduct?.imageLink}
+                  zoomScale={3}
+                  magnifierSize={200}
+                />
               </div>
               <div>
                 <h4 className="text-3xl font-bold pb-3 text-[#008f8f]">
@@ -160,12 +99,27 @@ const SingleProduct = ({ searchParams }) => {
                       - {singleProduct?.discount}% off
                     </span>
                   </div>
-                  <p className="mt-3 font-bold text-[#008f8f]">
-                    Inside Dhaka city, delivery charge will be 150 TK.
-                  </p>
-                  <p className="font-bold text-[#008f8f]">
-                    Outside Dhaka city, delivery charge will be 200 TK.
-                  </p>
+
+                  <ul className="space-y-4 text-left text-[#008f8f] dark:text-[#008f8f] mt-8">
+                    <li className="flex items-center space-x-3 rtl:space-x-reverse">
+                      <CheckIcon />
+                      <span>We provide cash on delivery service.</span>
+                    </li>
+                    <li className="flex items-center space-x-3 rtl:space-x-reverse">
+                      <CheckIcon />
+                      <span>
+                        Inside Dhaka: Delivercy Charge -{" "}
+                        <span className="font-bold">70 TK.</span>
+                      </span>
+                    </li>
+                    <li className="flex items-center space-x-3 rtl:space-x-reverse">
+                      <CheckIcon />
+                      <span>
+                        Outside Dhaka: Delivercy Charge -{" "}
+                        <span className="font-bold">100 TK.</span>
+                      </span>
+                    </li>
+                  </ul>
                 </div>
 
                 <div className="mt-5">
