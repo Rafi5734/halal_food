@@ -234,9 +234,9 @@ const SingleProduct = ({ searchParams }) => {
                 <div className="mt-3">
                   <p className="text-[#008f8f]">
                     Categories:{" "}
-                    <a href="#" className="hover:text-[#eab308]">
+                    <span className="font-semibold">
                       {singleProduct?.category}
-                    </a>
+                    </span>
                   </p>
                 </div>
               </div>

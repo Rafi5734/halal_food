@@ -17,6 +17,8 @@ const CheckOrder = () => {
   const productQuantity = Cookies.get("productQuantity");
   const size = Cookies.get("size");
 
+  console.log("size", size);
+
   productCookieValue = productCookieValue
     ? JSON.parse(productCookieValue)
     : null;
@@ -51,7 +53,7 @@ const CheckOrder = () => {
     e.preventDefault();
 
     checkoutFormData.order.push(productCookieValue);
-
+    console.log("checkoutFormData", checkoutFormData);
     const result = await checkoutPost(checkoutFormData);
     if (result?.data) {
       setOpenModal(true);
@@ -137,7 +139,7 @@ const CheckOrder = () => {
                       htmlFor="address"
                       className="block text-sm font-bold leading-6 text-[#008f8f]"
                     >
-                      Your address
+                      Your city name
                     </label>
                     <div className="mt-2">
                       <input
@@ -160,7 +162,7 @@ const CheckOrder = () => {
                       htmlFor="thana_district"
                       className="block text-sm font-bold leading-6 text-[#008f8f]"
                     >
-                      Thana & Zilla
+                      Details your address
                     </label>
                     <div className="mt-2">
                       <input
@@ -185,7 +187,7 @@ const CheckOrder = () => {
                 <button
                   disabled
                   type="button"
-                  className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+                  className="w-full flex  justify-center items-center text-white bg-[#008f8f] font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2"
                 >
                   <svg
                     aria-hidden="true"
@@ -220,9 +222,9 @@ const CheckOrder = () => {
               </>
             )}
 
-            <Modal show={openModal} onClose={() => handleOrderCompleted()}>
+            <Modal className="w-full" show={openModal} onClose={() => handleOrderCompleted()}>
               <Modal.Header>Invoice</Modal.Header>
-              <Modal.Body>
+              <Modal.Body >
                 <div className="space-y-6">
                   <CheckoutModal productCookieValue={productCookieValue} />
                 </div>

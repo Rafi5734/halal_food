@@ -27,13 +27,13 @@ export const productSlice = createApi({
       providesTags: ["product"],
     }),
     postComment: builder.mutation({
-      query: ({ comment, id }) => ({
+      query: ({ feedback, id }) => ({
         url: `/product/${id}/comments`,
         headers: {
           "content-type": "application/json",
         },
         method: "POST",
-        body: comment,
+        body: feedback,
       }),
       invalidatesTags: ["product"],
     }),

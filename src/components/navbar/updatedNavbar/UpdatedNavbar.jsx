@@ -157,79 +157,6 @@ const UpdatedNavbar = () => {
             </>
           )}
 
-          <Dropdown
-            showArrow
-            radius="sm"
-            classNames={{
-              base: "before:bg-default-200", // change arrow background
-              content: "p-0 border-small border-divider bg-background",
-            }}
-          >
-            <DropdownTrigger>
-              <Button
-                isIconOnly
-                radius="full"
-                variant="light"
-                className="text-white"
-              >
-                <UserIcon />
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu
-              aria-label="Custom item styles"
-              disabledKeys={["profile"]}
-              className="p-3"
-              itemClasses={{
-                base: [
-                  "rounded-md",
-                  "text-default-500",
-                  "transition-opacity",
-                  "data-[hover=true]:text-foreground",
-                  "data-[hover=true]:bg-default-100",
-                  "dark:data-[hover=true]:bg-default-50",
-                  "data-[selectable=true]:focus:bg-default-50",
-                  "data-[pressed=true]:opacity-70",
-                  "data-[focus-visible=true]:ring-default-500",
-                ],
-              }}
-            >
-              <DropdownSection aria-label="Profile & Actions" showDivider>
-                <DropdownItem
-                  isReadOnly
-                  key="profile"
-                  className="h-14 gap-2 opacity-100"
-                >
-                  <User
-                    name="Junior Garcia"
-                    description="@jrgarciadev"
-                    classNames={{
-                      name: "text-default-600",
-                      description: "text-default-500",
-                    }}
-                    avatarProps={{
-                      size: "sm",
-                      src: "https://avatars.githubusercontent.com/u/30373425?v=4",
-                    }}
-                  />
-                </DropdownItem>
-                <DropdownItem key="order" startContent={<OrderIcon />}>
-                  My Orders
-                </DropdownItem>
-                <DropdownItem key="settings" startContent={<LoveIcon />}>
-                  My Wishlist
-                </DropdownItem>
-              </DropdownSection>
-
-              <DropdownSection aria-label="Help & Feedback">
-                <DropdownItem key="registration">
-                  <Link href="/login">Registration / Login</Link>
-                </DropdownItem>
-
-                <DropdownItem key="logout">Log Out</DropdownItem>
-              </DropdownSection>
-            </DropdownMenu>
-          </Dropdown>
-
           {/* <Badge content={cartLength?.length} shape="circle" color="default">
             <Link href="/cart">
               <Button
@@ -274,7 +201,7 @@ const UpdatedNavbar = () => {
         </div>
       </div>
       {width && width > 870 && (
-        <div className="mt-3 text-white container mx-auto flex flex-row w-full justify-center items-center">
+        <div className="text-white container mx-auto flex flex-row w-full justify-center items-center">
           {getAllCategories?.map((category) => (
             <Button
               className="me-2 text-white"
@@ -283,6 +210,7 @@ const UpdatedNavbar = () => {
               key={category?.category}
             >
               <Link
+                className="font-bold italic"
                 href={{
                   pathname: "/categoryProducts",
                   query: { category: category?.category },

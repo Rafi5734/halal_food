@@ -23,7 +23,7 @@ const OrderList = () => {
     }
   };
   return (
-    <div>
+    <div className="ms-3 me-3">
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -38,16 +38,19 @@ const OrderList = () => {
                 Qty
               </th>
               <th scope="col" className="px-6 py-3">
+                Size
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Price
               </th>
               <th scope="col" className="px-6 py-3">
-                Discount
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Discount Price
+                Discount (%)
               </th>
               <th scope="col" className="px-6 py-3">
                 Total Price
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Discount Price
               </th>
               <th scope="col" className="px-6 py-3">
                 Address
@@ -87,6 +90,9 @@ const OrderList = () => {
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                         {JSON.parse(order?.productQuantity)}
                       </td>
+                      <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                        {JSON.parse(order?.size)}
+                      </td>
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-nowrap">
                         $ {order?.price}
                       </td>
@@ -95,8 +101,7 @@ const OrderList = () => {
                       </td>
 
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                        ${" "}
-                        {order?.price - (order?.price * order?.discount) / 100}
+                        $ {order?.price}
                       </td>
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                         ${" "}

@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React, { useRef, useState } from "react";
-import banner1 from "../../../../public/images/1.jpg";
-import banner2 from "../../../../public/images/2.jpg";
-import banner3 from "../../../../public/images/3.jpg";
+import banner1 from "../../../../public/images/1.png";
+import banner2 from "../../../../public/images/2.png";
+import banner3 from "../../../../public/images/3.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";

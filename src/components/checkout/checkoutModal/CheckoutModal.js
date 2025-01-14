@@ -9,8 +9,11 @@ import {
 } from "flowbite-react";
 import Image from "next/image";
 import { calculateTotalPrice } from "@/utils/CartUtils";
+import { getCookie } from "@/components/helper/cookies";
 
 const CheckoutModal = ({ productCookieValue }) => {
+  const sizeCookie = getCookie("size");
+  console.log("sizeCookie", sizeCookie);
   return (
     <div className="w-full">
       <div className="overflow-x-auto">
@@ -19,8 +22,10 @@ const CheckoutModal = ({ productCookieValue }) => {
             <TableHeadCell>Product image</TableHeadCell>
             <TableHeadCell>Product name</TableHeadCell>
             <TableHeadCell>QTY</TableHeadCell>
-            <TableHeadCell>Price</TableHeadCell>
-            <TableHeadCell>discount</TableHeadCell>
+            <TableHeadCell>Size</TableHeadCell>
+            <TableHeadCell>Total Price</TableHeadCell>
+            <TableHeadCell>Discount Price</TableHeadCell>
+            <TableHeadCell>discount(%)</TableHeadCell>
           </TableHead>
           <TableBody className="divide-y">
             <TableRow className="bg-white">
@@ -36,12 +41,15 @@ const CheckoutModal = ({ productCookieValue }) => {
               </TableCell>
               <TableCell>{productCookieValue?.name}</TableCell>
               <TableCell>{productCookieValue?.productQuantity}</TableCell>
+              <TableCell>{sizeCookie}</TableCell>
+              <TableCell>${productCookieValue?.price}</TableCell>
               <TableCell>
                 $
                 {productCookieValue?.price -
                   (productCookieValue?.price * productCookieValue?.discount) /
                     100}
               </TableCell>
+
               <TableCell>{productCookieValue?.discount}%</TableCell>
             </TableRow>
           </TableBody>

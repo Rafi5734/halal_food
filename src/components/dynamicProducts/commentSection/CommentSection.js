@@ -34,9 +34,12 @@ const CommentSection = ({ singleProduct }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    const feedback = {
+      text: formData?.text,
+    };
     try {
-      const result = await postComment({ comment, id });
-      console.log("form submitted", formData);
+      const result = await postComment({ feedback, id });
+
       if (result.data) {
         Swal.fire({
           title: "Good job!",
@@ -95,7 +98,7 @@ const CommentSection = ({ singleProduct }) => {
             </button>
           </form>
           {singleProduct?.reviews?.map((comment, index) => (
-            <article key={index} className="p-6 text-base bg-white rounded-lg">
+            <article key={index} className="flex flex-row p-6 text-base bg-white rounded-lg">
               <footer className="flex justify-between items-center mb-2">
                 <div className="flex items-center">
                   <p className="inline-flex items-center mr-3 text-sm text-gray-900 font-semibold">
@@ -128,7 +131,7 @@ const CommentSection = ({ singleProduct }) => {
                   </DropdownItem>
                 </Dropdown> */}
               </footer>
-              <p className="text-[#000000]">{comment?.text}</p>
+              <p className="text-[#008f8f] italic font-semibold">{comment?.text}</p>
             </article>
           ))}
         </div>
