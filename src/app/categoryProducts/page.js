@@ -11,11 +11,11 @@ import SheglamCategory from "@/components/subcategory/sheglam/SheglamCategory";
 const CategoryProducts = ({ searchParams }) => {
   const { data: popularProductList, isLoading } = useGetAllProductsQuery();
 
-  console.log("searchParams", searchParams);
-
   const categoryProduct = popularProductList?.filter(
     (product) => product.category === searchParams?.category
   );
+
+  console.log("categoryProduct", categoryProduct);
 
   if (isLoading) {
     return <Loader />;
@@ -26,9 +26,9 @@ const CategoryProducts = ({ searchParams }) => {
       <p className="text-center text-4xl font-bold text-[#008f8f] mt-10 mb-10 underline underline-offset-3">
         {searchParams?.category}
       </p>
-      {searchParams?.category === "Ladies Shoe" ? (
+      {searchParams?.category === "Ladies Shoes" ? (
         <div className="flex w-full flex-col">
-          {/* <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 lg:gap-3 md:gap-2 sm:gap-2">
+          <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-3 lg:gap-3 md:gap-2 sm:gap-2">
             {isLoading ? (
               <Loader />
             ) : (
@@ -148,31 +148,13 @@ const CategoryProducts = ({ searchParams }) => {
                 ))}
               </>
             )}
-          </div> */}
+          </div>
         </div>
       ) : (
         <>
-          {searchParams?.category === "Cosmatics" ? (
+          {searchParams?.category === "Ladies Bags" ? (
             <>
-              {/* <div className="flex w-full flex-col mt-4">
-                <Tabs aria-label="Options">
-                  <Tab key="lakme" title="Lakme">
-                    <Card>
-                      <LakmeCategory />
-                    </Card>
-                  </Tab>
-                  <Tab key="imagic" title="Imagic">
-                    <Card>
-                      <ImagicCategory />
-                    </Card>
-                  </Tab>
-                  <Tab key="Sheglam" title="Sheglam">
-                    <Card>
-                      <SheglamCategory />
-                    </Card>
-                  </Tab>
-                </Tabs>
-              </div> */}
+              <div className="flex w-full flex-col mt-4"></div>
             </>
           ) : (
             <>
@@ -189,7 +171,6 @@ const CategoryProducts = ({ searchParams }) => {
                       >
                         <div>
                           <Link
-                            // href={`/products/${product?._id}`}
                             href={{
                               pathname: "/singleProduct",
                               query: { _id: product._id },
@@ -202,7 +183,7 @@ const CategoryProducts = ({ searchParams }) => {
                               src={product?.imageLink}
                               width={500}
                               quality={75}
-                              // placeholder="blur"
+                              placeholder="blur"
                               sizes="(max-width: 100%)"
                               alt={product?.imageLink}
                             />
