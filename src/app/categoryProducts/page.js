@@ -10,8 +10,7 @@ import SheglamCategory from "@/components/subcategory/sheglam/SheglamCategory";
 import CategoryProduct from "@/components/categoryProduct/CategoryProduct";
 
 const CategoryProducts = ({ searchParams }) => {
-  
-  console.log("")
+  // console.log("searchParams", searchParams);
 
   return (
     // <div className="ps-5 pe-5">
@@ -301,6 +300,7 @@ const CategoryProducts = ({ searchParams }) => {
     //     </>
     //   )}
     // </div>
+
     <CategoryProduct searchParams={searchParams} />
   );
 };

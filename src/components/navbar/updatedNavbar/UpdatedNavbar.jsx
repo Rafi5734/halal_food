@@ -44,7 +44,7 @@ const UpdatedNavbar = () => {
   };
 
   const handleCategory = (category) => {
-    console.log("category", category);
+    // console.log("category", category);
     return <CategoryProduct category={category} />;
   };
 
@@ -188,6 +188,7 @@ const UpdatedNavbar = () => {
                     {getAllCategories?.map((category) => (
                       <DropdownItem key={category?.category}>
                         <Link
+                          // href="#"
                           href={{
                             pathname: "/categoryProducts",
                             query: { category: category?.category },
@@ -218,6 +219,7 @@ const UpdatedNavbar = () => {
             >
               <Link
                 className="font-bold italic"
+                // href="#"
                 href={{
                   pathname: "/categoryProducts",
                   query: { category: category?.category },
