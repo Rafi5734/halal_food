@@ -11,6 +11,8 @@ import SheglamCategory from "@/components/subcategory/sheglam/SheglamCategory";
 const CategoryProducts = ({ searchParams }) => {
   const { data: popularProductList, isLoading } = useGetAllProductsQuery();
 
+  console.log("searchParams", searchParams);
+
   const categoryProduct = popularProductList?.filter(
     (product) => product.category === searchParams?.category
   );
