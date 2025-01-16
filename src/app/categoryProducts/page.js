@@ -11,6 +11,7 @@ import CategoryProduct from "@/components/categoryProduct/CategoryProduct";
 
 const CategoryProducts = ({ searchParams }) => {
   
+  console.log("")
 
   return (
     // <div className="ps-5 pe-5">

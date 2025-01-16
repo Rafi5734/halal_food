@@ -22,6 +22,7 @@ import { useGetAllCategoriesQuery } from "@/api/categorySlice/categorySlice";
 import { useWindowSize } from "@react-hook/window-size";
 import HumburgerMenu from "@/assets/HumburgerMenu";
 import { getCart } from "@/utils/CartUtils";
+import CategoryProduct from "@/components/categoryProduct/CategoryProduct";
 
 const UpdatedNavbar = () => {
   const router = useRouter();
@@ -40,6 +41,11 @@ const UpdatedNavbar = () => {
       pathname: "/searchProduct",
       query: { searchItem: searchItem },
     });
+  };
+
+  const handleCategory = (category) => {
+    console.log("category", category);
+    return <CategoryProduct category={category} />;
   };
 
   return (
@@ -208,6 +214,7 @@ const UpdatedNavbar = () => {
               color="primary"
               // variant="bordered"
               key={category?.category}
+              onClick={() => handleCategory(category?.category)}
             >
               <Link
                 className="font-bold italic"
