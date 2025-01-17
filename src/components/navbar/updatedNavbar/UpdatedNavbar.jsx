@@ -43,11 +43,6 @@ const UpdatedNavbar = () => {
     });
   };
 
-  const handleCategory = (category) => {
-    // console.log("category", category);
-    return <CategoryProduct category={category} />;
-  };
-
   return (
     <div className="bg-[#008f8f] p-4">
       <div className="container mx-auto flex flex-row w-full justify-between items-center">
@@ -188,11 +183,11 @@ const UpdatedNavbar = () => {
                     {getAllCategories?.map((category) => (
                       <DropdownItem key={category?.category}>
                         <Link
-                          // href={`/category/${category?.category}`}
-                          href={{
-                            pathname: "/categoryProducts",
-                            query: { category: category?.category },
-                          }}
+                          href={`/category/${category?.category}`}
+                          // href={{
+                          //   pathname: "/categoryProducts",
+                          //   query: { category: category?.category },
+                          // }}
                         >
                           {category?.category}
                         </Link>
@@ -210,24 +205,27 @@ const UpdatedNavbar = () => {
       {width && width > 870 && (
         <div className="text-white container mx-auto flex flex-row w-full justify-center items-center">
           {getAllCategories?.map((category) => (
-            <Button
-              className="me-2 text-white"
-              color="primary"
-              // variant="bordered"
+            // <Button
+            //   className="me-2 text-white"
+            //
+            //
+            //   key={category?.category}
+            //   onClick={() => handleCategory(category?.category)}
+            // >
+
+            //   {category?.category}
+            // </Button>
+            <Link
+              className="font-bold italic"
               key={category?.category}
-              onClick={() => handleCategory(category?.category)}
+              // href={`/categoryProducts/${category?.category}`}
+              href={{
+                pathname: "/categoryProducts",
+                query: { category: category?.category },
+              }}
             >
-              <Link
-                className="font-bold italic"
-                // href={`/category/${category?.category}`}
-                href={{
-                  pathname: "/categoryProducts",
-                  query: { category: category?.category },
-                }}
-              >
-                {category?.category}
-              </Link>
-            </Button>
+              {category?.category}
+            </Link>
           ))}
         </div>
       )}
