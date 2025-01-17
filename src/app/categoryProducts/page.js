@@ -1,5 +1,5 @@
 "use client";
-import { useGetAllProductsQuery } from "@/api/productSlice/productSlice";
+// import { useGetAllProductsQuery } from "@/api/productSlice/productSlice";
 import Loader from "@/styles/Loader/Loader";
 import Link from "next/link";
 import React from "react";
@@ -10,11 +10,11 @@ import SheglamCategory from "@/components/subcategory/sheglam/SheglamCategory";
 import CategoryProduct from "@/components/categoryProduct/CategoryProduct";
 
 const page = ({ searchParams }) => {
-  const { data: popularProductList, isLoading } = useGetAllProductsQuery();
+  // const { data: popularProductList, isLoading } = useGetAllProductsQuery();
 
-  const categoryProduct = popularProductList?.filter(
-    (product) => product.category === searchParams?.category
-  );
+  // const categoryProduct = popularProductList?.filter(
+  //   (product) => product.category === searchParams?.category
+  // );
 
   console.log("searchParams", searchParams);
 
