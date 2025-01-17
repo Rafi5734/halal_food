@@ -205,24 +205,10 @@ const UpdatedNavbar = () => {
       {width && width > 870 && (
         <div className="text-white container mx-auto flex flex-row w-full justify-center items-center">
           {getAllCategories?.map((category) => (
-            // <Button
-            //   className="me-2 text-white"
-            //
-            //
-            //   key={category?.category}
-            //   onClick={() => handleCategory(category?.category)}
-            // >
-
-            //   {category?.category}
-            // </Button>
             <Link
-              className="font-bold italic"
+              className="font-bold italic me-10"
               key={category?.category}
               href={`/categoryProducts/${category?.category}`}
-              // href={{
-              //   pathname: "/categoryProducts",
-              //   query: { category: category?.category },
-              // }}
             >
               {category?.category}
             </Link>
