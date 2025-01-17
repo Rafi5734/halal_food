@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useGetAllProductsQuery } from "@/api/productSlice/productSlice";
 import Loader from "@/styles/Loader/Loader";
 
-export default function CategoryProduct({ searchParams }) {
+export default function CategoryProduct({ decodedString }) {
   const { data: popularProductList, isLoading } = useGetAllProductsQuery();
 
   const categoryProduct = popularProductList?.filter(
-    (product) => product.category === searchParams?.category
+    (product) => product.category === decodedString
   );
 
   console.log("categoryProduct", categoryProduct);

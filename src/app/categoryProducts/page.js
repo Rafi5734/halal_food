@@ -307,7 +307,8 @@ const page = ({ searchParams }) => {
     //   )}
     // </div>
 
-    <CategoryProduct searchParams={searchParams} />
+    // <CategoryProduct searchParams={searchParams} />
+    <div>111</div>
   );
 };
 

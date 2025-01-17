@@ -218,11 +218,11 @@ const UpdatedNavbar = () => {
             <Link
               className="font-bold italic"
               key={category?.category}
-              // href={`/categoryProducts/${category?.category}`}
-              href={{
-                pathname: "/categoryProducts",
-                query: { category: category?.category },
-              }}
+              href={`/categoryProducts/${category?.category}`}
+              // href={{
+              //   pathname: "/categoryProducts",
+              //   query: { category: category?.category },
+              // }}
             >
               {category?.category}
             </Link>
