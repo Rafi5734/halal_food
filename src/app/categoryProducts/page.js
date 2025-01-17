@@ -9,7 +9,7 @@ import ImagicCategory from "@/components/subcategory/imagic/ImagicCategory";
 import SheglamCategory from "@/components/subcategory/sheglam/SheglamCategory";
 import CategoryProduct from "@/components/categoryProduct/CategoryProduct";
 
-const CategoryProducts = ({ searchParams }) => {
+const page = ({ searchParams }) => {
   // console.log("searchParams", searchParams);
 
   return (
@@ -305,4 +305,4 @@ const CategoryProducts = ({ searchParams }) => {
   );
 };
 
-export default CategoryProducts;
+export default page;

@@ -188,7 +188,7 @@ const UpdatedNavbar = () => {
                     {getAllCategories?.map((category) => (
                       <DropdownItem key={category?.category}>
                         <Link
-                          // href="#"
+                          // href={`/category/${category?.category}`}
                           href={{
                             pathname: "/categoryProducts",
                             query: { category: category?.category },
@@ -219,7 +219,7 @@ const UpdatedNavbar = () => {
             >
               <Link
                 className="font-bold italic"
-                // href="#"
+                // href={`/category/${category?.category}`}
                 href={{
                   pathname: "/categoryProducts",
                   query: { category: category?.category },
