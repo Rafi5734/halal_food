@@ -30,13 +30,13 @@ const MainBanner = () => {
         // onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="mySwiper"
       >
+
         <SwiperSlide>
           <Image
             src={banner1}
             alt="Picture of the banner"
             placeholder="blur"
             sizes="(max-width: 100%)"
-            className="w-full h-[840px]"
           />
         </SwiperSlide>
         <SwiperSlide>

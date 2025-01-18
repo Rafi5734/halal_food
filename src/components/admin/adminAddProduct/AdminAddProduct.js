@@ -8,6 +8,7 @@ import {
 import Swal from "sweetalert2";
 import { useProductPostMutation } from "@/api/productSlice/productSlice";
 import axios from "axios";
+import { Image } from "@nextui-org/react";
 const AdminAddProduct = () => {
   const fileInputRef = useRef(null);
   const [categoryPost, { isLoading }] = useCategoryPostMutation();
@@ -20,7 +21,7 @@ const AdminAddProduct = () => {
   const [productFormData, setProductFormData] = useState({
     category: "",
     name: "",
-    imageLink: "",
+    imageLinks: [],
     price: "",
     description: "",
     stock: "",
@@ -55,42 +56,95 @@ const AdminAddProduct = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  // const handleImageUpload = async (event) => {
+  //   const file = event.target.files[0];
+  //   if (!file) return;
+
+  //   const formData = new FormData();
+  //   formData.append("file", file);
+  //   formData.append("upload_preset", "unsigned_images"); // Replace with your Cloudinary preset
+
+  //   setImageUploading(true);
+
+  //   try {
+  //     const response = await axios.post(
+  //       `https://api.cloudinary.com/v1_1/dhojflhbx/image/upload`,
+  //       formData
+  //     );
+
+  //     setProductFormData((prevData) => ({
+  //       ...prevData,
+  //       imageLink: response.data.secure_url,
+  //     }));
+  //     const originalImage = productFormData?.imageLink
+  //     // Transform Cloudinary link to add width
+  //     const transformedImage = originalImage.replace(
+  //       "/upload/",
+  //       "/upload/w_500/" // Adjust width to 500px
+  //     );
+  //     console.log(transformedImage);
+  //     Swal.fire({
+  //       title: "Success!",
+  //       text: "Image uploaded successfully.",
+  //       icon: "success",
+  //     });
+  //   } catch (error) {
+  //     Swal.fire({
+  //       title: "Error!",
+  //       text: "Failed to upload image.",
+  //       icon: "error",
+  //     });
+  //   } finally {
+  //     setImageUploading(false);
+  //   }
+  // };
+
   const handleImageUpload = async (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
+    const files = event.target.files;
+    if (!files.length) return;
 
     const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "unsigned_images"); // Replace with your Cloudinary preset
+    const imageUrls = [];
 
     setImageUploading(true);
 
     try {
-      const response = await axios.post(
-        `https://api.cloudinary.com/v1_1/dhojflhbx/image/upload`,
-        formData
-      );
-      
+      // Upload each selected image
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        formData.append("file", file);
+        formData.append("upload_preset", "unsigned_images"); // Replace with your Cloudinary preset
+
+        const response = await axios.post(
+          `https://api.cloudinary.com/v1_1/dhojflhbx/image/upload`,
+          formData
+        );
+
+        // Store the image URL from Cloudinary response
+        imageUrls.push(response.data.secure_url);
+      }
+
+      // Update form data with the uploaded image URLs
       setProductFormData((prevData) => ({
         ...prevData,
-        imageLink: response.data.secure_url,
+        imageLinks: imageUrls, // Store an array of image URLs
       }));
-      const originalImage = productFormData?.imageLink
-      // Transform Cloudinary link to add width
-      const transformedImage = originalImage.replace(
-        "/upload/",
-        "/upload/w_500/" // Adjust width to 500px
+
+      // Optionally, log or transform image URLs as needed (for example, resizing them)
+      const transformedImages = imageUrls.map(
+        (url) => url.replace("/upload/", "/upload/w_500/") // Adjust width to 500px
       );
-      console.log(transformedImage);
+      console.log("Transformed Images:", transformedImages);
+
       Swal.fire({
         title: "Success!",
-        text: "Image uploaded successfully.",
+        text: "Images uploaded successfully.",
         icon: "success",
       });
     } catch (error) {
       Swal.fire({
         title: "Error!",
-        text: "Failed to upload image.",
+        text: "Failed to upload images.",
         icon: "error",
       });
     } finally {
@@ -152,7 +206,7 @@ const AdminAddProduct = () => {
     setFormData({
       category: "",
       name: "",
-      imageLink: "",
+      imageLinks: [],
       price: "",
       description: "",
       weight: "",
@@ -207,19 +261,6 @@ const AdminAddProduct = () => {
               />
             </div>
             {/* <div>
-              <div className="mb-2 block">
-                <Label htmlFor="imageLink" value="Product thumbnail Image" />
-              </div>
-              <input
-                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                id="imageLink"
-                type="text"
-                name="imageLink"
-                value={productFormData.imageLink}
-                onChange={handleProductInputChange}
-              />
-            </div> */}
-            <div>
               <Label htmlFor="imageLink" value="Product Image" />
               <input
                 type="file"
@@ -238,7 +279,37 @@ const AdminAddProduct = () => {
                   className="mt-2 w-32 h-32 object-cover"
                 />
               )}
+            </div> */}
+            <div>
+              <Label htmlFor="imageLinks" value="Product Images" />
+              <input
+                type="file"
+                id="imageLinks"
+                name="imageLinks"
+                onChange={handleImageUpload}
+                accept="image/*"
+                multiple // This allows selecting multiple files
+                className="mt-3 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+                required
+              />
+              {imageUploading && <p className="text-white">Uploading...</p>}
+
+              {/* Displaying uploaded images */}
+              {productFormData.imageLinks &&
+                productFormData.imageLinks.length > 0 && (
+                  <div className="mt-4">
+                    {productFormData.imageLinks.map((url, index) => (
+                      <Image
+                        key={index}
+                        src={url}
+                        alt={`Uploaded ${index + 1}`}
+                        className="w-32 h-32 object-cover mb-2"
+                      />
+                    ))}
+                  </div>
+                )}
             </div>
+
             <div>
               <div className="mb-2 block">
                 <Label htmlFor="price" value="Product Price" />
