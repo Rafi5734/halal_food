@@ -18,6 +18,18 @@ export const productSlice = createApi({
       }),
       invalidatesTags: ["product"],
     }),
+    imagePost: builder.mutation({
+      query: (imageInfo) => ({
+        url: "/product/add-image-to-product",
+        headers: {
+          "content-type": "application/json",
+        },
+        method: "POST",
+        body: imageInfo,
+      }),
+      invalidatesTags: ["product"],
+    }),
+
     getAllProducts: builder.query({
       query: () => "/product",
       providesTags: ["product"],
@@ -63,4 +75,5 @@ export const {
   usePostCommentMutation,
   useDeleteCommentMutation,
   useDeleteProductMutation,
+  useImagePostMutation,
 } = productSlice;

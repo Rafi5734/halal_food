@@ -1,8 +1,14 @@
 import { useDeleteProductMutation } from "@/api/productSlice/productSlice";
+import { Button, useDisclosure } from "@nextui-org/react";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import ImageAddModal from "./imageAddModal/ImageAddModal";
 
 const PaginatedProducts = ({ currentItems }) => {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  const [getProductId, setGetProductId] = useState();
+
   const [deleteProduct] = useDeleteProductMutation();
 
   const handleProductDelete = async (productId) => {
@@ -13,6 +19,11 @@ const PaginatedProducts = ({ currentItems }) => {
       console.log("err", err);
     }
   };
+
+  const handleAddImages = (productId) => {
+    console.log("productId", productId);
+  };
+
   return (
     <div className="rounded">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -89,15 +100,21 @@ const PaginatedProducts = ({ currentItems }) => {
                     >
                       Remove
                     </button>
-                    <a
-                      href="#"
+                    <Button
+                      onPress={onOpen}
+                      onClick={() => setGetProductId(product?._id)}
                       className="ms-3 font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
-                      Edit
-                    </a>
+                      Add images
+                    </Button>
                   </td>
                 </tr>
               ))}
+          <ImageAddModal
+            isOpen={isOpen}
+            onOpenChange={onOpenChange}
+            getProductId={getProductId}
+          />
         </tbody>
       </table>
     </div>
