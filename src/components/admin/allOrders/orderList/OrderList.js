@@ -1,5 +1,4 @@
 "use client";
-
 import {
   useDeleteCheckoutMutation,
   useGetAllCheckoutQuery,
@@ -71,13 +70,14 @@ const OrderList = () => {
                     >
                       <td className="p-4">
                         <Image
-                          src={order?.imageLink}
+                          src={JSON.parse(order?.color)?.url}
                           className="w-16 md:w-32 max-w-full max-h-full rounded"
                           alt="Apple Watch"
                           width={100}
                           height={100}
                         />
                         <p className="mt-3 font-bold">{order?.name}</p>
+                        <p className="mt-3 font-bold">color: {JSON.parse(order?.color)?.title}</p>
                       </td>
                       {index === 0 && (
                         <td

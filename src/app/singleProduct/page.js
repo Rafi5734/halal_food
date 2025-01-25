@@ -6,7 +6,7 @@ import CommentSection from "@/components/dynamicProducts/commentSection/CommentS
 import { setCookie } from "@/components/helper/cookies";
 import { Image, Input, Radio, RadioGroup } from "@nextui-org/react";
 // import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 import CheckIcon from "../../../public/icons/CheckIcon";
@@ -14,12 +14,14 @@ import CheckIcon from "../../../public/icons/CheckIcon";
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.css";
 import CustomImageMagnifier from "./ImageMagnifier/ImageMagnifier";
+import Link from "next/link";
 
 const SingleProduct = ({ searchParams }) => {
   const router = useRouter();
 
   const [productQuantity, setProductQuantity] = useState("1");
   const [selected, setSelected] = React.useState("");
+  const [selectedImage, setSelectedImage] = useState();
 
   const _idString = searchParams?._id;
   const { data: singleProduct, isLoading } =
@@ -28,13 +30,24 @@ const SingleProduct = ({ searchParams }) => {
     setCookie("bisuddho_cookies", JSON.stringify(singleProduct));
     setCookie("productQuantity", JSON.stringify(productQuantity));
     setCookie("size", JSON.stringify(selected));
+    setCookie("color", JSON.stringify(selectedImage));
     router.push("/checkOrder");
   };
+
+  useEffect(() => {
+    setSelectedImage({
+      url: singleProduct?.imageLink,
+      title: singleProduct?.imageLinks?.[0]?.title || "",
+    });
+  }, [singleProduct]);
+
+  console.log("singleProduct", singleProduct?.category);
 
   return (
     <div className="container mx-auto mt-3">
       <p className="ps-3 text-[#008f8f]">
-        Home {"/"} <span className="font-bold">{singleProduct?.category}</span>
+        <Link href="/">Home</Link> {"/"}{" "}
+        <span className="font-bold">{singleProduct?.category}</span>
       </p>
 
       {isLoading ? (
@@ -71,8 +84,13 @@ const SingleProduct = ({ searchParams }) => {
           <div className="ps-3 pe-3 pt-3">
             <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-5">
               <div>
-                <CustomImageMagnifier
+                {/* <CustomImageMagnifier
                   imageSrc={singleProduct?.imageLink}
+                  zoomScale={3}
+                  magnifierSize={200}
+                /> */}
+                <CustomImageMagnifier
+                  imageSrc={selectedImage.url}
                   zoomScale={3}
                   magnifierSize={200}
                 />
@@ -122,25 +140,58 @@ const SingleProduct = ({ searchParams }) => {
                   </ul>
                 </div>
 
-                <div className="mt-5">
-                  <p className="text-[#008f8f] font-bold">Sizes:</p>
-                  <RadioGroup
-                    orientation="horizontal"
-                    className="mt-3"
-                    value={selected}
-                    onValueChange={setSelected}
-                  >
-                    <Radio value="35" className="text-[#008f8f]">
-                      35
-                    </Radio>
-                    <Radio value="36">36</Radio>
-                    <Radio value="37">37</Radio>
-                    <Radio value="38">38</Radio>
-                    <Radio value="39">39</Radio>
-                    <Radio value="40">40</Radio>
-                    <Radio value="41">41</Radio>
-                  </RadioGroup>
+                <div className="mt-5 flex flex-col gap-3">
+                  {selectedImage.title && (
+                    <p className="mt-3 text-sm font-medium text-[#008f8f]">
+                      Selected Color: {selectedImage.title}
+                    </p>
+                  )}
+                  <div className="flex flex-row gap-3">
+                    {singleProduct?.imageLinks?.map((color) =>
+                      color?._id ? (
+                        <div
+                          key={color._id}
+                          onClick={() =>
+                            setSelectedImage({
+                              url: color.url,
+                              title: color.title,
+                            })
+                          }
+                          className="cursor-pointer"
+                        >
+                          <Image
+                            src={color.url}
+                            width={50}
+                            height={55}
+                            alt="Color Thumbnail"
+                          />
+                        </div>
+                      ) : null
+                    )}
+                  </div>
                 </div>
+
+                {singleProduct?.category === "Ladies Shoes" && (
+                  <div className="mt-5">
+                    <p className="text-[#008f8f] font-bold">Sizes:</p>
+                    <RadioGroup
+                      orientation="horizontal"
+                      className="mt-3"
+                      value={selected}
+                      onValueChange={setSelected}
+                    >
+                      <Radio value="35" className="text-[#008f8f]">
+                        35
+                      </Radio>
+                      <Radio value="36">36</Radio>
+                      <Radio value="37">37</Radio>
+                      <Radio value="38">38</Radio>
+                      <Radio value="39">39</Radio>
+                      <Radio value="40">40</Radio>
+                      <Radio value="41">41</Radio>
+                    </RadioGroup>
+                  </div>
+                )}
 
                 <div className="mt-5">
                   <form className="max-w-full">

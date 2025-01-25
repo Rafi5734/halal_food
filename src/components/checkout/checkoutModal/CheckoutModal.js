@@ -13,7 +13,8 @@ import { getCookie } from "@/components/helper/cookies";
 
 const CheckoutModal = ({ productCookieValue }) => {
   const sizeCookie = getCookie("size");
-  console.log("sizeCookie", sizeCookie);
+  const color = getCookie("color");
+  // console.log("color", color);
   return (
     <div className="w-full">
       <div className="overflow-x-auto">
@@ -31,13 +32,16 @@ const CheckoutModal = ({ productCookieValue }) => {
             <TableRow className="bg-white">
               <TableCell className="whitespace-nowrap font-medium text-gray-900">
                 <Image
-                  src={productCookieValue?.imageLink}
-                  width={150}
+                  src={JSON.parse(productCookieValue?.color)?.url}
+                  width={250}
                   className="rounded-md"
-                  height={150}
+                  height={250}
                   sizes="(max-width: 100%)"
                   alt="checkout_product_img"
                 />
+                <p className="font-medium text-white mt-3">
+                  Color: {JSON.parse(productCookieValue?.color)?.title}
+                </p>
               </TableCell>
               <TableCell>{productCookieValue?.name}</TableCell>
               <TableCell>{productCookieValue?.productQuantity}</TableCell>

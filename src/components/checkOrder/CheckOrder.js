@@ -16,8 +16,9 @@ const CheckOrder = () => {
   var productCookieValue = Cookies.get("bisuddho_cookies");
   const productQuantity = Cookies.get("productQuantity");
   const size = Cookies.get("size");
+  const color = Cookies.get("color");
 
-  console.log("size", size);
+  // console.log("size", size);
 
   productCookieValue = productCookieValue
     ? JSON.parse(productCookieValue)
@@ -27,6 +28,7 @@ const CheckOrder = () => {
     // Add new properties to the object
     productCookieValue.productQuantity = productQuantity;
     productCookieValue.size = size;
+    productCookieValue.color = color;
   } else {
     console.error("No productCookieValues found in cookies.");
   }
@@ -53,7 +55,7 @@ const CheckOrder = () => {
     e.preventDefault();
 
     checkoutFormData.order.push(productCookieValue);
-    console.log("checkoutFormData", checkoutFormData);
+    // console.log("checkoutFormData", checkoutFormData);
     const result = await checkoutPost(checkoutFormData);
     if (result?.data) {
       setOpenModal(true);
@@ -61,6 +63,13 @@ const CheckOrder = () => {
         title: "Good job!",
         text: "You successfully ordered this product",
         icon: "success",
+      });
+    } else {
+      setOpenModal(true);
+      Swal.fire({
+        title: "Sorry!",
+        text: "Your ordered is not placed!",
+        icon: "error",
       });
     }
   };
@@ -222,9 +231,13 @@ const CheckOrder = () => {
               </>
             )}
 
-            <Modal className="w-full" show={openModal} onClose={() => handleOrderCompleted()}>
+            <Modal
+              className="w-full"
+              show={openModal}
+              onClose={() => handleOrderCompleted()}
+            >
               <Modal.Header>Invoice</Modal.Header>
-              <Modal.Body >
+              <Modal.Body>
                 <div className="space-y-6">
                   <CheckoutModal productCookieValue={productCookieValue} />
                 </div>
