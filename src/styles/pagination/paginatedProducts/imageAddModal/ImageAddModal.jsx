@@ -6,6 +6,7 @@ import {
   ModalBody,
   ModalFooter,
   Button,
+  Image,
 } from "@nextui-org/react";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
@@ -116,8 +117,13 @@ export default function ImageAddModal({ isOpen, onOpenChange, getProductId }) {
                   disabled={uploading}
                 />
                 {uploading && <p>Uploading image...</p>}
-                {imageInfo.url && (
-                  <p className="text-green-500">Image uploaded successfully!</p>
+                {imageInfo?.url && (
+                  <>
+                    <p className="text-green-500">
+                      Image uploaded successfully!
+                    </p>
+                    <Image src={imageInfo.url} width={100} />
+                  </>
                 )}
 
                 <label

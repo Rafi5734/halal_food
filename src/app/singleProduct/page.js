@@ -41,7 +41,7 @@ const SingleProduct = ({ searchParams }) => {
     });
   }, [singleProduct]);
 
-  console.log("singleProduct", singleProduct?.category);
+  // console.log("singleProduct", singleProduct?.category);
 
   return (
     <div className="container mx-auto mt-3">

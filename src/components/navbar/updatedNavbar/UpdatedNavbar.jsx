@@ -13,10 +13,6 @@ import {
 } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { Button } from "@nextui-org/react";
-import UserIcon from "@/assets/UserIcon";
-import OrderIcon from "@/assets/OrderIcon";
-import LoveIcon from "@/assets/LoveIcon";
-import Cart from "@/assets/Cart";
 import Link from "next/link";
 import { useGetAllCategoriesQuery } from "@/api/categorySlice/categorySlice";
 import { useWindowSize } from "@react-hook/window-size";
@@ -27,8 +23,6 @@ import CategoryProduct from "@/components/categoryProduct/CategoryProduct";
 const UpdatedNavbar = () => {
   const router = useRouter();
   const [width] = useWindowSize();
-
-  const cartLength = getCart();
 
   const [searchItem, setSearchItem] = useState("");
 
