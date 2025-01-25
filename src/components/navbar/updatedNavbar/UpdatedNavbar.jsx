@@ -177,7 +177,7 @@ const UpdatedNavbar = () => {
                     {getAllCategories?.map((category) => (
                       <DropdownItem key={category?.category}>
                         <Link
-                          href={`/category/${category?.category}`}
+                          href={`/categoryProducts/${category?.category}`}
                           // href={{
                           //   pathname: "/categoryProducts",
                           //   query: { category: category?.category },
