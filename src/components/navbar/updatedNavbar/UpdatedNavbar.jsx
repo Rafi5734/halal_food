@@ -4,11 +4,7 @@ import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
-  DropdownSection,
   DropdownItem,
-  User,
-  Badge,
-  Avatar,
   Image,
 } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
@@ -17,8 +13,7 @@ import Link from "next/link";
 import { useGetAllCategoriesQuery } from "@/api/categorySlice/categorySlice";
 import { useWindowSize } from "@react-hook/window-size";
 import HumburgerMenu from "@/assets/HumburgerMenu";
-import { getCart } from "@/utils/CartUtils";
-import CategoryProduct from "@/components/categoryProduct/CategoryProduct";
+import SearchIcon from "../../../../public/icons/SearchIcon";
 
 const UpdatedNavbar = () => {
   const router = useRouter();
@@ -152,18 +147,6 @@ const UpdatedNavbar = () => {
             </>
           )}
 
-          {/* <Badge content={cartLength?.length} shape="circle" color="default">
-            <Link href="/cart">
-              <Button
-                radius="full"
-                isIconOnly
-                aria-label="more than 99 notifications text-black"
-                variant="light"
-              >
-                <Cart size={24} />
-              </Button>
-            </Link>
-          </Badge> */}
           {width && width <= 870 ? (
             <>
               <div className="flex items-center gap-4">
