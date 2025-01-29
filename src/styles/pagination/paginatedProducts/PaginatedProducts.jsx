@@ -60,7 +60,7 @@ const PaginatedProducts = ({ currentItems }) => {
               ?.map((product, index) => (
                 <tr
                   key={index}
-                  className="rounded bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  className="rounded border-b bg-gray-800 border-gray-700 hover:bg-gray-600"
                 >
                   <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white rounded-bl-lg">
                     {index + 1}
@@ -87,7 +87,7 @@ const PaginatedProducts = ({ currentItems }) => {
                   </td>
 
                   <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                    ${product?.price}
+                    {product?.price} TK
                   </td>
 
                   <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">

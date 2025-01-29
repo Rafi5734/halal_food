@@ -18,10 +18,10 @@ import Link from "next/link";
 
 const SingleProduct = ({ searchParams }) => {
   const router = useRouter();
-
-  const [productQuantity, setProductQuantity] = useState("1");
   const [selected, setSelected] = React.useState("");
   const [selectedImage, setSelectedImage] = useState();
+
+  const [productQuantity, setProductQuantity] = useState(1);
 
   const _idString = searchParams?._id;
   const { data: singleProduct, isLoading } =
@@ -41,7 +41,17 @@ const SingleProduct = ({ searchParams }) => {
     });
   }, [singleProduct]);
 
-  // console.log("singleProduct", singleProduct?.category);
+  // Increment function
+  const incrementQuantity = () => {
+    setProductQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  // Decrement function
+  const decrementQuantity = () => {
+    setProductQuantity((prevQuantity) =>
+      prevQuantity > 1 ? prevQuantity - 1 : 1
+    ); // Prevent going below 1
+  };
 
   return (
     <div className="container mx-auto mt-3">
@@ -150,7 +160,7 @@ const SingleProduct = ({ searchParams }) => {
                     {singleProduct?.imageLinks?.map((color) =>
                       color?._id ? (
                         <div
-                          key={color._id}
+                          key={color?._id}
                           onClick={() =>
                             setSelectedImage({
                               url: color.url,
@@ -202,11 +212,13 @@ const SingleProduct = ({ searchParams }) => {
                       Quantity:
                     </label>
                     <div className="relative flex items-center">
+                      {/* Decrement Button */}
                       <button
                         type="button"
                         id="decrement-button"
                         data-input-counter-decrement="counter-input"
                         className="flex-shrink-0 bg-gray-100 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                        onClick={decrementQuantity}
                       >
                         <svg
                           className="w-2.5 h-2.5 text-black"
@@ -224,21 +236,28 @@ const SingleProduct = ({ searchParams }) => {
                           />
                         </svg>
                       </button>
+
+                      {/* Input Field */}
                       <input
                         type="text"
                         id="counter-input"
                         data-input-counter
                         className="flex-shrink-0 text-gray-900 border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-24 text-center"
                         placeholder=""
-                        defaultValue={productQuantity}
-                        onChange={(e) => setProductQuantity(e.target.value)}
+                        value={productQuantity}
+                        onChange={(e) =>
+                          setProductQuantity(Number(e.target.value))
+                        }
                         required
                       />
+
+                      {/* Increment Button */}
                       <button
                         type="button"
                         id="increment-button"
                         data-input-counter-increment="counter-input"
                         className="flex-shrink-0 bg-gray-100 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+                        onClick={incrementQuantity}
                       >
                         <svg
                           className="w-2.5 h-2.5 text-black"

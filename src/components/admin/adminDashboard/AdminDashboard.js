@@ -12,11 +12,9 @@ const AdminDashboard = () => {
   const router = useRouter();
   const [open, setOpen] = useState(true);
   const handleLogout = () => {
-    console.log("logout");
+    // console.log("logout");
     removeCookie("bisuddho_auth");
-    
     router.push("/");
-
     window.location.reload();
   };
   return (
@@ -171,11 +169,11 @@ const AdminDashboard = () => {
 
           <Link href="/admin/users">
             <li
-              className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-5`}
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-5`}
             >
               <Image src={users_img} width={20} height={20} alt="user_img" />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
-                Users
+                Customer data
               </span>
             </li>
           </Link>

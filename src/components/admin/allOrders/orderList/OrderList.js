@@ -10,6 +10,8 @@ const OrderList = () => {
   const { data: checkoutData, isLoading } = useGetAllCheckoutQuery();
   const [deleteCheckout] = useDeleteCheckoutMutation();
 
+  console.log("checkoutData", checkoutData);
+
   const handleDeleteProduct = async (productId) => {
     const result = await deleteCheckout({ productId });
 
@@ -19,10 +21,16 @@ const OrderList = () => {
         // text: "You deleted the product",
         icon: "success",
       });
+    } else {
+      Swal.fire({
+        title: "Product not Deleted!",
+        // text: "You deleted the product",
+        icon: "error",
+      });
     }
   };
   return (
-    <div className="ms-3 me-3">
+    <div className="">
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -34,6 +42,10 @@ const OrderList = () => {
                 Person Name
               </th>
               <th scope="col" className="px-6 py-3">
+                Color
+              </th>
+
+              <th scope="col" className="px-6 py-3">
                 Qty
               </th>
               <th scope="col" className="px-6 py-3">
@@ -44,9 +56,6 @@ const OrderList = () => {
               </th>
               <th scope="col" className="px-6 py-3">
                 Discount (%)
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Total Price
               </th>
               <th scope="col" className="px-6 py-3">
                 Discount Price
@@ -77,7 +86,9 @@ const OrderList = () => {
                           height={100}
                         />
                         <p className="mt-3 font-bold">{order?.name}</p>
-                        <p className="mt-3 font-bold">color: {JSON.parse(order?.color)?.title}</p>
+                        <p className="mt-3 font-bold">
+                          color: {JSON.parse(order?.color)?.title}
+                        </p>
                       </td>
                       {index === 0 && (
                         <td
@@ -87,6 +98,9 @@ const OrderList = () => {
                           <p>{product?.fullName}</p>
                         </td>
                       )}
+                      <td className="font-bold">
+                        {JSON.parse(order?.color)?.title}
+                      </td>
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                         {JSON.parse(order?.productQuantity)}
                       </td>
@@ -94,20 +108,16 @@ const OrderList = () => {
                         {JSON.parse(order?.size)}
                       </td>
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-nowrap">
-                        $ {order?.price}
+                        {order?.price} TK
                       </td>
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                         {order?.discount}%
                       </td>
-
                       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                        $ {order?.price}
-                      </td>
-                      <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                        ${" "}
                         {Number(
                           order?.price - (order?.price * order?.discount) / 100
-                        ) * Number(JSON.parse(order?.productQuantity))}
+                        ) * Number(JSON.parse(order?.productQuantity))}{" "}
+                        TK
                       </td>
 
                       {index === 0 && (
