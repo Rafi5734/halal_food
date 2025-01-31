@@ -85,9 +85,9 @@ const CheckOrder = () => {
       <div className="container mx-auto mt-8">
         <div className="text-center">
           <div className="flex justify-center">
-            <span className="text-4xl font-bold text-[#008f8f]">
+            <p className="text-4xl font-bold text-[#008f8f] underline underline-offset-4">
               Checkout Details
-            </span>
+            </p>
           </div>
         </div>
 

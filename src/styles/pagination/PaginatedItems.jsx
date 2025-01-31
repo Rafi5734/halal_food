@@ -8,7 +8,7 @@ import { useGetAllProductsQuery } from "@/api/productSlice/productSlice";
 const PaginatedItems = ({ itemsPerPage }) => {
   const { data: popularProductList, isLoading } = useGetAllProductsQuery();
   const items = popularProductList;
-  console.log(items);
+  // console.log(items);
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + itemsPerPage;

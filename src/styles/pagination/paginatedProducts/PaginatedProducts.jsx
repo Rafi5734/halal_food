@@ -20,10 +20,6 @@ const PaginatedProducts = ({ currentItems }) => {
     }
   };
 
-  const handleAddImages = (productId) => {
-    console.log("productId", productId);
-  };
-
   return (
     <div className="rounded">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -46,6 +42,9 @@ const PaginatedProducts = ({ currentItems }) => {
             </th>
             <th scope="col" className="px-6 py-3">
               discount
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Date
             </th>
             <th scope="col" className="px-6 py-3 rounded-tr-lg">
               Actions
@@ -92,6 +91,13 @@ const PaginatedProducts = ({ currentItems }) => {
 
                   <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                     {product?.discount}%
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {new Date(product?.createdAt).toLocaleDateString("en-GB", {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric",
+                    })}
                   </td>
                   <td className="px-6 py-4 rounded-br-lg">
                     <button

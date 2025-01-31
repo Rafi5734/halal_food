@@ -25,6 +25,8 @@ const AdminAddProduct = () => {
     imageLinks: [],
     price: "",
     description: "",
+    sourceName: "",
+    sourceUrl: "",
     stock: "",
     discount: "",
     status: "pending",
@@ -173,7 +175,9 @@ const AdminAddProduct = () => {
   };
   return (
     <main className="">
-      <p className="text-center text-4xl mt-5 font-bold mb-10 underline underline-offset-4">Add a product</p>
+      <p className="text-center text-4xl mt-5 font-bold mb-10 underline underline-offset-4">
+        Add a product
+      </p>
       <section className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-1 gap-3">
         <form className="ms-4" onSubmit={handleFormSubmit}>
           <div className="bg-[#111827] rounded-lg p-3">
@@ -352,6 +356,35 @@ const AdminAddProduct = () => {
                 value={productFormData.SKUId}
                 onChange={handleProductInputChange}
                 placeholder="Product SKU"
+                required
+              />
+            </div>
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="sourceName" value="Product source name" />
+              </div>
+              <TextInput
+                id="sourceName"
+                type="text"
+                name="sourceName"
+                value={productFormData.sourceName}
+                onChange={handleProductInputChange}
+                placeholder="Product source name"
+                required
+              />
+            </div>
+
+            <div>
+              <div className="mb-2 block">
+                <Label htmlFor="sourceUrl" value="Product source url" />
+              </div>
+              <TextInput
+                id="sourceUrl"
+                type="text"
+                name="sourceUrl"
+                value={productFormData.sourceUrl}
+                onChange={handleProductInputChange}
+                placeholder="Product source url"
                 required
               />
             </div>
