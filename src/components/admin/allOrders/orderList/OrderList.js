@@ -4,10 +4,13 @@ import {
   useGetAllCheckoutQuery,
 } from "@/api/checkoutSlice/checkoutSlice";
 import Loader from "@/styles/Loader/Loader";
-import { DatePicker } from "@nextui-org/react";
+import { Button, DatePicker, Tooltip } from "@nextui-org/react";
 import Image from "next/image";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import FilterIcon from "../../../../../public/icons/FilterIcon";
+import DownloadIcon from "../../../../../public/icons/DownloadIcon";
+import * as XLSX from "xlsx";
 
 const OrderList = () => {
   const { data: checkoutData, isLoading } = useGetAllCheckoutQuery();
@@ -52,6 +55,38 @@ const OrderList = () => {
     }
   };
 
+  const handleDownload = () => {
+    console.log("filteredCheckoutData", filteredCheckoutData);
+    const formattedData = filteredCheckoutData?.flatMap((customer) =>
+      customer?.order?.map((item) => ({
+        OrderID: customer._id,
+        CustomerName: customer.fullName,
+        Phone: customer.phoneNumber,
+        Address: customer.address,
+        ThanaDistrict: customer.thanaDistrict,
+        ProductName: item.name,
+        Category: item.category,
+        Price: item.price,
+        Discount: item.discount,
+        Discounted_Price: item.price * (item.discount / 100),
+        Quantity: item.productQuantity,
+        Total_Price:
+          (item?.price - item.price * (item.discount / 100)) *
+          item.productQuantity,
+        Size: item.size.replace(/"/g, ""),
+        Color: JSON.parse(item.color).title,
+        ColorImage: JSON.parse(item.color).url,
+        OrderDate: item?.updatedAt,
+        OrderStatus: item.status,
+      }))
+    );
+    const worksheet = XLSX.utils.json_to_sheet(formattedData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Order");
+
+    XLSX.writeFile(workbook, "Orders_Data.xlsx");
+  };
+
   return (
     <div className="">
       <div className="relative overflow-x-auto">
@@ -59,13 +94,25 @@ const OrderList = () => {
           <Loader />
         ) : (
           <>
-            {/* Date Picker */}
-            <DatePicker
-              className="max-w-[284px] mb-8 mt-5"
-              label="Filter with date"
-              value={value}
-              onChange={setValue}
-            />
+            <div className="flex flex-row">
+              <DatePicker
+                className="max-w-[284px] mb-8 mt-5"
+                label="Filter with date"
+                value={value}
+                onChange={setValue}
+              />
+              <Tooltip content="Download filtered data">
+                <Button
+                  onClick={handleDownload}
+                  variant="faded"
+                  isIconOnly
+                  className="mb-8 mt-5 ms-3"
+                  size="lg"
+                >
+                  <DownloadIcon />
+                </Button>
+              </Tooltip>
+            </div>
 
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 shadow-md sm:rounded-lg">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -159,7 +206,7 @@ const OrderList = () => {
                             TK
                           </td>
                           <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                            {new Date(order?.createdAt).toLocaleDateString(
+                            {new Date(order?.updatedAt).toLocaleDateString(
                               "en-GB",
                               {
                                 day: "2-digit",
