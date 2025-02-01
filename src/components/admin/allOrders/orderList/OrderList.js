@@ -12,6 +12,7 @@ import FilterIcon from "../../../../../public/icons/FilterIcon";
 import DownloadIcon from "../../../../../public/icons/DownloadIcon";
 import * as XLSX from "xlsx";
 
+
 const OrderList = () => {
   const { data: checkoutData, isLoading } = useGetAllCheckoutQuery();
   const [deleteCheckout] = useDeleteCheckoutMutation();
@@ -25,19 +26,15 @@ const OrderList = () => {
       )}/${value.year}`
     : null;
 
-  // Filter orders by selected date
-  const filteredCheckoutData = checkoutData
-    ?.map((product) => ({
-      ...product,
-      order: product.order.filter((order) => {
-        const orderDate = new Date(order.createdAt).toLocaleDateString(
-          "en-GB",
-          { day: "2-digit", month: "2-digit", year: "numeric" }
-        );
-        return selectedDate ? orderDate === selectedDate : true;
-      }),
-    }))
-    .filter((product) => product.order.length > 0); // Remove products with no matching orders
+  // Filter checkout data by selected date using orderTime
+  const filteredCheckoutData = checkoutData?.filter((product) => {
+    const orderDate = new Date(product.orderTime).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+    return selectedDate ? orderDate === selectedDate : true;
+  });
 
   const handleDeleteProduct = async (productId) => {
     const result = await deleteCheckout({ productId });
@@ -56,7 +53,7 @@ const OrderList = () => {
   };
 
   const handleDownload = () => {
-    console.log("filteredCheckoutData", filteredCheckoutData);
+    // console.log("filteredCheckoutData", filteredCheckoutData);
     const formattedData = filteredCheckoutData?.flatMap((customer) =>
       customer?.order?.map((item) => ({
         OrderID: customer._id,
@@ -68,18 +65,19 @@ const OrderList = () => {
         Category: item.category,
         Price: item.price,
         Discount: item.discount,
-        Discounted_Price: item.price * (item.discount / 100),
+        Discounted_Price: item.price - (item.price * item.discount) / 100, // Corrected calculation
         Quantity: item.productQuantity,
         Total_Price:
-          (item?.price - item.price * (item.discount / 100)) *
-          item.productQuantity,
+          (item.price - (item.price * item.discount) / 100) *
+          item.productQuantity, // Corrected
         Size: item.size.replace(/"/g, ""),
         Color: JSON.parse(item.color).title,
-        ColorImage: JSON.parse(item.color).url,
-        OrderDate: item?.updatedAt,
+        ColorImage: `=HYPERLINK("${JSON.parse(item.color).url}", "View Image")`, // Clickable link
+        OrderDate: new Date(customer?.orderTime).toLocaleDateString("en-GB"),
         OrderStatus: item.status,
       }))
     );
+
     const worksheet = XLSX.utils.json_to_sheet(formattedData);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Order");
@@ -206,7 +204,7 @@ const OrderList = () => {
                             TK
                           </td>
                           <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                            {new Date(order?.updatedAt).toLocaleDateString(
+                            {new Date(product?.orderTime).toLocaleDateString(
                               "en-GB",
                               {
                                 day: "2-digit",
