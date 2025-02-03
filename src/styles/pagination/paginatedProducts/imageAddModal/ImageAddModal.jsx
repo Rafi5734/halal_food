@@ -122,7 +122,7 @@ export default function ImageAddModal({ isOpen, onOpenChange, getProductId }) {
                     <p className="text-green-500">
                       Image uploaded successfully!
                     </p>
-                    <Image src={imageInfo.url} width={100} />
+                    <Image src={imageInfo.url} width="100%" alt={imageInfo?.url} />
                   </>
                 )}
 

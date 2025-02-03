@@ -1,3 +1,4 @@
+import { Image } from "@nextui-org/react";
 import React, { useState, useRef } from "react";
 
 const CustomImageMagnifier = ({
@@ -38,7 +39,7 @@ const CustomImageMagnifier = ({
       onMouseLeave={() => setShowMagnifier(false)}
     >
       {/* Main Image */}
-      <img
+      <Image
         ref={imageRef}
         src={imageSrc}
         alt="Zoomable"

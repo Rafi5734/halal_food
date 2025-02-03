@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Button, Label, TextInput, Select, Textarea } from "flowbite-react";
 import {
   useCategoryPostMutation,
@@ -233,7 +233,7 @@ const AdminAddProduct = () => {
                 <p className="text-white text-center mt-3 mb-3">Uploading...</p>
               )}
               {productFormData.imageLink && (
-                <img
+                <Image
                   src={productFormData.imageLink}
                   alt="Uploaded"
                   className="mt-2 w-32 h-32 object-cover"
