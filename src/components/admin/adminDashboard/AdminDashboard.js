@@ -7,6 +7,7 @@ import users_img from "../../../../public/User.png";
 import Link from "next/link";
 import { removeCookie } from "@/components/helper/cookies";
 import { useRouter } from "next/navigation";
+import SlideIcon from "../../../../public/icons/SlideIcon";
 
 const AdminDashboard = () => {
   const router = useRouter();
@@ -253,6 +254,17 @@ const AdminDashboard = () => {
               </svg>
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 All Categories
+              </span>
+            </li>
+          </Link>
+
+          <Link href="/admin/sliders">
+            <li
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-5`}
+            >
+              <SlideIcon />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                Slider controller
               </span>
             </li>
           </Link>

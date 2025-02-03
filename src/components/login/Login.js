@@ -30,9 +30,9 @@ const Login = () => {
     e.preventDefault();
     try {
       if (
-        formData?.userName === "test" &&
-        formData?.phoneNumber === "01887830405" &&
-        formData?.password === "test@789"
+        formData?.userName === "admin" &&
+        formData?.phoneNumber === "01754255853" &&
+        formData?.password === "admin@789"
       ) {
         router.push("/admin/addProduct");
         setCookie("bisuddho_auth", JSON.stringify(formData));

@@ -19,10 +19,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <Script src="https://cdn.tailwindcss.com" />
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css"
-          rel="stylesheet"
-        />
       </head>
       <body>
         <NextUIProvider>
@@ -34,8 +30,6 @@ export default function RootLayout({ children }) {
           </Providers>
         </NextUIProvider>
       </body>
-      <Script src="../path/to/flowbite/dist/flowbite.min.js" />
-      <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js" />
     </html>
   );
 }
