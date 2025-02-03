@@ -5,6 +5,7 @@ import { categorySlice } from "@/api/categorySlice/categorySlice";
 import { checkoutSlice } from "@/api/checkoutSlice/checkoutSlice";
 import { orderSlice } from "@/api/productSlice/orderSlice/orderSlice";
 import { productSlice } from "@/api/productSlice/productSlice";
+import { sliderSlice } from "@/api/sliders/sliderSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
@@ -17,6 +18,7 @@ export const store = configureStore({
     [orderSlice.reducerPath]: orderSlice.reducer,
     [checkoutSlice.reducerPath]: checkoutSlice.reducer,
     [cartSlice.reducerPath]: cartSlice.reducer,
+    [sliderSlice.reducerPath]: sliderSlice.reducer,
   },
   middleware: (getDefaultMiddlewares) =>
     getDefaultMiddlewares().concat(
@@ -26,7 +28,8 @@ export const store = configureStore({
       authSlice.middleware,
       orderSlice.middleware,
       checkoutSlice.middleware,
-      cartSlice.middleware
+      cartSlice.middleware,
+      sliderSlice.middleware
     ),
 });
 setupListeners(store.dispatch);
