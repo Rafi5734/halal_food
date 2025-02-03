@@ -36,7 +36,7 @@ const MainBanner = () => {
         className="mySwiper"
       >
         {getAllSliderData?.map((slider) => (
-          <SwiperSlide>
+          <SwiperSlide key={slider?._id}>
             <Image
               src={slider?.image}
               alt={slider?.image}

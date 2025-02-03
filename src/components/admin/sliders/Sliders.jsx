@@ -147,8 +147,8 @@ export default function Sliders() {
 
   const handleEditSliderDataFormSubmit = async (e) => {
     e.preventDefault();
-    console.log("sliderData", sliderData);
-    console.log("sliderId", selectedSlider._id);
+    // console.log("sliderData", sliderData);
+    // console.log("sliderId", selectedSlider._id);
     try {
       const result = await sliderUpdate({
         sliderData,
