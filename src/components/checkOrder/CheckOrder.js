@@ -619,7 +619,7 @@ const CheckOrder = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("checkoutFormData", checkoutFormData);
+    // console.log("checkoutFormData", checkoutFormData);
 
     checkoutFormData.order.push(productCookieValue);
     const result = await checkoutPost(checkoutFormData);
@@ -736,7 +736,7 @@ const CheckOrder = () => {
                     </select>
                   </div>
 
-                  {/* Thana District Input */}
+                  {/* District Input */}
                   <div className="col-span-full">
                     <label
                       htmlFor="district"
@@ -769,17 +769,6 @@ const CheckOrder = () => {
                             </option>
                           ))}
                       </select>
-                      {/* <input
-                        type="text"
-                        name="zilla"
-                        value={checkoutFormData.zilla}
-                        onChange={handleCheckoutInputChange}
-                        id="zilla"
-                        placeholder="Enter your thana & zilla"
-                        autoComplete="thana_district"
-                        className="ps-3 block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
-                        required
-                      /> */}
                     </div>
                   </div>
 

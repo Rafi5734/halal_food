@@ -3,6 +3,7 @@ import { Button, useDisclosure } from "@nextui-org/react";
 import Image from "next/image";
 import React, { useState } from "react";
 import ImageAddModal from "./imageAddModal/ImageAddModal";
+import EditIcon from "../../../../public/icons/EditIcon";
 
 const PaginatedProducts = ({ currentItems }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -14,7 +15,20 @@ const PaginatedProducts = ({ currentItems }) => {
   const handleProductDelete = async (productId) => {
     try {
       const result = await deleteProduct({ productId });
-      console.log("deleted", result);
+      if (result?.data) {
+        Swal.fire({
+          title: "Product deleted!",
+          // text: "Logged In Successfully",
+          icon: "success",
+        });
+      } else {
+        Swal.fire({
+          title: "Product not deleted!",
+          // text: "Logged In Successfully",
+          icon: "error",
+        });
+      }
+      // console.log("deleted", result);
     } catch (err) {
       console.log("err", err);
     }
@@ -106,6 +120,14 @@ const PaginatedProducts = ({ currentItems }) => {
                     >
                       Remove
                     </button>
+                    <Button
+                      isIconOnly
+                      // onPress={onOpen}
+                      onClick={() => setGetProductId(product?._id)}
+                      className="ms-3 mt-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    >
+                      <EditIcon />
+                    </Button>
                     <Button
                       onPress={onOpen}
                       onClick={() => setGetProductId(product?._id)}
