@@ -12,7 +12,6 @@ import FilterIcon from "../../../../../public/icons/FilterIcon";
 import DownloadIcon from "../../../../../public/icons/DownloadIcon";
 import * as XLSX from "xlsx";
 
-
 const OrderList = () => {
   const { data: checkoutData, isLoading } = useGetAllCheckoutQuery();
   const [deleteCheckout] = useDeleteCheckoutMutation();
@@ -60,7 +59,9 @@ const OrderList = () => {
         CustomerName: customer.fullName,
         Phone: customer.phoneNumber,
         Address: customer.address,
-        ThanaDistrict: customer.thanaDistrict,
+        District: customer.district,
+        Division: customer.division,
+        Zilla: customer.zilla,
         ProductName: item.name,
         Category: item.category,
         Price: item.price,
@@ -219,9 +220,19 @@ const OrderList = () => {
                               className="px-6 py-4 font-semibold text-gray-900 dark:text-white"
                               rowSpan={product.order.length}
                             >
-                              <p>Address: {product?.address}</p>
-                              <p>Details: {product?.thanaDistrict}</p>
-                              <p>Phone Number: {product?.phoneNumber}</p>
+                              <p>
+                                Addres details:{" "}
+                                <span className="font-extralight">
+                                  {product?.division}; {product?.district};{" "}
+                                  {product?.zilla}; {product?.address}
+                                </span>
+                              </p>
+                              <p>
+                                Phone Number:{" "}
+                                <span className="font-extralight">
+                                  {product?.phoneNumber}
+                                </span>
+                              </p>
                             </td>
                           )}
                           {index === 0 && (

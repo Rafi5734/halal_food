@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Button, Modal } from "flowbite-react";
-import { getCookie } from "../helper/cookies";
 import { useCheckoutPostMutation } from "@/api/checkoutSlice/checkoutSlice";
 import Swal from "sweetalert2";
 import CheckoutModal from "../checkout/checkoutModal/CheckoutModal";
@@ -9,9 +8,573 @@ import { useRouter } from "next/navigation";
 import { clearCart, getCart } from "@/utils/CartUtils";
 import Cookies from "js-cookie";
 
+const divisionData = {
+  "Dhaka Division": {
+    districts: {
+      "Dhaka District": [
+        "Dhanmondi",
+        "Gulshan",
+        "Mirpur",
+        "Uttara",
+        "Motijheel",
+        "Mohammadpur",
+        "Banani",
+        "Tejgaon",
+        "Paltan",
+        "Badda",
+      ],
+      "Gazipur District": [
+        "Tongi",
+        "Kaliakair",
+        "Sreepur",
+        "Kapasia",
+        "Kaliganj",
+      ],
+      "Manikganj District": [
+        "Manikganj Sadar",
+        "Saturia",
+        "Singair",
+        "Harirampur",
+        "Shibalaya",
+      ],
+      "Munshiganj District": [
+        "Munshiganj Sadar",
+        "Lohajang",
+        "Sreenagar",
+        "Sirajdikhan",
+        "Tongibari",
+      ],
+      "Narayanganj District": [
+        "Narayanganj Sadar",
+        "Sonargaon",
+        "Bandar",
+        "Araihazar",
+        "Rupganj",
+      ],
+      "Narsingdi District": [
+        "Narsingdi Sadar",
+        "Palash",
+        "Shibpur",
+        "Belabo",
+        "Monohardi",
+      ],
+      "Tangail District": [
+        "Tangail Sadar",
+        "Madhupur",
+        "Mirzapur",
+        "Ghatail",
+        "Nagarpur",
+        "Sakhipur",
+      ],
+      "Kishoreganj District": [
+        "Kishoreganj Sadar",
+        "Bhairab",
+        "Bajitpur",
+        "Hossainpur",
+        "Katiadi",
+        "Pakundia",
+      ],
+      "Rajbari District": [
+        "Rajbari Sadar",
+        "Baliakandi",
+        "Pangsha",
+        "Kalukhali",
+      ],
+      "Shariatpur District": [
+        "Shariatpur Sadar",
+        "Naria",
+        "Zanjira",
+        "Damudya",
+        "Gosairhat",
+      ],
+      "Madaripur District": [
+        "Madaripur Sadar",
+        "Rajoir",
+        "Kalkini",
+        "Shibchar",
+      ],
+      "Faridpur District": [
+        "Faridpur Sadar",
+        "Boalmari",
+        "Alfadanga",
+        "Nagarkanda",
+        "Bhanga",
+        "Madhukhali",
+      ],
+      "Gopalganj District": [
+        "Gopalganj Sadar",
+        "Kotalipara",
+        "Muksudpur",
+        "Tungipara",
+      ],
+    },
+  },
+  "Chattogram Division": {
+    districts: {
+      "Chattogram District": [
+        "Chattogram Sadar",
+        "Patiya",
+        "Rangunia",
+        "Sitakunda",
+        "Mirsharai",
+        "Hathazari",
+        "Anwara",
+        "Boalkhali",
+        "Lohagara",
+        "Satkania",
+        "Banshkhali",
+      ],
+      "Cox's Bazar District": [
+        "Cox's Bazar Sadar",
+        "Chakaria",
+        "Maheshkhali",
+        "Ramu",
+        "Teknaf",
+        "Ukhiya",
+        "Pekua",
+      ],
+      "Cumilla District": [
+        "Cumilla Sadar",
+        "Daudkandi",
+        "Homna",
+        "Laksam",
+        "Muradnagar",
+        "Brahmanpara",
+        "Chandina",
+      ],
+      "Feni District": [
+        "Feni Sadar",
+        "Daganbhuiyan",
+        "Parshuram",
+        "Chhagalnaiya",
+        "Sonagazi",
+      ],
+      "Brahmanbaria District": [
+        "Brahmanbaria Sadar",
+        "Ashuganj",
+        "Kasba",
+        "Nasirnagar",
+        "Sarail",
+        "Nabinagar",
+      ],
+      "Rangamati District": [
+        "Rangamati Sadar",
+        "Baghaichhari",
+        "Barkal",
+        "Kaptai",
+        "Rajasthali",
+        "Langadu",
+      ],
+      "Khagrachhari District": [
+        "Khagrachhari Sadar",
+        "Dighinala",
+        "Lakshmichhari",
+        "Mahalchhari",
+        "Matiranga",
+        "Panchhari",
+        "Ramgarh",
+      ],
+      "Bandarban District": [
+        "Bandarban Sadar",
+        "Thanchi",
+        "Ruma",
+        "Lama",
+        "Rowangchhari",
+        "Alikadam",
+        "Naikhongchhari",
+      ],
+      "Noakhali District": [
+        "Noakhali Sadar",
+        "Begumganj",
+        "Chatkhil",
+        "Companiganj",
+        "Hatiya",
+        "Senbagh",
+      ],
+      "Lakshmipur District": [
+        "Lakshmipur Sadar",
+        "Raipur",
+        "Ramganj",
+        "Ramgati",
+        "Kamalnagar",
+      ],
+      "Chandpur District": [
+        "Chandpur Sadar",
+        "Matlab North",
+        "Matlab South",
+        "Haimchar",
+        "Faridganj",
+        "Shahrasti",
+        "Hajigonj",
+      ],
+    },
+  },
+  "Sylhet Division": {
+    districts: {
+      "Sylhet District": [
+        "Sylhet Sadar",
+        "Beanibazar",
+        "Golapganj",
+        "Zakiganj",
+        "Kanaighat",
+        "Jaintiapur",
+        "Companiganj",
+        "Bishwanath",
+        "Balaganj",
+        "Fenchuganj",
+      ],
+      "Moulvibazar District": [
+        "Moulvibazar Sadar",
+        "Srimangal",
+        "Kamalganj",
+        "Rajnagar",
+        "Kulaura",
+        "Juri",
+        "Barlekha",
+      ],
+      "Habiganj District": [
+        "Habiganj Sadar",
+        "Nabiganj",
+        "Bahubal",
+        "Chunarughat",
+        "Lakhai",
+        "Baniachang",
+        "Ajmiriganj",
+        "Madhabpur",
+      ],
+      "Sunamganj District": [
+        "Sunamganj Sadar",
+        "Tahirpur",
+        "Derai",
+        "Dharampasha",
+        "Jamalganj",
+        "Jagannathpur",
+        "Bishwambarpur",
+        "South Sunamganj",
+        "Chhatak",
+        "Doarabazar",
+      ],
+    },
+  },
+  "Barisal Division": {
+    districts: {
+      "Barisal District": [
+        "Barisal Sadar",
+        "Bakerganj",
+        "Babuganj",
+        "Banaripara",
+        "Gournadi",
+        "Hizla",
+        "Mehendiganj",
+        "Muladi",
+        "Wazirpur",
+      ],
+      "Bhola District": [
+        "Bhola Sadar",
+        "Burhanuddin",
+        "Char Fasson",
+        "Daulatkhan",
+        "Lalmohan",
+        "Manpura",
+        "Tazumuddin",
+      ],
+      "Jhalokathi District": [
+        "Jhalokathi Sadar",
+        "Kathalia",
+        "Nalchity",
+        "Rajapur",
+      ],
+      "Patuakhali District": [
+        "Patuakhali Sadar",
+        "Bauphal",
+        "Dashmina",
+        "Dumki",
+        "Galachipa",
+        "Kalapara",
+        "Mirzaganj",
+        "Rangabali",
+      ],
+      "Pirojpur District": [
+        "Pirojpur Sadar",
+        "Bhandaria",
+        "Kawkhali",
+        "Mathbaria",
+        "Nazirpur",
+        "Nesarabad (Swarupkathi)",
+      ],
+      "Barguna District": [
+        "Barguna Sadar",
+        "Amtali",
+        "Betagi",
+        "Bamna",
+        "Patharghata",
+      ],
+    },
+  },
+  "Mymensingh Division": {
+    districts: {
+      "Mymensingh District": [
+        "Mymensingh Sadar",
+        "Bhaluka",
+        "Dhobaura",
+        "Fulbaria",
+        "Gaffargaon",
+        "Gauripur",
+        "Haluaghat",
+        "Ishwarganj",
+        "Muktagachha",
+        "Nandail",
+        "Phulpur",
+        "Trishal",
+      ],
+      "Jamalpur District": [
+        "Jamalpur Sadar",
+        "Bakshiganj",
+        "Dewanganj",
+        "Islampur",
+        "Madarganj",
+        "Melandaha",
+        "Sarishabari",
+      ],
+      "Netrokona District": [
+        "Netrokona Sadar",
+        "Atpara",
+        "Barhatta",
+        "Durgapur",
+        "Khaliajuri",
+        "Kalmakanda",
+        "Madan",
+        "Mohanganj",
+        "Purbadhala",
+      ],
+      "Sherpur District": [
+        "Sherpur Sadar",
+        "Jhenaigati",
+        "Nakla",
+        "Nalitabari",
+        "Sreebardi",
+      ],
+    },
+  },
+  "Rangpur Division": {
+    districts: {
+      "Rangpur District": [
+        "Rangpur Sadar",
+        "Badarganj",
+        "Gangachara",
+        "Mithapukur",
+        "Pirgachha",
+        "Kaunia",
+        "Kochu Khet",
+        "Taraganj",
+        "Ranishankail",
+        "Kormodai",
+      ],
+      "Kurigram District": [
+        "Kurigram Sadar",
+        "Bhurungamari",
+        "Chilmari",
+        "Rajarhat",
+        "Rangpur Sadar",
+        "Ulipur",
+        "Nageswari",
+      ],
+      "Nilphamari District": [
+        "Nilphamari Sadar",
+        "Jaldhaka",
+        "Domar",
+        "Saidpur",
+        "Kishoreganj",
+      ],
+      "Lalmonirhat District": [
+        "Lalmonirhat Sadar",
+        "Aditmari",
+        "Kaliganj",
+        "Hatibandha",
+        "Patgram",
+        "Mogholhat",
+      ],
+      "Gaibandha District": [
+        "Gaibandha Sadar",
+        "Sundarganj",
+        "Shaghata",
+        "Palashbari",
+        "Phulchhari",
+        "Kamarjani",
+        "Gobindaganj",
+      ],
+      "Panchagarh District": [
+        "Panchagarh Sadar",
+        "Debiganj",
+        "Boda",
+        "Tetulia",
+        "Atwari",
+      ],
+      "Thakurgaon District": [
+        "Thakurgaon Sadar",
+        "Pirganj",
+        "Ranishankail",
+        "Baliadangi",
+        "Haripur",
+      ],
+    },
+  },
+  "Rajshahi Division": {
+    districts: {
+      "Rajshahi District": [
+        "Rajshahi Sadar",
+        "Puthia",
+        "Bagha",
+        "Charghat",
+        "Durgapur",
+        "Tanore",
+        "Mohonpur",
+        "Shahjadpur",
+        "Paba",
+        "Godagari",
+      ],
+      "Naogaon District": [
+        "Naogaon Sadar",
+        "Atrai",
+        "Raninagar",
+        "Manda",
+        "Rajshahi Sadar",
+        "Porsha",
+        "Badalgachhi",
+        "Niamatpur",
+        "Sapahar",
+        "Dhamoirhat",
+      ],
+      "Chapainawabganj District": [
+        "Chapainawabganj Sadar",
+        "Shibganj",
+        "Nachole",
+        "Gomostapur",
+        "Bholahat",
+      ],
+      "Bogura District": [
+        "Bogura Sadar",
+        "Shibganj",
+        "Sariakandi",
+        "Dupchanchia",
+        "Kahaloo",
+        "Nandigram",
+        "Gabtali",
+        "Dhunat",
+        "Shajahanpur",
+      ],
+      "Sirajganj District": [
+        "Sirajganj Sadar",
+        "Belkuchi",
+        "Shahjadpur",
+        "Kazipur",
+        "Chauhali",
+        "Kamarkhand",
+        "Ullapara",
+        "Raiganj",
+        "Jamalpur",
+      ],
+      "Pabna District": [
+        "Pabna Sadar",
+        "Atghoria",
+        "Bera",
+        "Santhia",
+        "Faridpur",
+        "Chatmohar",
+        "Sujanagar",
+        "Vanga",
+        "Alamnagar",
+      ],
+      "Joypurhat District": [
+        "Joypurhat Sadar",
+        "Akkelpur",
+        "Khetlal",
+        "Kalai",
+        "Panchbibi",
+      ],
+      "Kurigram District": [
+        "Kurigram Sadar",
+        "Bhurungamari",
+        "Chilmari",
+        "Rajarhat",
+        "Rangpur Sadar",
+        "Ulipur",
+        "Nageswari",
+      ],
+    },
+  },
+  "Khulna Division": {
+    districts: {
+      "Khulna District": [
+        "Khulna Sadar",
+        "Digholia",
+        "Koyra",
+        "Phultala",
+        "Batiaghata",
+        "Rupsha",
+        "Terokhada",
+        "Dumuria",
+        "Paikgachha",
+        "Kalaroa",
+      ],
+      "Bagerhat District": [
+        "Bagerhat Sadar",
+        "Chitalmari",
+        "Mollahat",
+        "Kachua",
+        "Morrelganj",
+        "Rampal",
+        "Sharankhola",
+        "Fakirhat",
+        "Upazila",
+      ],
+      "Jessore District": [
+        "Jessore Sadar",
+        "Bagherpara",
+        "Chaugachha",
+        "Keshabpur",
+        "Manirampur",
+        "Shyamnagar",
+        "Abhaynagar",
+        "Jhikargachha",
+      ],
+      "Meherpur District": [
+        "Meherpur Sadar",
+        "Mujibnagar",
+        "Gangni",
+        "Kusumgram",
+      ],
+      "Kushtia District": [
+        "Kushtia Sadar",
+        "Bheramara",
+        "Khoksa",
+        "Daulatpur",
+        "Mirpur",
+        "Pirgachha",
+      ],
+      "Chuadanga District": [
+        "Chuadanga Sadar",
+        "Chougachha",
+        "Uttarpara",
+        "Mirpur",
+        "Pirgachha",
+        "Bheramara",
+      ],
+      "Satkhira District": [
+        "Satkhira Sadar",
+        "Kalaroa",
+        "Shyamnagar",
+        "Assasuni",
+        "Tala",
+        "Kaliganj",
+        "Debhata",
+      ],
+    },
+  },
+};
+
 const CheckOrder = () => {
   const router = useRouter();
-  const myCookieValuecookies = getCart();
 
   var productCookieValue = Cookies.get("bisuddho_cookies");
   const productQuantity = Cookies.get("productQuantity");
@@ -37,7 +600,9 @@ const CheckOrder = () => {
     fullName: "",
     phoneNumber: "",
     address: "",
-    thanaDistrict: "",
+    division: "",
+    district: "",
+    zilla: "",
     delivery_charge: "",
     totalPrice: "",
     status: "pending",
@@ -54,8 +619,9 @@ const CheckOrder = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
+    console.log("checkoutFormData", checkoutFormData);
+
     checkoutFormData.order.push(productCookieValue);
-    // console.log("checkoutFormData", checkoutFormData);
     const result = await checkoutPost(checkoutFormData);
     if (result?.data) {
       setOpenModal(true);
@@ -113,7 +679,7 @@ const CheckOrder = () => {
                         id="full_name"
                         placeholder="Enter your full name"
                         autoComplete="full_name"
-                        className="block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
+                        className="ps-3 block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
                         required
                       />
                     </div>
@@ -136,19 +702,122 @@ const CheckOrder = () => {
                         id="phone_number"
                         autoComplete="phone_number"
                         placeholder="Enter your phone number"
-                        className="block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
+                        className="ps-3 block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
                         required
                       />
                     </div>
                   </div>
 
-                  {/* Address Input */}
+                  {/* Division Selector */}
+                  <div className="col-span-full">
+                    <label className="block text-sm font-bold text-[#008f8f]">
+                      Select your division
+                    </label>
+                    <select
+                      name="division"
+                      value={checkoutFormData.division}
+                      onChange={(e) => {
+                        handleCheckoutInputChange(e);
+                        setCheckoutFormData((prev) => ({
+                          ...prev,
+                          district: "",
+                          zilla: "",
+                        }));
+                      }}
+                      className="w-full border p-2 rounded-md mt-2 border-[#008f8f] text-[#008f8f]"
+                      required
+                    >
+                      <option value="">Select Division</option>
+                      {Object.keys(divisionData).map((division) => (
+                        <option key={division} value={division}>
+                          {division}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Thana District Input */}
+                  <div className="col-span-full">
+                    <label
+                      htmlFor="district"
+                      className="block text-sm font-bold leading-6 text-[#008f8f]"
+                    >
+                      Select your district
+                    </label>
+                    <div className="mt-2">
+                      <select
+                        name="district"
+                        value={checkoutFormData.district}
+                        onChange={(e) => {
+                          handleCheckoutInputChange(e);
+                          setCheckoutFormData((prev) => ({
+                            ...prev,
+                            zilla: "",
+                          }));
+                        }}
+                        className="w-full border p-2 rounded-md mt-2 border-[#008f8f] text-[#008f8f]"
+                        required
+                        disabled={!checkoutFormData.division}
+                      >
+                        <option value="">Select District</option>
+                        {checkoutFormData.division &&
+                          Object.keys(
+                            divisionData[checkoutFormData.division].districts
+                          ).map((district) => (
+                            <option key={district} value={district}>
+                              {district}
+                            </option>
+                          ))}
+                      </select>
+                      {/* <input
+                        type="text"
+                        name="zilla"
+                        value={checkoutFormData.zilla}
+                        onChange={handleCheckoutInputChange}
+                        id="zilla"
+                        placeholder="Enter your thana & zilla"
+                        autoComplete="thana_district"
+                        className="ps-3 block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
+                        required
+                      /> */}
+                    </div>
+                  </div>
+
+                  {/* Zilla Selector */}
+                  <div className="col-span-full">
+                    <label className="block text-sm font-bold text-[#008f8f]">
+                      Select your zilla
+                    </label>
+                    <select
+                      name="zilla"
+                      value={checkoutFormData.zilla}
+                      onChange={handleCheckoutInputChange}
+                      className="w-full border p-2 rounded-md border-[#008f8f] text-[#008f8f]"
+                      required
+                      disabled={!checkoutFormData.district}
+                    >
+                      <option value="">Select Zilla</option>
+                      {checkoutFormData.district &&
+                        divisionData[checkoutFormData.division].districts[
+                          checkoutFormData.district
+                        ].map((zilla) => (
+                          <option key={zilla} value={zilla}>
+                            {zilla}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
+
+                  {/* detail address */}
                   <div className="col-span-full">
                     <label
                       htmlFor="address"
                       className="block text-sm font-bold leading-6 text-[#008f8f]"
                     >
-                      Your city name
+                      Your rest of address{" "}
+                      <span className="text-xs font-light">
+                        (Section/block; Road no./Holding no.; House no.)
+                      </span>
                     </label>
                     <div className="mt-2">
                       <input
@@ -157,32 +826,9 @@ const CheckOrder = () => {
                         value={checkoutFormData.address}
                         onChange={handleCheckoutInputChange}
                         id="address"
-                        autoComplete="address"
-                        placeholder="Enter your full address"
-                        className="block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  {/* Thana District Input */}
-                  <div className="col-span-full">
-                    <label
-                      htmlFor="thana_district"
-                      className="block text-sm font-bold leading-6 text-[#008f8f]"
-                    >
-                      Details your address
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        type="text"
-                        name="thanaDistrict"
-                        value={checkoutFormData.thanaDistrict}
-                        onChange={handleCheckoutInputChange}
-                        id="thana_district"
-                        placeholder="Enter your thana & zilla"
+                        placeholder="Enter your rest address"
                         autoComplete="thana_district"
-                        className="block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
+                        className="ps-3 block w-full rounded-md border-0 py-1.5 text-[#008f8f] shadow-sm ring-1 ring-inset ring-[#008f8f] placeholder:text-[#008f8f] focus:ring-2 focus:ring-inset focus:ring-[#008f8f] sm:text-sm sm:leading-6"
                         required
                       />
                     </div>
