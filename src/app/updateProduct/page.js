@@ -44,7 +44,7 @@ export default function UpdateProduct({ searchParams }) {
     } catch (err) {
       Swal.fire({
         title: "Error",
-        text: err?.message,
+        text: err,
         icon: "error",
       });
     }

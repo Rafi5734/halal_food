@@ -4,6 +4,7 @@ export const orderSlice = createApi({
   // refetchOnFocus: true,
   baseQuery: fetchBaseQuery({
     baseUrl: "https://hala-food-server-zg6m.vercel.app",
+    // baseUrl: "http://localhost:8800",
   }),
   tagTypes: ["order"],
   endpoints: (builder) => ({
@@ -26,7 +27,22 @@ export const orderSlice = createApi({
       }),
       invalidatesTags: ["order"],
     }),
+    updateProductStatus: builder.mutation({
+      query: ({ updatedProductStatusData, productId }) => ({
+        url: `/checkout/${productId}`,
+        headers: {
+          "content-type": "application/json",
+        },
+        method: "PUT",
+        body: updatedProductStatusData,
+      }),
+      invalidatesTags: ["order"],
+    }),
   }),
 });
 
-export const { usePostCartMutation, useDeleteCartProductMutation } = orderSlice;
+export const {
+  usePostCartMutation,
+  useDeleteCartProductMutation,
+  useUpdateProductStatusMutation,
+} = orderSlice;

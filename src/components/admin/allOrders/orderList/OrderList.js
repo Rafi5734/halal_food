@@ -4,17 +4,26 @@ import {
   useGetAllCheckoutQuery,
 } from "@/api/checkoutSlice/checkoutSlice";
 import Loader from "@/styles/Loader/Loader";
-import { Button, DatePicker, Tooltip } from "@nextui-org/react";
+import {
+  Button,
+  DatePicker,
+  Select,
+  SelectItem,
+  Tooltip,
+} from "@nextui-org/react";
 import Image from "next/image";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import FilterIcon from "../../../../../public/icons/FilterIcon";
 import DownloadIcon from "../../../../../public/icons/DownloadIcon";
 import * as XLSX from "xlsx";
+import { useUpdateProductStatusMutation } from "@/api/productSlice/orderSlice/orderSlice";
 
 const OrderList = () => {
   const { data: checkoutData, isLoading } = useGetAllCheckoutQuery();
   const [deleteCheckout] = useDeleteCheckoutMutation();
+  const [updateProductStatus] = useUpdateProductStatusMutation();
+
   const [value, setValue] = useState(null);
 
   // Convert selected date to "DD/MM/YYYY" format
@@ -49,6 +58,40 @@ const OrderList = () => {
         icon: "error",
       });
     }
+  };
+
+  const handleUpdateStatus = async (productId, status) => {
+    const updatedProductStatusData = {
+      status: status,
+    };
+    try {
+      const result = await updateProductStatus({
+        updatedProductStatusData,
+        productId,
+      });
+      console.log("result", result);
+      if (result?.data) {
+        Swal.fire({
+          title: "Success",
+          text: "Product status updated!",
+          icon: "success",
+        });
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: "Product status not updated!",
+          icon: "error",
+        });
+      }
+    } catch (err) {
+      Swal.fire({
+        title: "Error",
+        text: err,
+        icon: "error",
+      });
+    }
+    console.log("status", updatedProductStatusData);
+    console.log("Id", productId);
   };
 
   const handleDownload = () => {
@@ -146,7 +189,9 @@ const OrderList = () => {
                   <th scope="col" className="px-6 py-3">
                     Address
                   </th>
-
+                  <th scope="col" className="px-6 py-3">
+                    Status
+                  </th>
                   <th scope="col" className="px-6 py-3">
                     Action
                   </th>
@@ -235,6 +280,36 @@ const OrderList = () => {
                               </p>
                             </td>
                           )}
+
+                          <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-nowrap">
+                            <Select
+                              className="w-32"
+                              // label="Change status"
+                              aria-label={product?.status}
+                              placeholder="Select a status"
+                              defaultSelectedKeys={[product?.status]}
+                              selectedKeys={[product?.status]}
+                              variant="bordered"
+                            >
+                              <SelectItem
+                                key="pending"
+                                onClick={() =>
+                                  handleUpdateStatus(product?._id, "pending")
+                                }
+                              >
+                                pending
+                              </SelectItem>
+                              <SelectItem
+                                onClick={() =>
+                                  handleUpdateStatus(product?._id, "shipping")
+                                }
+                                key="shipping"
+                              >
+                                shipping
+                              </SelectItem>
+                              {/* <SelectItem key="delivered">delivered</SelectItem> */}
+                            </Select>
+                          </td>
                           {index === 0 && (
                             <td
                               className="px-6 py-4 font-semibold text-gray-900 dark:text-white"

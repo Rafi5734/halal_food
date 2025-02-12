@@ -3,6 +3,7 @@ export const productSlice = createApi({
   reducerPath: "product",
   // refetchOnFocus: true,
   baseQuery: fetchBaseQuery({
+    // baseUrl: "http://localhost:8800",
     baseUrl: "https://hala-food-server-zg6m.vercel.app",
   }),
   tagTypes: ["product"],
@@ -55,6 +56,7 @@ export const productSlice = createApi({
         url: `/product/${productId}`,
         headers: {
           "content-type": "application/json",
+          Accept: "application/json", // Add Accept header
         },
         method: "PUT",
         body: updatedProductData,
