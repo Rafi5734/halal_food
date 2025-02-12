@@ -100,7 +100,7 @@ export default function UpdateProduct({ searchParams }) {
             {/* <Image width={100} src={getASingleProductData?.imageLink}></Image> */}
             <div className="flex flex-row gap-3">
               {getASingleProductData?.imageLinks?.map((images) => (
-                <Image width={100} src={images?.url}></Image>
+                <Image key={images?.url} width={100} src={images?.url}></Image>
               ))}
             </div>
           </div>
