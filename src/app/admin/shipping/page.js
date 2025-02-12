@@ -6,10 +6,13 @@ export default async function ShippingOrders() {
   // Cache function with tag for revalidation
   const fetchOrders = unstable_cache(
     async () => {
-      const res = await fetch("http://localhost:8800/checkout", {
-        cache: "force-cache", // Cache the response
-        next: { tags: ["checkoutOrders"] }, // Tag for manual invalidation
-      });
+      const res = await fetch(
+        "https://hala-food-server-zg6m.vercel.app/checkout",
+        {
+          cache: "force-cache", // Cache the response
+          next: { tags: ["checkoutOrders"] }, // Tag for manual invalidation
+        }
+      );
       return res.json();
     },
     ["checkoutOrders"], // Unique cache key
