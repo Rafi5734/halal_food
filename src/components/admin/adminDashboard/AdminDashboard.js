@@ -8,6 +8,7 @@ import Link from "next/link";
 import { removeCookie } from "@/components/helper/cookies";
 import { useRouter } from "next/navigation";
 import SlideIcon from "../../../../public/icons/SlideIcon";
+import ShippingIcon from "@/assets/ShippingIcon";
 
 const AdminDashboard = () => {
   const router = useRouter();
@@ -208,6 +209,17 @@ const AdminDashboard = () => {
               </svg>
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 Orders
+              </span>
+            </li>
+          </Link>
+
+          <Link href="/admin/shipping">
+            <li
+              className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 mt-5`}
+            >
+              <ShippingIcon />
+              <span className={`${!open && "hidden"} origin-left duration-200`}>
+                Shipping
               </span>
             </li>
           </Link>
