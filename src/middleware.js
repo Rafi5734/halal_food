@@ -17,7 +17,10 @@ export const config = {
   matcher: [
     "/notification",
     "/admin/addProduct",
+    "/admin/allProducts",
     "/admin/orders",
     "/admin/users",
+    "/admin/allCategory",
+    "/admin/sliders",
   ],
 };

@@ -50,6 +50,18 @@ export const productSlice = createApi({
       invalidatesTags: ["product"],
     }),
 
+    updateProduct: builder.mutation({
+      query: ({ updatedProductData, productId }) => ({
+        url: `/product/${productId}`,
+        headers: {
+          "content-type": "application/json",
+        },
+        method: "PUT",
+        body: updatedProductData,
+      }),
+      invalidatesTags: ["product"],
+    }),
+
     deleteProduct: builder.mutation({
       query: ({ productId }) => ({
         url: `/product/${productId}`,
@@ -76,4 +88,5 @@ export const {
   useDeleteCommentMutation,
   useDeleteProductMutation,
   useImagePostMutation,
+  useUpdateProductMutation,
 } = productSlice;

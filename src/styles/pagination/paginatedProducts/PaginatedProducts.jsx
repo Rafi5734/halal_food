@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import ImageAddModal from "./imageAddModal/ImageAddModal";
 import EditIcon from "../../../../public/icons/EditIcon";
+import Link from "next/link";
 
 const PaginatedProducts = ({ currentItems }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -32,6 +33,10 @@ const PaginatedProducts = ({ currentItems }) => {
     } catch (err) {
       console.log("err", err);
     }
+  };
+
+  const handleProductUpdate = (productId) => {
+    console.log("productId", productId);
   };
 
   return (
@@ -120,14 +125,22 @@ const PaginatedProducts = ({ currentItems }) => {
                     >
                       Remove
                     </button>
-                    <Button
-                      isIconOnly
-                      // onPress={onOpen}
-                      onClick={() => setGetProductId(product?._id)}
-                      className="ms-3 mt-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    <Link
+                      href={{
+                        pathname: "/updateProduct",
+                        query: { _id: product._id },
+                      }}
                     >
-                      <EditIcon />
-                    </Button>
+                      <Button
+                        isIconOnly
+                        // onPress={onOpen}
+                        onClick={() => handleProductUpdate(product?._id)}
+                        className="ms-3 mt-2 font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      >
+                        <EditIcon />
+                      </Button>
+                    </Link>
+
                     <Button
                       onPress={onOpen}
                       onClick={() => setGetProductId(product?._id)}
