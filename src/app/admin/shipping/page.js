@@ -1,33 +1,19 @@
 import React from "react";
-import { unstable_cache } from "next/cache";
 import { Image } from "@nextui-org/react";
 
 export default async function ShippingOrders() {
-  // Cache function with tag for revalidation
-  const fetchOrders = unstable_cache(
-    async () => {
-      const res = await fetch(
-        "https://hala-food-server-zg6m.vercel.app/checkout",
-        {
-          cache: "force-cache", // Cache the response
-          next: { tags: ["checkoutOrders"] }, // Tag for manual invalidation
-        }
-      );
-      return res.json();
-    },
-    ["checkoutOrders"], // Unique cache key
-    { revalidate: 60 } // Revalidate cache every 60 seconds
-  );
-
-  // Fetch orders using cached function
-  const allOrders = await fetchOrders();
+  // Fetch orders without caching
+  const res = await fetch("https://hala-food-server-zg6m.vercel.app/checkout", {
+    cache: "no-store", // Ensure fresh data on every request
+  });
+  const allOrders = await res.json();
 
   // Filter only "shipping" status orders
   const shippingOrders = allOrders.filter(
     (order) => order.status === "shipping"
   );
 
-  //   console.log("shippingOrders", shippingOrders);
+  console.log("shippingOrders", shippingOrders);
   return (
     <div className="w-full">
       <div className="p-4">
@@ -37,9 +23,9 @@ export default async function ShippingOrders() {
         {shippingOrders?.length === 0 ? (
           <p>No orders in shipping status.</p>
         ) : (
-          <div className="relative overflow-x-auto">
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 shadow-md sm:rounded-lg">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <div className="relative overflow-x-auto mt-3">
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 shadow-md sm:rounded-lg mt-10">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                   <th scope="col" className="px-6 py-3">
                     Product
@@ -84,7 +70,7 @@ export default async function ShippingOrders() {
                   ?.map((product) =>
                     product?.order?.map((order, index) => (
                       <tr
-                        key={`${product._id}-${order._id}`} // Unique key using both product and order ID
+                        key={`${product._id}-${order._id}`}
                         className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                       >
                         <td className="p-4">
@@ -100,7 +86,6 @@ export default async function ShippingOrders() {
                             Color: {JSON.parse(order?.color)?.title}
                           </p>
                         </td>
-                        {/* Merge rows for the first order */}
                         {index === 0 && (
                           <td
                             className="px-6 py-4 font-semibold text-gray-900 dark:text-white"
@@ -141,7 +126,6 @@ export default async function ShippingOrders() {
                             }
                           )}
                         </td>
-                        {/* Merge rows for the first order */}
                         {index === 0 && (
                           <td
                             className="px-6 py-4 font-semibold text-gray-900 dark:text-white"
@@ -165,16 +149,12 @@ export default async function ShippingOrders() {
                         <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white text-nowrap">
                           {product?.status}
                         </td>
-                        {/* Merge rows for the first order */}
                         {index === 0 && (
                           <td
                             className="px-6 py-4 font-semibold text-gray-900 dark:text-white"
                             rowSpan={product.order.length}
                           >
-                            <button
-                              // onClick={() => handleDeleteProduct(product?._id)}
-                              className="font-medium text-red-600 dark:text-red-500 hover:underline"
-                            >
+                            <button className="font-medium text-red-600 dark:text-red-500 hover:underline">
                               Remove
                             </button>
                           </td>
